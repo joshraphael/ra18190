@@ -30,6 +30,7 @@ function HeartsCollected() => dword( ( GamePointer4() & 0x01ffffff ) + 0xc )
 
 function DarkHeartsCollected() => dword( ( GamePointer4() & 0x01ffffff ) + 0x10 )
 
+// This can be inaccurate, I think this was ported and the available hearts may have been miscounted on a few levels
 function AvailableHearts() => dword( ( GamePointer4() & 0x01ffffff ) + 0x14 )
 
 // $B16044 - [32-bit] Game State

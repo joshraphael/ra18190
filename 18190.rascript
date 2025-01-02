@@ -12,6 +12,15 @@ function KeyPressed() => dword( 0x00a43a40 )
 // $B16038 - [32-bit] Game Pointer
 // Notes: Anything other than 0x00000000 is an address to the currently playing chapters data
 // 0x00000000 = In Main Menu
+// (use & value 0x01ffffff)
+// +0x88
+// .+0x0
+// ..+0x14
+// ...+0x08 = Current Chapter Score
+// ...+0x0c = Hearts Collected
+// ...+0x10 = Dark Hearts Collected
+// ...+0x14 = Hearts Available
+// +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Black
 
 function GamePointer() => dword( 0x00b16038 )
 
@@ -24,9 +33,9 @@ function GamePointer3() => dword( GamePointer2() & 0x01ffffff )
 
 function GamePointer4() => dword( ( GamePointer3() & 0x01ffffff ) + 0x14 )
 
-function CurrentChapterScore() => dword( ( GamePointer4() & 0x01ffffff ) + 0x8 )
+function CurrentChapterScore() => dword( ( GamePointer4() & 0x01ffffff ) + 0x08 )
 
-function HeartsCollected() => dword( ( GamePointer4() & 0x01ffffff ) + 0xc )
+function HeartsCollected() => dword( ( GamePointer4() & 0x01ffffff ) + 0x0c )
 
 function DarkHeartsCollected() => dword( ( GamePointer4() & 0x01ffffff ) + 0x10 )
 

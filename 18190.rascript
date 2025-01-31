@@ -268,12 +268,35 @@ achievement(
     title = "Totem Spirit",
     description = "Complete chapter 1 in no more than 15 jumps",
     points = 2,
-    trigger = InGame() && prev( Chapter() ) == CHAPTER1 && trigger_when( UpgradeChapter( CHAPTER2, false ) ) && disable_when( tally( 16, CharacterJumps( false, false, false ) ), until = GameReset() )
+    trigger = (
+        InGame() &&
+        prev( Chapter() ) == CHAPTER1 &&
+        trigger_when( UpgradeChapter( CHAPTER2, false ) )
+    ) &&
+    disable_when(
+        tally(
+            16,
+            CharacterJumps( false, false, false )
+        ),
+        until = GameReset()
+    )
 )
 
 achievement(
-    title = "Nex episode",
-    description = "Complete chapter 2 in no more than 15 jumps",
+    title = "Rock Tunnel",
+    description = "Without dying, collect 3 hearts and complete chapter 4 in no more than 14 jumps",
     points = 3,
-    trigger = InGame() && prev( Chapter() ) == CHAPTER2 && trigger_when( UpgradeChapter( CHAPTER3, false ) ) && disable_when( tally( 16, CharacterJumps( false, false, false ) ), until = GameReset() )
+    trigger = (
+        InGame() &&
+        prev( Chapter() ) == CHAPTER4 &&
+        HeartsCollected() == 3 &&
+        trigger_when( UpgradeChapter( CHAPTER5, false ) )
+    ) &&
+    disable_when(
+        tally(
+            15,
+            CharacterJumps( false, false, false )
+        ),
+        until = GameReset()
+    )
 )

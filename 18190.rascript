@@ -184,15 +184,18 @@ function InGame() {
     )
 }
 
-function UpgradeChapter( current, next, hasBrownPowerUp ) {
+function AllInTree( hasBrownPowerUp ) {
     cond = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     if( hasBrownPowerUp ) {
         cond = ( cond ) || ( BrownState() == 0x00000008 && BrownPoweredUpState() == 0x00000007 )
     }
+    return cond
+}
+
+function UpgradeChapter( next, hasBrownPowerUp ) {
     return (
-        prev( Chapter() ) == current &&
         Chapter() == next &&
-        cond
+        BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     )
 }
 
@@ -252,9 +255,25 @@ function Test( chapter ) {
 //        once( UpgradeChapter( CHAPTER7, CHAPTER8 ) ))
 //)
 
+function GameReset() {
+    return (
+        ChapterTimer() < prev( ChapterTimer() ) &&
+        HeartsCollected() == 0x00 &&
+        CurrentChapterScore() == 0x00 &&
+        DarkHeartsCollected() == 0x00
+    ) 
+}
+
 achievement(
     title = "Totem Spirit",
     description = "Complete chapter 1 in no more than 15 jumps",
     points = 2,
-    trigger = InGame() && UpgradeChapter( CHAPTER1, CHAPTER2, false ) && disable_when( tally( 16, CharacterJumps( false, false, false ) ), until = ( ChapterTimer() < prev( ChapterTimer() ) ) )
+    trigger = InGame() && prev( Chapter() ) == CHAPTER1 && trigger_when( UpgradeChapter( CHAPTER2, false ) ) && disable_when( tally( 16, CharacterJumps( false, false, false ) ), until = GameReset() )
+)
+
+achievement(
+    title = "Nex episode",
+    description = "Complete chapter 2 in no more than 15 jumps",
+    points = 3,
+    trigger = InGame() && prev( Chapter() ) == CHAPTER2 && trigger_when( UpgradeChapter( CHAPTER3, false ) ) && disable_when( tally( 16, CharacterJumps( false, false, false ) ), until = GameReset() )
 )

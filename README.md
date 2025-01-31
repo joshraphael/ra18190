@@ -11,4 +11,5 @@ Retro Achievements set design document for the game [Where is my Heart?](https:/
 |Title|Command|Parameters|Description|
 |-|-|-|-|
 |Compile|`make compile`|None|Compile RAScript into achievement logic|
+|Code Notes|`make notes`|None|Use the API to download the games code notes|
 |Load Save|`make load chapter=<number>`|`number` - chapter number|Load specified chapter save file into emulator (both Europe and USA versions)|

@@ -184,18 +184,48 @@ function InGame() {
     )
 }
 
-function AllInTree( hasBrownPowerUp ) {
+function AllInTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     cond = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     if( hasBrownPowerUp ) {
-        cond = ( cond ) || ( BrownState() == 0x00000008 && BrownPoweredUpState() == 0x00000007 )
+        cond = ( baseCond ) || ( BrownState() == 0x00000008 && BrownPoweredUpState() == 0x00000007 )
+    }
+    if( hasOrangePowerUp ) {
+        cond = BrownState() == 0x00000007 && BlackState() == 0x00000007 && ( ( OrangeState() == 0x00000007 ) || ( OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 ) )
+    }
+    if( hasBlackPowerUp ) {
+        cond = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && ( ( BlackState() == 0x00000007 ) || ( BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007 ) )
     }
     return cond
 }
 
-function UpgradeChapter( next, hasBrownPowerUp ) {
+function LastPlayerEntersTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+    brown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
+    orange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
+    black = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
+    conds = ( brown ) || ( orange ) || ( black )
+    if( hasBrownPowerUp ) {
+        brownPowerUp = BrownState() == 0x00000008 && prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
+        conds = conds || ( brownPowerUp )
+    }
+    if( hasOrangePowerUp ) {
+        orangeNewBrown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
+        orangeNewOrange = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && prev( OrangePoweredUpState() ) != 0x00000007 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
+        orangeNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
+        conds = conds || ( orangeNewBrown ) || ( orangeNewOrange ) || ( orangeNewBlack )
+    }
+    if( hasBlackPowerUp ) {
+        blackNewBrown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
+        blackNewOrange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
+        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prev( BlackPoweredUpState() ) != 0x00000007 && BlackPoweredUpState() == 0x00000007
+        conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack )
+    }
+    return conds
+}
+
+function UpgradeChapter( next, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     return (
         Chapter() == next &&
-        BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
+        AllInTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp )
     )
 }
 
@@ -271,7 +301,7 @@ achievement(
     trigger = (
         InGame() &&
         prev( Chapter() ) == CHAPTER1 &&
-        trigger_when( UpgradeChapter( CHAPTER2, false ) )
+        trigger_when( UpgradeChapter( CHAPTER2, false, false, false ) )
     ) &&
     disable_when(
         tally(
@@ -290,7 +320,7 @@ achievement(
         InGame() &&
         prev( Chapter() ) == CHAPTER4 &&
         HeartsCollected() == 3 &&
-        trigger_when( UpgradeChapter( CHAPTER5, false ) )
+        trigger_when( UpgradeChapter( CHAPTER5, false, false, false ) )
     ) &&
     disable_when(
         tally(
@@ -298,5 +328,39 @@ achievement(
             CharacterJumps( false, false, false )
         ),
         until = GameReset()
+    ) &&
+    disable_when(
+        prev( DarkHeartsCollected() ) + 1 == DarkHeartsCollected(),
+        until = GameReset()
     )
+)
+
+function InSeconds( time ) {
+    return time * 1000
+}
+
+achievement(
+    title = "Gotta go fast",
+    description = "complete leve X in under 10 seconds",
+    points = 3,
+    trigger = (
+        InGame() &&
+        prev( Chapter() ) == CHAPTER1 &&
+        trigger_when( UpgradeChapter( CHAPTER2, false, false, false ) )
+    ) &&
+    disable_when(
+        ChapterTimer() > InSeconds( 10 ),
+        until = GameReset()
+    )
+)
+
+leaderboard(
+    title="test",
+    description="test 1",
+    start=Chapter() == CHAPTER1 && ( ( prev(GamePointer() ) == 0x00000000 && GamePointer() != 0x00000000 ) || ( prev( ChapterTimer() ) != 0x00000000 && ChapterTimer() == 0x00000000 ) ),
+    cancel=( prev( ChapterTimer() ) < 0xffffffff && ChapterTimer() == 0xffffffff ) || ( prev( Chapter() ) == CHAPTER1 &&  Chapter() != CHAPTER1 ) || prev( GamePointer() ) != 0x00000000 && GamePointer() == 0x00000000,
+    submit=LastPlayerEntersTree( true, true, true ),
+    value=ChapterTimer() / 0x0a,
+    format="MILLISECS",
+    lower_is_better=true
 )

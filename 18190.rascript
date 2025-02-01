@@ -225,7 +225,7 @@ function LastPlayerEntersTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerU
 function UpgradeChapter( next, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     return (
         Chapter() == next &&
-        AllInTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp )
+        LastPlayerEntersTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp )
     )
 }
 
@@ -287,10 +287,16 @@ function Test( chapter ) {
 
 function GameReset() {
     return (
-        ChapterTimer() < prev( ChapterTimer() ) &&
         HeartsCollected() == 0x00 &&
         CurrentChapterScore() == 0x00 &&
-        DarkHeartsCollected() == 0x00
+        DarkHeartsCollected() == 0x00 && (
+            (
+                prev( GamePointer() ) == 0x00000000 &&
+                GamePointer() != 0x00000000
+            ) || (
+                prev( ChapterTimer() ) < ChapterTimer()
+            )
+        )
     ) 
 }
 
@@ -319,7 +325,7 @@ achievement(
     trigger = (
         InGame() &&
         prev( Chapter() ) == CHAPTER4 &&
-        HeartsCollected() == 3 &&
+        HeartsCollected() >= 3 &&
         trigger_when( UpgradeChapter( CHAPTER5, false, false, false ) )
     ) &&
     disable_when(
@@ -355,12 +361,53 @@ achievement(
 )
 
 leaderboard(
-    title="test",
-    description="test 1",
-    start=Chapter() == CHAPTER1 && ( ( prev(GamePointer() ) == 0x00000000 && GamePointer() != 0x00000000 ) || ( prev( ChapterTimer() ) != 0x00000000 && ChapterTimer() == 0x00000000 ) ),
-    cancel=( prev( ChapterTimer() ) < 0xffffffff && ChapterTimer() == 0xffffffff ) || ( prev( Chapter() ) == CHAPTER1 &&  Chapter() != CHAPTER1 ) || prev( GamePointer() ) != 0x00000000 && GamePointer() == 0x00000000,
-    submit=LastPlayerEntersTree( true, true, true ),
-    value=ChapterTimer() / 0x0a,
-    format="MILLISECS",
-    lower_is_better=true
+    id = 2,
+    title="a new board test",
+    description="test 1f",
+    start = (
+        Chapter() == CHAPTER1 &&
+        GameReset()
+    ),
+    cancel= (
+        (
+            prev( ChapterTimer() ) < 0xffffffff &&
+            ChapterTimer() == 0xffffffff
+        ) || (
+            prev( Chapter() ) == CHAPTER1 &&
+            Chapter() != CHAPTER1
+        ) || (
+            prev( GamePointer() ) != 0x00000000 &&
+            GamePointer() == 0x00000000
+        )
+    ),
+    submit = LastPlayerEntersTree( true, true, true ),
+    value = ChapterTimer() / 0x0a,
+    format = "MILLISECS",
+    lower_is_better = true
+)
+
+leaderboard(
+    id = 1,
+    title=" df  fs test 2fff",
+    description="test 2",
+    start = (
+        Chapter() == CHAPTER2 &&
+        GameReset()
+    ),
+    cancel= (
+        (
+            prev( ChapterTimer() ) < 0xffffffff &&
+            ChapterTimer() == 0xffffffff
+        ) || (
+            prev( Chapter() ) == CHAPTER2 &&
+            Chapter() != CHAPTER2
+        ) || (
+            prev( GamePointer() ) != 0x00000000 &&
+            GamePointer() == 0x00000000
+        )
+    ),
+    submit = LastPlayerEntersTree( true, true, true ),
+    value = ChapterTimer() / 0x0a,
+    format = "MILLISECS",
+    lower_is_better = true
 )

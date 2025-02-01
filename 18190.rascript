@@ -117,48 +117,48 @@ CHAPTER8 = 0x00000016
 // Rainbow Spirit: I can reach the stars and find a way home.
 // Antler Ancestor: Hop, hey and farewell!
 
-chapterLookup = {
-    0x0000001b: {
-        "chapter":       1,
+chapterLookup = [
+    {
+        "id":            0x0000001b,
         "description":   "The Heart Tree",
         "hearts":        2,
         "brownPowerUp":  false,
         "orangePowerUp": false,
         "blackPowerUp":  false
     },
-    0x00000000: {
-        "chapter":       2,
+    {
+        "id":            0x00000000,
         "description":   "We're on our Way",
         "hearts":        1,
         "brownPowerUp":  false,
         "orangePowerUp": false,
         "blackPowerUp":  false
     },
-    0x00000003: {
-        "chapter":       3,
+    {
+        "id":            0x00000003,
         "description":   "Wilderness",
         "hearts":        3,
         "brownPowerUp":  false,
         "orangePowerUp": false,
         "blackPowerUp":  false
     },
-    0x00000004: {
-        "chapter":       4,
+    {
+        "id":            0x00000004,
         "description":   "A Little Cave",
         "hearts":        3,
         "brownPowerUp":  false,
         "orangePowerUp": false,
         "blackPowerUp":  false
     },
-    0x00000005: {
-        "chapter":       5,
+    {
+        "id":            0x00000005,
         "description":   "Antler Ancestor",
         "hearts":        3,
         "brownPowerUp":  true,
         "orangePowerUp": false,
         "blackPowerUp":  false
     }
-}
+]
 
 function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     conditions = [

@@ -117,46 +117,56 @@ CHAPTER8 = 0x00000016
 // Rainbow Spirit: I can reach the stars and find a way home.
 // Antler Ancestor: Hop, hey and farewell!
 
-chapterLookup = [
+chapterConfigs = [
     {
-        "id":            0x0000001b,
-        "description":   "The Heart Tree",
-        "hearts":        2,
-        "brownPowerUp":  false,
-        "orangePowerUp": false,
-        "blackPowerUp":  false
+        "id":               0x0000001b,
+        "description":      "The Heart Tree",
+        "hearts":           2,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 1,
+        "hasLeaderboard":   true
     },
     {
-        "id":            0x00000000,
-        "description":   "We're on our Way",
-        "hearts":        1,
-        "brownPowerUp":  false,
-        "orangePowerUp": false,
-        "blackPowerUp":  false
+        "id":               0x00000000,
+        "description":      "We're on our Way",
+        "hearts":           1,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 1,
+        "hasLeaderboard":   true
     },
     {
-        "id":            0x00000003,
-        "description":   "Wilderness",
-        "hearts":        3,
-        "brownPowerUp":  false,
-        "orangePowerUp": false,
-        "blackPowerUp":  false
+        "id":               0x00000003,
+        "description":      "Wilderness",
+        "hearts":           3,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 1,
+        "hasLeaderboard":   true
     },
     {
-        "id":            0x00000004,
-        "description":   "A Little Cave",
-        "hearts":        3,
-        "brownPowerUp":  false,
-        "orangePowerUp": false,
-        "blackPowerUp":  false
+        "id":               0x00000004,
+        "description":      "A Little Cave",
+        "hearts":           3,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     },
     {
-        "id":            0x00000005,
-        "description":   "Antler Ancestor",
-        "hearts":        3,
-        "brownPowerUp":  true,
-        "orangePowerUp": false,
-        "blackPowerUp":  false
+        "id":               0x00000005,
+        "description":      "Antler Ancestor",
+        "hearts":           3,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     }
 ]
 
@@ -300,6 +310,10 @@ function GameReset() {
     ) 
 }
 
+function InSeconds( time ) {
+    return time * 1000
+}
+
 achievement(
     title = "Totem Spirit",
     description = "Complete chapter 1 in no more than 15 jumps",
@@ -315,6 +329,34 @@ achievement(
             CharacterJumps( false, false, false )
         ),
         until = GameReset()
+    )
+)
+
+achievement(
+    title = "Gotta Go Fast",
+    description = "complete chapter 2 in under 10 seconds",
+    points = 3,
+    trigger = (
+        InGame() &&
+        prev( Chapter() ) == CHAPTER2 &&
+        trigger_when( UpgradeChapter( CHAPTER3, false, false, false ) )
+    ) &&
+    disable_when(
+        ChapterTimer() > InSeconds( 10 ),
+        until = GameReset()
+    )
+)
+
+achievement(
+    title = "Mind The Gap",
+    description = "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
+    points = 2,
+    trigger = (
+        InGame() &&
+        prev( Chapter() ) == CHAPTER3 &&
+        once( OrangeState() == 0x00000007 && BlackState() == 0x00000007 && BrownState() != 0x00000007 && prev( HeartsCollected() ) + 1 == HeartsCollected() ) &&
+        trigger_when( LastPlayerEntersTree( false, false, false ) ) &&
+        never( GameReset() )
     )
 )
 
@@ -341,73 +383,37 @@ achievement(
     )
 )
 
-function InSeconds( time ) {
-    return time * 1000
+for index in range( 1, length( chapterConfigs ) ) {
+    chapter = chapterConfigs[index - 1]
+    id = index
+    if dictionary_contains_key( chapter, "leaderboardID" ) {
+        id = chapter["leaderboardID"]
+    }
+    if chapter["hasLeaderboard"] {
+        leaderboard(
+            id = id,
+            title = format("Speedrun Chapter {0}", index),
+            description = format("Finish chapter {0} as fast as possible", index),
+            start = (
+                Chapter() == chapter["id"] &&
+                GameReset()
+            ),
+            cancel= (
+                (
+                    prev( ChapterTimer() ) < 0xffffffff &&
+                    ChapterTimer() == 0xffffffff
+                ) || (
+                    prev( Chapter() ) == chapter["id"] &&
+                    Chapter() != chapter["id"]
+                ) || (
+                    prev( GamePointer() ) != 0x00000000 &&
+                    GamePointer() == 0x00000000
+                )
+            ),
+            submit = LastPlayerEntersTree( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] ),
+            value = ChapterTimer() / 0x0a,
+            format = "MILLISECS",
+            lower_is_better = true
+        )
+    }
 }
-
-achievement(
-    title = "Gotta go fast",
-    description = "complete leve X in under 10 seconds",
-    points = 3,
-    trigger = (
-        InGame() &&
-        prev( Chapter() ) == CHAPTER1 &&
-        trigger_when( UpgradeChapter( CHAPTER2, false, false, false ) )
-    ) &&
-    disable_when(
-        ChapterTimer() > InSeconds( 10 ),
-        until = GameReset()
-    )
-)
-
-leaderboard(
-    id = 2,
-    title="a new board test",
-    description="test 1f",
-    start = (
-        Chapter() == CHAPTER1 &&
-        GameReset()
-    ),
-    cancel= (
-        (
-            prev( ChapterTimer() ) < 0xffffffff &&
-            ChapterTimer() == 0xffffffff
-        ) || (
-            prev( Chapter() ) == CHAPTER1 &&
-            Chapter() != CHAPTER1
-        ) || (
-            prev( GamePointer() ) != 0x00000000 &&
-            GamePointer() == 0x00000000
-        )
-    ),
-    submit = LastPlayerEntersTree( true, true, true ),
-    value = ChapterTimer() / 0x0a,
-    format = "MILLISECS",
-    lower_is_better = true
-)
-
-leaderboard(
-    id = 1,
-    title=" df  fs test 2fff",
-    description="test 2",
-    start = (
-        Chapter() == CHAPTER2 &&
-        GameReset()
-    ),
-    cancel= (
-        (
-            prev( ChapterTimer() ) < 0xffffffff &&
-            ChapterTimer() == 0xffffffff
-        ) || (
-            prev( Chapter() ) == CHAPTER2 &&
-            Chapter() != CHAPTER2
-        ) || (
-            prev( GamePointer() ) != 0x00000000 &&
-            GamePointer() == 0x00000000
-        )
-    ),
-    submit = LastPlayerEntersTree( true, true, true ),
-    value = ChapterTimer() / 0x0a,
-    format = "MILLISECS",
-    lower_is_better = true
-)

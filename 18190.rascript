@@ -202,44 +202,6 @@ function InGame() {
     )
 }
 
-// function AllInTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
-//     cond = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
-//     if( hasBrownPowerUp ) {
-//         cond = ( baseCond ) || ( BrownState() == 0x00000008 && BrownPoweredUpState() == 0x00000007 )
-//     }
-//     if( hasOrangePowerUp ) {
-//         cond = BrownState() == 0x00000007 && BlackState() == 0x00000007 && ( ( OrangeState() == 0x00000007 ) || ( OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 ) )
-//     }
-//     if( hasBlackPowerUp ) {
-//         cond = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && ( ( BlackState() == 0x00000007 ) || ( BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007 ) )
-//     }
-//     return cond
-// }
-
-// function LastPlayerEntersTree( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
-//     brown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
-//     orange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
-//     black = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
-//     conds = ( brown ) || ( orange ) || ( black )
-//     if( hasBrownPowerUp ) {
-//         brownPowerUp = BrownState() == 0x00000008 && prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
-//         conds = conds || ( brownPowerUp )
-//     }
-//     if( hasOrangePowerUp ) {
-//         orangeNewBrown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
-//         orangeNewOrange = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && prev( OrangePoweredUpState() ) != 0x00000007 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
-//         orangeNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
-//         conds = conds || ( orangeNewBrown ) || ( orangeNewOrange ) || ( orangeNewBlack )
-//     }
-//     if( hasBlackPowerUp ) {
-//         blackNewBrown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
-//         blackNewOrange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
-//         blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prev( BlackPoweredUpState() ) != 0x00000007 && BlackPoweredUpState() == 0x00000007
-//         conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack )
-//     }
-//     return conds
-// }
-
 function UpgradeChapter( isChallenge, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     brown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     orange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
@@ -425,7 +387,7 @@ achievement(
         until = GameReset()
     ) &&
     disable_when(
-        prev( DarkHeartsCollected() ) == DarkHeartsCollected() - 1,
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -445,6 +407,26 @@ achievement(
         tally(
             4,
             AntlerDoubleJumps()
+        ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Test",
+    description = "Collect 2 hearts in no more than 1 world rotationn then complete chapter 6",
+    points = 2,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER6 &&
+        HeartsCollected() >= 2 &&
+        UpgradeChapter( true, false, true, false )
+    ) &&
+    disable_when(
+        tally(
+            2,
+            OrangeRotating()
         ),
         until = GameReset()
     ),

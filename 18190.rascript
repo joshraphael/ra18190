@@ -167,23 +167,43 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
+    },
+    {
+        "id":               0x00000008,
+        "description":      "Rainbow Spirit",
+        "hearts":           2,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               0x0000000a,
+        "description":      "Wall in the Meadow",
+        "hearts":           1,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     }
 ]
 
 function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     conditions = [
-        ( prev(BrownState()) != 0x00000002 && BrownState() == 0x00000002 ),
-        ( prev(OrangeState()) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( prev(BlackState()) != 0x00000002 && BlackState() == 0x00000002 )
+        ( prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
+        ( prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
+        ( prev( BlackState() ) != 0x00000002 && BlackState() == 0x00000002 )
     ]
     if( hasBrownPowerUp ) {
-        array_push( conditions, ( prev(BrownPoweredUpState()) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev(BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
     }
     if( hasOrangePowerUp ) {
-        array_push( conditions, ( prev(OrangePoweredUpState()) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev(OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
     }
     if( hasBlackPowerUp ) {
-        array_push( conditions, ( prev(BlackPoweredUpState()) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev(BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
@@ -291,6 +311,17 @@ function Test( chapter ) {
     )
 }
 
+function CollectHeartsUsingCharacter( hearts, character ) {
+    status = BrownState() != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
+    if character == "orange" {
+        status = BrownState() == 0x00000007 && OrangeState() != 0x00000007 && BlackState() == 0x00000007
+    }
+    if character == "black" {
+        status = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() != 0x00000007
+    }
+    return repeated( hearts, status && prev( HeartsCollected() ) == HeartsCollected() - 1 )
+}
+
 //achievement(
 //    title = "Test",
 //    description = "somethnig",
@@ -362,7 +393,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER3 &&
-        once( OrangeState() == 0x00000007 && BlackState() == 0x00000007 && BrownState() != 0x00000007 && prev( HeartsCollected() ) == HeartsCollected() - 1 ) &&
+        CollectHeartsUsingCharacter( 1, "brown" ) &&
         UpgradeChapter( true, false, false, false ) &&
         never( GameReset() )
     ),
@@ -414,8 +445,8 @@ achievement(
 )
 
 achievement(
-    title = "Test",
-    description = "Collect 2 hearts in no more than 1 world rotationn then complete chapter 6",
+    title = "A Slight Breeze",
+    description = "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
     points = 2,
     trigger = (
         InGame() &&

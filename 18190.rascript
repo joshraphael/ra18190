@@ -332,20 +332,6 @@ rich_presence_conditional_display(
 
 rich_presence_display("In Menus")
 
-//achievement(
-//    title = "Score!",
-//    description = "Win a game with at least 600 points",
-//    points = 25,
-//    trigger = InGame() && UpgradeChapter( CHAPTER1, CHAPTER2 ) && disable_when(repeated(6, prev(OrangeState()) != 0x00000002 && BrownState() == 0x00000002 ), until = ( ChapterTimer() < prev( ChapterTimer() ) ))
-//)
-
-//achievement(
-//    title = "Test",
-//    description = "somethnig",
-//    points = 2,
-//    trigger = InGame() && UpgradeChapter( CHAPTER7, CHAPTER8 ) && disable_when(repeated(1000, OrangeRotating()), until = ( ChapterTimer() < prev( ChapterTimer() ) ))
-//)
-
 function Test( chapter ) {
     return (
         Chapter() == chapter &&
@@ -365,15 +351,6 @@ function CollectHeartsUsingCharacter( hearts, character ) {
     }
     return repeated( hearts, status && prev( HeartsCollected() ) == HeartsCollected() - 1 )
 }
-
-//achievement(
-//    title = "Test",
-//    description = "somethnig",
-//    points = 2,
-//    trigger = InGame() && tally(2,
-//        once(Test(CHAPTER7)),
-//        once( UpgradeChapter( CHAPTER7, CHAPTER8 ) ))
-//)
 
 function GameReset() {
     return (

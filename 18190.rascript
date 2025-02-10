@@ -104,14 +104,17 @@ function AnimationCounter() => dword( 0x009e7130 )
 function LeftBumperButton() => bit0( 0x00a43a41 )
 function RightBumperButton() => bit1( 0x00a43a41 )
 
-CHAPTER1 = 0x0000001b
-CHAPTER2 = 0x00000000
-CHAPTER3 = 0x00000003
-CHAPTER4 = 0x00000004
-CHAPTER5 = 0x00000005
-CHAPTER6 = 0x00000008
-CHAPTER7 = 0x0000000a
-CHAPTER8 = 0x00000016
+CHAPTER1  = 0x0000001b
+CHAPTER2  = 0x00000000
+CHAPTER3  = 0x00000003
+CHAPTER4  = 0x00000004
+CHAPTER5  = 0x00000005
+CHAPTER6  = 0x00000008
+CHAPTER7  = 0x0000000a
+CHAPTER8  = 0x00000016
+CHAPTER9  = 0x00000006
+CHAPTER10 = 0x00000013
+CHAPTER11 = 0x0000000b
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -187,6 +190,46 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
+    },
+    {
+        "id":               0x00000016,
+        "description":      "Bridge",
+        "hearts":           4,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               0x00000006,
+        "description":      "Islands",
+        "hearts":           5,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               0x00000013,
+        "description":      "Serpentine",
+        "hearts":           7,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               0x0000000b,
+        "description":      "Flying Rocks",
+        "hearts":           8,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     }
 ]
 
@@ -211,8 +254,8 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
 function AntlerDoubleJumps() {
     return (
         BrownState() == 0x00000008 &&
-        prev( BrownDoubleJump() ) == 0x0001 &&
-        BrownDoubleJump() == 0x0101
+        prev( BrownDoubleJump() ) == 0x00 &&
+        BrownDoubleJump() == 0x01
     )
 }
 
@@ -233,7 +276,8 @@ function UpgradeChapter( isChallenge, hasBrownPowerUp, hasOrangePowerUp, hasBlac
     }
     conds = ( brown ) || ( orange ) || ( black )
     if( hasBrownPowerUp ) {
-        brownPowerUp = BrownState() == 0x00000008 && prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
+        // Ideally we would check for browns state to be 0x00000008 but level 10 defaults browns state to 0x00000000 so we need to loosen the requirements
+        brownPowerUp = prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
         if( isChallenge ) {
             brownPowerUp = trigger_when( brownPowerUp )
         }
@@ -352,7 +396,7 @@ function InSeconds( time ) {
 achievement(
     title = "Totem Spirit",
     description = "Complete chapter 1 in no more than 15 jumps",
-    points = 2,
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER1 &&
@@ -370,8 +414,8 @@ achievement(
 
 achievement(
     title = "Gotta Go Fast",
-    description = "complete chapter 2 in under 10 seconds",
-    points = 3,
+    description = "Complete chapter 2 in under 11 seconds",
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER2 &&
@@ -379,8 +423,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER2 &&
-        prev( ChapterTimer() ) < InSeconds( 10 ) &&
-        ChapterTimer() >= InSeconds( 10 ),
+        prev( ChapterTimer() ) < InSeconds( 11 ) &&
+        ChapterTimer() >= InSeconds( 11 ),
         until = GameReset()
     ),
     type = "missable"
@@ -389,7 +433,7 @@ achievement(
 achievement(
     title = "Mind The Gap",
     description = "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
-    points = 2,
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER3 &&
@@ -403,7 +447,7 @@ achievement(
 achievement(
     title = "Rock Tunnel",
     description = "Without dying collect 3 hearts in no more than 14 jumps then complete chapter 4",
-    points = 3,
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER4 &&
@@ -427,7 +471,7 @@ achievement(
 achievement(
     title = "Gallup Jingle",
     description = "Collect 3 hearts in no more than 3 double jumps then complete chapter 5",
-    points = 2,
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER5 &&
@@ -447,7 +491,7 @@ achievement(
 achievement(
     title = "A Slight Breeze",
     description = "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
-    points = 2,
+    points = 5,
     trigger = (
         InGame() &&
         Chapter() == CHAPTER6 &&
@@ -459,6 +503,83 @@ achievement(
             2,
             OrangeRotating()
         ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Great Wall",
+    description = "With both orange and brown inside the end tree, use black to collect one heart then complete chapter 7",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER7 &&
+        CollectHeartsUsingCharacter( 1, "black" ) &&
+        UpgradeChapter( true, false, true, false ) &&
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Rainbow Bridge",
+    description = "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER8 &&
+        HeartsCollected() >= 4 &&
+        UpgradeChapter( true, false, true, false )
+    ) &&
+    disable_when(
+        tally(
+            2,
+            OrangeRotating()
+        ),
+        until = GameReset()
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Island Hopping",
+    description = "Collect 5 hearts in no more than 4 double jumps then complete chapter 9",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER9 &&
+        HeartsCollected() >= 5 &&
+        UpgradeChapter( true, true, false, false )
+    ) &&
+    disable_when(
+        tally(
+            5,
+            AntlerDoubleJumps()
+        ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Zig Zag",
+    description = "Collect 7 hearts and complete chapter 10 in under 20 seconds",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER10 &&
+        HeartsCollected() >= 7 &&
+        UpgradeChapter( true, true, false, false )
+    ) &&
+    disable_when(
+        Chapter() == CHAPTER10 &&
+        prev( ChapterTimer() ) < InSeconds( 20 ) &&
+        ChapterTimer() >= InSeconds( 20 ),
         until = GameReset()
     ),
     type = "missable"

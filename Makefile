@@ -7,6 +7,9 @@ export EUROPE = NPEZ00358WIMH00
 export USA = NPUZ00243WIMH00
 
 compile:
+	rm -f ${RALIBRETRO_DIR}/RACache/Data/${GAME_ID}.json
+	rm -f ${RALIBRETRO_DIR}/RACache/Data/${GAME_ID}-User.txt
+	rm -f ${RALIBRETRO_DIR}/RACache/Data/${GAME_ID}-Rich.txt
 	touch ${RALIBRETRO_DIR}/RACache/Data/${GAME_ID}.json
 	wine ${RATOOLS_DIR}/rascript-cli.exe -i ${GAME_ID}.rascript -o ${RALIBRETRO_DIR}
 

@@ -585,6 +585,30 @@ achievement(
     type = "missable"
 )
 
+achievement(
+    title = "Rock of Terror",
+    description = "Without dying collect 8 hearts in no more than 6 world rotation then complete chapter 11",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER11 &&
+        HeartsCollected() >= 8 &&
+        UpgradeChapter( true, false, true, false )
+    ) &&
+    disable_when(
+        tally(
+            7,
+            OrangeRotating()
+        ),
+        until = GameReset()
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
 for index in range( 1, length( chapterConfigs ) ) {
     chapter = chapterConfigs[index - 1]
 

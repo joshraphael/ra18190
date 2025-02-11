@@ -115,6 +115,7 @@ CHAPTER8  = 0x00000016
 CHAPTER9  = 0x00000006
 CHAPTER10 = 0x00000013
 CHAPTER11 = 0x0000000b
+CHAPTER12 = 0x00000007
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -227,6 +228,16 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               0x00000007,
+        "description":      "Little Fern Track",
+        "hearts":           12,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
@@ -576,6 +587,30 @@ achievement(
         tally(
             7,
             OrangeRotating()
+        ),
+        until = GameReset()
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Glowing Fern",
+    description = "Without dying collect 12 hearts in no more than 3 double jumps then complete chapter 12",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER12 &&
+        HeartsCollected() >= 12 &&
+        UpgradeChapter( true, true, false, false )
+    ) &&
+    disable_when(
+        tally(
+            4,
+            AntlerDoubleJumps()
         ),
         until = GameReset()
     ) &&

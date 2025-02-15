@@ -116,6 +116,8 @@ CHAPTER9  = 0x00000006
 CHAPTER10 = 0x00000013
 CHAPTER11 = 0x0000000b
 CHAPTER12 = 0x00000007
+CHAPTER13 = 0x0000000c
+CHAPTER14 = 0x0000000d
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -241,6 +243,16 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
+    },
+    {
+        "id":               0x0000000c,
+        "description":      "Sky and Cave",
+        "hearts":           2,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     }
 ]
 
@@ -352,13 +364,34 @@ function Test( chapter ) {
     )
 }
 
-function CollectHeartsUsingCharacter( hearts, character ) {
+function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     status = BrownState() != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     if character == "orange" {
         status = BrownState() == 0x00000007 && OrangeState() != 0x00000007 && BlackState() == 0x00000007
     }
     if character == "black" {
         status = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() != 0x00000007
+    }
+    if hasBrownPowerUp {
+        if character == "brown" {
+            status = status && BrownPoweredUpState() != 0x00000007
+        } else {
+            status = status && BrownPoweredUpState() == 0x00000007
+        }
+    }
+    if hasOrangePowerUp {
+        if character == "orange" {
+            status = status && OrangePoweredUpState() != 0x00000007
+        } else {
+            status = status && OrangePoweredUpState() == 0x00000007
+        }
+    }
+    if hasBlackPowerUp {
+        if character == "black" {
+            status = status && BlackPoweredUpState() != 0x00000007
+        } else {
+            status = status && BlackPoweredUpState() == 0x00000007
+        }
     }
     return repeated( hearts, status && prev( HeartsCollected() ) == HeartsCollected() - 1 )
 }
@@ -425,7 +458,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER3 &&
-        CollectHeartsUsingCharacter( 1, "brown" ) &&
+        CollectHeartsUsingCharacter( 1, "brown", false, false, false ) &&
         UpgradeChapter( true, false, false, false ) &&
         never( GameReset() )
     ),
@@ -503,7 +536,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER7 &&
-        CollectHeartsUsingCharacter( 1, "black" ) &&
+        CollectHeartsUsingCharacter( 1, "black", false, true, false ) &&
         UpgradeChapter( true, false, true, false ) &&
         never( GameReset() )
     ),
@@ -616,6 +649,26 @@ achievement(
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Descent Into Bat Kings Cave",
+    description = "Collect 2 hearts in no more than 3 world rotation then complete chapter 13",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER13 &&
+        HeartsCollected() >= 2 &&
+        UpgradeChapter( true, false, true, false )
+    ) &&
+    disable_when(
+        tally(
+            4,
+            OrangeRotating()
+        ),
         until = GameReset()
     ),
     type = "missable"

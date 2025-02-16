@@ -118,6 +118,7 @@ CHAPTER11 = 0x0000000b
 CHAPTER12 = 0x00000007
 CHAPTER13 = 0x0000000c
 CHAPTER14 = 0x0000000d
+CHAPTER15 = 0x0000000e
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -261,6 +262,16 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER15,
+        "description":      "Bat King",
+        "hearts":           4,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     true,
         "progressionGroup": 2,
         "hasLeaderboard":   true
     }
@@ -696,6 +707,30 @@ achievement(
         Chapter() == CHAPTER14 &&
         HeartsCollected() >= 53 &&
         UpgradeChapter( true, CHAPTER14, false, false, false )
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Beady Eyed",
+    description = "Without dying collect 4 hearts in no more than 6 jumps then complete chapter 15",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER15 &&
+        HeartsCollected() >= 4 &&
+        UpgradeChapter( true, CHAPTER15, false, false, true )
+    ) &&
+    disable_when(
+        tally(
+            7,
+            CharacterJumps( false, false, true )
+        ),
+        until = GameReset()
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,

@@ -125,7 +125,7 @@ CHAPTER14 = 0x0000000d
 
 chapterConfigs = [
     {
-        "id":               0x0000001b,
+        "id":               CHAPTER1,
         "description":      "The Heart Tree",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -135,7 +135,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000000,
+        "id":               CHAPTER2,
         "description":      "We're on our Way",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -145,7 +145,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000003,
+        "id":               CHAPTER3,
         "description":      "Wilderness",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -155,7 +155,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000004,
+        "id":               CHAPTER4,
         "description":      "A Little Cave",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -165,7 +165,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000005,
+        "id":               CHAPTER5,
         "description":      "Antler Ancestor",
         "hearts":           3,
         "brownPowerUp":     true,
@@ -175,7 +175,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000008,
+        "id":               CHAPTER6,
         "description":      "Rainbow Spirit",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -185,7 +185,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x0000000a,
+        "id":               CHAPTER7,
         "description":      "Wall in the Meadow",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -195,7 +195,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000016,
+        "id":               CHAPTER8,
         "description":      "Bridge",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -205,7 +205,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000006,
+        "id":               CHAPTER9,
         "description":      "Islands",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -215,7 +215,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000013,
+        "id":               CHAPTER10,
         "description":      "Serpentine",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -225,7 +225,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x0000000b,
+        "id":               CHAPTER11,
         "description":      "Flying Rocks",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -235,7 +235,7 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x00000007,
+        "id":               CHAPTER12,
         "description":      "Little Fern Track",
         "hearts":           12,
         "brownPowerUp":     true,
@@ -245,11 +245,21 @@ chapterConfigs = [
         "hasLeaderboard":   true
     },
     {
-        "id":               0x0000000c,
+        "id":               CHAPTER13,
         "description":      "Sky and Cave",
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER14,
+        "description":      "Fall",
+        "hearts":           53,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
@@ -263,13 +273,13 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
         ( prev( BlackState() ) != 0x00000002 && BlackState() == 0x00000002 )
     ]
     if( hasBrownPowerUp ) {
-        array_push( conditions, ( prev(BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
     }
     if( hasOrangePowerUp ) {
-        array_push( conditions, ( prev(OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
     }
     if( hasBlackPowerUp ) {
-        array_push( conditions, ( prev(BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
+        array_push( conditions, ( prev( BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
@@ -288,7 +298,7 @@ function InGame() {
     )
 }
 
-function UpgradeChapter( isChallenge, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     brown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     orange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
     black = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
@@ -301,6 +311,9 @@ function UpgradeChapter( isChallenge, hasBrownPowerUp, hasOrangePowerUp, hasBlac
     if( hasBrownPowerUp ) {
         // Ideally we would check for browns state to be 0x00000008 but level 10 defaults browns state to 0x00000000 so we need to loosen the requirements
         brownPowerUp = prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
+        if( chapter != CHAPTER10 ) {
+            brownPowerUp = BrownState() == 0x00000008 && brownPowerUp
+        }
         if( isChallenge ) {
             brownPowerUp = trigger_when( brownPowerUp )
         }
@@ -421,7 +434,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER1 &&
-        UpgradeChapter( true, false, false, false )
+        UpgradeChapter( true, CHAPTER1, false, false, false )
     ) &&
     disable_when(
         tally(
@@ -440,7 +453,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER2 &&
-        UpgradeChapter( true, false, false, false )
+        UpgradeChapter( true, CHAPTER2, false, false, false )
     ) &&
     disable_when(
         Chapter() == CHAPTER2 &&
@@ -459,7 +472,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER3 &&
         CollectHeartsUsingCharacter( 1, "brown", false, false, false ) &&
-        UpgradeChapter( true, false, false, false ) &&
+        UpgradeChapter( true, CHAPTER3, false, false, false ) &&
         never( GameReset() )
     ),
     type = "missable"
@@ -473,7 +486,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER4 &&
         HeartsCollected() >= 3 &&
-        UpgradeChapter( true, false, false, false )
+        UpgradeChapter( true, CHAPTER4, false, false, false )
     ) &&
     disable_when(
         tally(
@@ -497,7 +510,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER5 &&
         HeartsCollected() >= 3 &&
-        UpgradeChapter( true, true, false, false )
+        UpgradeChapter( true, CHAPTER5, true, false, false )
     ) &&
     disable_when(
         tally(
@@ -517,7 +530,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER6 &&
         HeartsCollected() >= 2 &&
-        UpgradeChapter( true, false, true, false )
+        UpgradeChapter( true, CHAPTER6, false, true, false )
     ) &&
     disable_when(
         tally(
@@ -537,7 +550,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER7 &&
         CollectHeartsUsingCharacter( 1, "black", false, true, false ) &&
-        UpgradeChapter( true, false, true, false ) &&
+        UpgradeChapter( true, CHAPTER7, false, true, false ) &&
         never( GameReset() )
     ),
     type = "missable"
@@ -551,7 +564,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER8 &&
         HeartsCollected() >= 4 &&
-        UpgradeChapter( true, false, true, false )
+        UpgradeChapter( true, CHAPTER8, false, true, false )
     ) &&
     disable_when(
         tally(
@@ -575,7 +588,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER9 &&
         HeartsCollected() >= 5 &&
-        UpgradeChapter( true, true, false, false )
+        UpgradeChapter( true, CHAPTER9, true, false, false )
     ) &&
     disable_when(
         tally(
@@ -595,7 +608,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER10 &&
         HeartsCollected() >= 7 &&
-        UpgradeChapter( true, true, false, false )
+        UpgradeChapter( true, CHAPTER10, true, false, false )
     ) &&
     disable_when(
         Chapter() == CHAPTER10 &&
@@ -614,7 +627,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER11 &&
         HeartsCollected() >= 8 &&
-        UpgradeChapter( true, false, true, false )
+        UpgradeChapter( true, CHAPTER11, false, true, false )
     ) &&
     disable_when(
         tally(
@@ -638,7 +651,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER12 &&
         HeartsCollected() >= 12 &&
-        UpgradeChapter( true, true, false, false )
+        UpgradeChapter( true, CHAPTER12, true, false, false )
     ) &&
     disable_when(
         tally(
@@ -662,13 +675,30 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER13 &&
         HeartsCollected() >= 2 &&
-        UpgradeChapter( true, false, true, false )
+        UpgradeChapter( true, CHAPTER13, false, true, false )
     ) &&
     disable_when(
         tally(
             4,
             OrangeRotating()
         ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Falling In Love",
+    description = "Without dying collect 53 hearts then complete chapter 14",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER14 &&
+        HeartsCollected() >= 53 &&
+        UpgradeChapter( true, CHAPTER14, false, false, false )
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -702,7 +732,7 @@ for index in range( 1, length( chapterConfigs ) ) {
                     GamePointer() == 0x00000000
                 )
             ),
-            submit = UpgradeChapter( false, chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] ),
+            submit = UpgradeChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] ),
             value = ChapterTimer() / 0x0a,
             format = "MILLISECS",
             lower_is_better = true

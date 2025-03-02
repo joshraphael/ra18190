@@ -123,6 +123,7 @@ CHAPTER13 = 0x0000000c
 CHAPTER14 = 0x0000000d
 CHAPTER15 = 0x0000000e
 CHAPTER16 = 0x0000000f
+CHAPTER17 = 0x00000010
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -286,6 +287,16 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER17,
+        "description":      "Delicious Spores",
+        "hearts":           4,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
     }
@@ -780,6 +791,25 @@ achievement(
         Chapter() == CHAPTER16 &&
         prev( ChapterTimer() ) < InSeconds( 45 ) &&
         ChapterTimer() >= InSeconds( 45 ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Strange Pollen",
+    description = "Complete chapter 17 in no more than 8 jumps",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER17 &&
+        UpgradeChapter( true, CHAPTER17, true, false, false )
+    ) &&
+    disable_when(
+        tally(
+            9,
+            CharacterJumps( true, false, false )
+        ),
         until = GameReset()
     ),
     type = "missable"

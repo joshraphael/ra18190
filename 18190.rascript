@@ -768,7 +768,7 @@ achievement(
 
 achievement(
     title = "Secret Passage",
-    description = "Collect 3 hearts and complete chapter 16 in under 50 seconds",
+    description = "Collect 3 hearts and complete chapter 16 in under 45 seconds",
     points = 5,
     trigger = (
         InGame() &&
@@ -778,8 +778,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER16 &&
-        prev( ChapterTimer() ) < InSeconds( 50 ) &&
-        ChapterTimer() >= InSeconds( 50 ),
+        prev( ChapterTimer() ) < InSeconds( 45 ) &&
+        ChapterTimer() >= InSeconds( 45 ),
         until = GameReset()
     ),
     type = "missable"

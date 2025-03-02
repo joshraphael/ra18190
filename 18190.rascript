@@ -10,7 +10,10 @@ function OrangePowerupRotating() => dword( 0x009e6538 )
 function KeyPressed() => dword( 0x00a43a40 )
 
 // $B16038 - [32-bit] Game Pointer
+//
 // Notes: Anything other than 0x00000000 is an address to the currently playing chapters data
+//
+// ```text
 // 0x00000000 = In Main Menu
 // (use & value 0x01ffffff)
 // +0x88
@@ -22,7 +25,7 @@ function KeyPressed() => dword( 0x00a43a40 )
 // ...+0x14 = Hearts Available
 // +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Black
 // +0x284 = Current Chapter Timer
-
+// ```
 function GamePointer() => dword( 0x00b16038 )
 
 function GamePointer2() => dword( ( GamePointer() & 0x01ffffff ) + 0x88 )
@@ -119,6 +122,7 @@ CHAPTER12 = 0x00000007
 CHAPTER13 = 0x0000000c
 CHAPTER14 = 0x0000000d
 CHAPTER15 = 0x0000000e
+CHAPTER16 = 0x0000000f
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -274,6 +278,16 @@ chapterConfigs = [
         "blackPowerUp":     true,
         "progressionGroup": 2,
         "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER16,
+        "description":      "Secret Passage",
+        "hearts":           3,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
     }
 ]
 
@@ -344,7 +358,10 @@ function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp
     if( hasBlackPowerUp ) {
         blackNewBrown = prev( BrownState() ) != 0x00000007  && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
         blackNewOrange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
-        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prev( BlackPoweredUpState() ) != 0x00000007 && BlackPoweredUpState() == 0x00000007
+        // Odd case when Black is powered up and he is the final to enter the end tree: if the characters enter the end tree one at a time and black powered up is last, this should still work since the animation transitions through 0x06
+        // The problem happens when all three are stacked in front of the end tree and you quickly enter the end tree. The game will not transition black when hes powered up to 0x07.
+        // So we can only account for the animation when they are entering the end tree on this case
+        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prior( BlackPoweredUpState() ) != 0x00000006 && BlackPoweredUpState() == 0x00000006
         if( isChallenge ) {
             blackNewBrown = trigger_when( blackNewBrown )
             blackNewOrange = trigger_when( blackNewOrange )
@@ -734,6 +751,25 @@ achievement(
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Secret Passage",
+    description = "Collect 3 hearts and complete chapter 16 in under 50 seconds",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER16 &&
+        HeartsCollected() >= 3 &&
+        UpgradeChapter( true, CHAPTER16, false, false, true )
+    ) &&
+    disable_when(
+        Chapter() == CHAPTER16 &&
+        prev( ChapterTimer() ) < InSeconds( 50 ) &&
+        ChapterTimer() >= InSeconds( 50 ),
         until = GameReset()
     ),
     type = "missable"

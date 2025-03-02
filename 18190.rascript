@@ -361,13 +361,23 @@ function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp
         // Odd case when Black is powered up and he is the final to enter the end tree: if the characters enter the end tree one at a time and black powered up is last, this should still work since the animation transitions through 0x06
         // The problem happens when all three are stacked in front of the end tree and you quickly enter the end tree. The game will not transition black when hes powered up to 0x07.
         // So we can only account for the animation when they are entering the end tree on this case
-        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prior( BlackPoweredUpState() ) != 0x00000006 && BlackPoweredUpState() == 0x00000006
+
+        // Normal case: brown and orage securly in tree then you put black in. The game doesnt transition him to 0x07, so check his status changes to 0x06
+        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prev( BlackPoweredUpState() ) != 0x00000006 && BlackPoweredUpState() == 0x00000006
+
+        // Edge case 1: All enter close together in order Brown - Orange - Black. Brown successfully enters all the way, then detect when orange enters all the way as a completion
+        blackNewBlack1 = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000006
+
+        // Edge case 2: All enter close together in order Orange - Brown - Black. Orange successfully enters all the way, then detect when brown enters all the way as a completion
+        blackNewBlack2 = prev( BrownState() ) != 0x00000007  && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000006
         if( isChallenge ) {
             blackNewBrown = trigger_when( blackNewBrown )
             blackNewOrange = trigger_when( blackNewOrange )
             blackNewBlack = trigger_when( blackNewBlack )
+            blackNewBlack1 = trigger_when( blackNewBlack1 )
+            blackNewBlack2 = trigger_when( blackNewBlack2 )
         }
-        conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack )
+        conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack ) || ( blackNewBlack1 ) || ( blackNewBlack2 )
     }
     return conds
 }

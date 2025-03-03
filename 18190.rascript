@@ -124,6 +124,8 @@ CHAPTER14 = 0x0000000d
 CHAPTER15 = 0x0000000e
 CHAPTER16 = 0x0000000f
 CHAPTER17 = 0x00000010
+CHAPTER18 = 0x00000012
+CHAPTER18 = 0x00000001
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -299,7 +301,27 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
-    }
+    },
+    {
+        "id":               CHAPTER18,
+        "description":      "Beneath the Roots",
+        "hearts":           8,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    // {
+    //     "id":               CHAPTER19,
+    //     "description":      "Gates Of Hades",
+    //     "hearts":           5,
+    //     "brownPowerUp":     false,
+    //     "orangePowerUp":    false,
+    //     "blackPowerUp":     true,
+    //     "progressionGroup": 2,
+    //     "hasLeaderboard":   true
+    // }
 ]
 
 function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
@@ -332,6 +354,19 @@ function InGame() {
     return (
         GamePointer() != 0x00000000
     )
+}
+
+function UpgradeChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+    conds = (
+        prev( Chapter() ) == chapter &&
+        Chapter() != chapter &&
+        prev( GameState() ) != 0x00000001 &&
+        GameState() == 0x00000000
+    )
+    if isChallenge {
+        conds = trigger_when( conds )
+    }
+    return conds
 }
 
 function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
@@ -427,35 +462,58 @@ function Test( chapter ) {
 }
 
 function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
-    status = BrownState() != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
+    base = prev( HeartsCollected() ) == HeartsCollected() - 1
+    if character == "brown" {
+        base = base && BrownState() != 0x00000007
+        if hasBrownPowerUp {
+            base = base && BrownPoweredUpState() != 0x00000007
+        }
+        if hasOrangePowerUp {
+            base = base && OrangeState() >= 0x00000007 && OrangeState() <= 0x00000008 && OrangePoweredUpState() >= 0x00000007 && OrangePoweredUpState() <= 0x00000008
+        } else {
+            base = base && OrangeState() == 0x00000007
+        }
+        if hasBlackPowerUp {
+            base = base && BlackState() >= 0x00000007 && BlackState() <= 0x00000008 && BlackPoweredUpState() >= 0x00000007 && BlackPoweredUpState() <= 0x00000008
+        } else {
+            base = base && BlackState() == 0x00000007
+        }
+    }
+
     if character == "orange" {
-        status = BrownState() == 0x00000007 && OrangeState() != 0x00000007 && BlackState() == 0x00000007
+        base = base && OrangeState() != 0x00000007
+        if hasBrownPowerUp {
+            base = base && BrownState() >= 0x00000007 && BrownState() <= 0x00000008 && BrownPoweredUpState() >= 0x00000007 && BrownPoweredUpState() <= 0x00000008
+        } else {
+            base = base && BrownState() == 0x00000007
+        }
+        if hasOrangePowerUp {
+            base = base && OrangePoweredUpState() != 0x00000007
+        }
+        if hasBlackPowerUp {
+            base = base && BlackState() >= 0x00000007 && BlackState() <= 0x00000008 && BlackPoweredUpState() >= 0x00000007 && BlackPoweredUpState() <= 0x00000008
+        } else {
+            base = base && BlackState() == 0x00000007
+        }
     }
+
     if character == "black" {
-        status = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() != 0x00000007
-    }
-    if hasBrownPowerUp {
-        if character == "brown" {
-            status = status && BrownPoweredUpState() != 0x00000007
+        base = base && BlackState() != 0x00000007
+        if hasBrownPowerUp {
+            base = base && BrownState() >= 0x00000007 && BrownState() <= 0x00000008 && BrownPoweredUpState() >= 0x00000007 && BrownPoweredUpState() <= 0x00000008
         } else {
-            status = status && BrownPoweredUpState() == 0x00000007
+            base = base && BrownState() == 0x00000007
+        }
+        if hasOrangePowerUp {
+            base = base && OrangeState() >= 0x00000007 && OrangeState() <= 0x00000008 && OrangePoweredUpState() >= 0x00000007 && OrangePoweredUpState() <= 0x00000008
+        } else {
+            base = base && OrangeState() == 0x00000007
+        }
+        if hasBlackPowerUp {
+            base = base && BlackPoweredUpState() != 0x00000007
         }
     }
-    if hasOrangePowerUp {
-        if character == "orange" {
-            status = status && OrangePoweredUpState() != 0x00000007
-        } else {
-            status = status && OrangePoweredUpState() == 0x00000007
-        }
-    }
-    if hasBlackPowerUp {
-        if character == "black" {
-            status = status && BlackPoweredUpState() != 0x00000007
-        } else {
-            status = status && BlackPoweredUpState() == 0x00000007
-        }
-    }
-    return repeated( hearts, status && prev( HeartsCollected() ) == HeartsCollected() - 1 )
+    return repeated( hearts, base )
 }
 
 function GameReset() {
@@ -798,7 +856,7 @@ achievement(
 
 achievement(
     title = "Strange Pollen",
-    description = "Complete chapter 17 in no more than 8 jumps",
+    description = "Complete chapter 17 in no more than 7 jumps",
     points = 5,
     trigger = (
         InGame() &&
@@ -807,9 +865,26 @@ achievement(
     ) &&
     disable_when(
         tally(
-            9,
+            8,
             CharacterJumps( true, false, false )
         ),
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Individual Tasks",
+    description = "Without dying collect 8 hearts then complete chapter 18",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER18 &&
+        HeartsCollected() >= 8 &&
+        UpgradeChapter( true, CHAPTER18, false, false, false )
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"

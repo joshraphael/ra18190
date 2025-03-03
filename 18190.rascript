@@ -125,7 +125,7 @@ CHAPTER15 = 0x0000000e
 CHAPTER16 = 0x0000000f
 CHAPTER17 = 0x00000010
 CHAPTER18 = 0x00000012
-CHAPTER18 = 0x00000001
+CHAPTER19 = 0x00000001
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -525,6 +525,9 @@ function GameReset() {
                 prev( GamePointer() ) != GamePointer()
             ) || (
                 prev( ChapterTimer() ) > ChapterTimer()
+            ) || (
+                prev( ChapterTimer() ) == 0x00000000 &&
+                ChapterTimer() > 0x00000000
             )
         )
     ) 

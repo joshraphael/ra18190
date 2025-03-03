@@ -15,7 +15,7 @@ compile:
 
 load:
 	if [ -z "${chapter}" ]; then echo "empty chapter selected during load"; exit 1; fi;
-	if [[ ${chapter} != @(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18) ]]; then echo "invalid chapter selected to load: ${chapter}"; exit 1; fi;
+	if [[ ${chapter} != @(1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19) ]]; then echo "invalid chapter selected to load: ${chapter}"; exit 1; fi;
 	if [[ ! -d saves/chapter${chapter} ]]; then echo "saves/chapter${chapter} directory missing"; exit 1; fi;
 	if [[ ! -f saves/chapter${chapter}/PARAM.SFO ]]; then echo "saves/chapter${chapter}/PARAM.SFO file missing"; exit 1; fi;
 	if [[ ! -f saves/chapter${chapter}/SAVE.S ]]; then echo "saves/chapter${chapter}/SAVE.S file missing"; exit 1; fi;

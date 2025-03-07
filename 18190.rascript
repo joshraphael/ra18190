@@ -312,16 +312,16 @@ chapterConfigs = [
         "progressionGroup": 2,
         "hasLeaderboard":   true
     },
-    // {
-    //     "id":               CHAPTER19,
-    //     "description":      "Gates Of Hades",
-    //     "hearts":           5,
-    //     "brownPowerUp":     false,
-    //     "orangePowerUp":    false,
-    //     "blackPowerUp":     true,
-    //     "progressionGroup": 2,
-    //     "hasLeaderboard":   true
-    // }
+    {
+        "id":               CHAPTER19,
+        "description":      "Gates Of Hades",
+        "hearts":           5,
+        "brownPowerUp":     false,
+        "orangePowerUp":    false,
+        "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    }
 ]
 
 function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
@@ -885,6 +885,23 @@ achievement(
         Chapter() == CHAPTER18 &&
         HeartsCollected() >= 8 &&
         UpgradeChapter( true, CHAPTER18, false, false, false )
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "From the Grave",
+    description = "Without anyone dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER19 &&
+        CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
+        UpgradeChapter( true, CHAPTER19, false, false, true ) &&
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,

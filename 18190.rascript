@@ -901,7 +901,7 @@ achievement(
         InGame() &&
         Chapter() == CHAPTER19 &&
         CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
-        UpgradeChapter( true, CHAPTER19, false, false, true ) &&
+        UpgradeChapter( true, CHAPTER19, false, false, true )
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,

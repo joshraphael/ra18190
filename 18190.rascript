@@ -894,8 +894,8 @@ achievement(
 )
 
 achievement(
-    title = "From the Grave",
-    description = "Without anyone dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
+    title = "The Pit",
+    description = "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
     points = 5,
     trigger = (
         InGame() &&

@@ -612,7 +612,7 @@ achievement(
 
 achievement(
     title = "Rock Tunnel",
-    description = "Without dying collect 3 hearts in no more than 14 jumps then complete chapter 4",
+    description = "Collect 3 hearts in no more than 14 jumps then complete chapter 4",
     points = 5,
     trigger = (
         InGame() &&
@@ -625,10 +625,6 @@ achievement(
             15,
             CharacterJumps( false, false, false )
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -695,6 +691,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER8 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 4 &&
         UpgradeChapter( true, CHAPTER8, false, true, false )
     ) &&
@@ -703,10 +700,6 @@ achievement(
             2,
             OrangeRotating()
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -758,6 +751,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER11 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 8 &&
         UpgradeChapter( true, CHAPTER11, false, true, false )
     ) &&
@@ -766,10 +760,6 @@ achievement(
             7,
             OrangeRotating()
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -782,6 +772,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER12 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 12 &&
         UpgradeChapter( true, CHAPTER12, true, false, false )
     ) &&
@@ -790,10 +781,6 @@ achievement(
             4,
             AntlerDoubleJumps()
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -826,12 +813,9 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER14 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 53 &&
         UpgradeChapter( true, CHAPTER14, false, false, false )
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
-        until = GameReset()
     ),
     type = "missable"
 )
@@ -843,6 +827,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER15 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 4 &&
         UpgradeChapter( true, CHAPTER15, false, false, true )
     ) &&
@@ -851,10 +836,6 @@ achievement(
             7,
             CharacterJumps( false, false, true )
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"
@@ -905,12 +886,9 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER18 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 8 &&
         UpgradeChapter( true, CHAPTER18, false, false, false )
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
-        until = GameReset()
     ),
     type = "missable"
 )
@@ -922,12 +900,10 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER19 &&
+        DarkHeartsCollected() == 0 &&
         CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
-        UpgradeChapter( true, CHAPTER19, false, false, true )
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
-        until = GameReset()
+        UpgradeChapter( true, CHAPTER19, false, false, true ) &&
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -939,6 +915,7 @@ achievement(
     trigger = (
         InGame() &&
         Chapter() == CHAPTER20 &&
+        DarkHeartsCollected() == 0 &&
         HeartsCollected() >= 4 &&
         UpgradeChapter( true, CHAPTER20, true, false, false )
     ) &&
@@ -947,10 +924,6 @@ achievement(
             1,
             AntlerDoubleJumps()
         ),
-        until = GameReset()
-    ) &&
-    disable_when(
-        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
         until = GameReset()
     ),
     type = "missable"

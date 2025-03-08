@@ -126,6 +126,8 @@ CHAPTER16 = 0x0000000f
 CHAPTER17 = 0x00000010
 CHAPTER18 = 0x00000012
 CHAPTER19 = 0x00000001
+CHAPTER20 = 0x00000002
+CHAPTER21 = 0x00000014
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -319,6 +321,26 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER20,
+        "description":      "Chasm",
+        "hearts":           4,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER21,
+        "description":      "Crystal Caves",
+        "hearts":           4,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true
     }
@@ -902,6 +924,30 @@ achievement(
         Chapter() == CHAPTER19 &&
         CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
         UpgradeChapter( true, CHAPTER19, false, false, true )
+    ) &&
+    disable_when(
+        DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,
+        until = GameReset()
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Take Aim",
+    description = "Without dying, or double jumping as Antler Ancestor collect 4 hearts then complete chapter 20",
+    points = 5,
+    trigger = (
+        InGame() &&
+        Chapter() == CHAPTER20 &&
+        HeartsCollected() >= 4 &&
+        UpgradeChapter( true, CHAPTER20, true, false, false )
+    ) &&
+    disable_when(
+        tally(
+            1,
+            AntlerDoubleJumps()
+        ),
+        until = GameReset()
     ) &&
     disable_when(
         DarkHeartsCollected() - prev( DarkHeartsCollected() ) == 1,

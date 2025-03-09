@@ -142,6 +142,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -152,6 +153,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
+        "isTimeTrial":      true,
         "hasLeaderboard":   true
     },
     {
@@ -162,6 +164,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -172,6 +175,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -182,6 +186,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -192,6 +197,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -202,6 +208,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -212,6 +219,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -222,6 +230,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -232,6 +241,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      true,
         "hasLeaderboard":   true
     },
     {
@@ -242,6 +252,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -252,6 +263,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -262,6 +274,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -272,6 +285,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -282,6 +296,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -292,6 +307,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
+        "isTimeTrial":      true,
         "hasLeaderboard":   true
     },
     {
@@ -302,6 +318,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -312,6 +329,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -322,6 +340,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -332,6 +351,7 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -342,6 +362,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     }
 ]
@@ -376,78 +397,6 @@ function InGame() {
     return (
         GamePointer() != 0x00000000
     )
-}
-
-function UpgradeChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
-    conds = (
-        prev( Chapter() ) == chapter &&
-        Chapter() != chapter &&
-        prev( GameState() ) != 0x00000001 &&
-        GameState() == 0x00000000
-    )
-    if isChallenge {
-        conds = trigger_when( conds )
-    }
-    return conds
-}
-
-function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
-    brown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
-    orange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000007
-    black = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
-    if( isChallenge ) {
-        brown = trigger_when( brown )
-        orange = trigger_when( orange )
-        black = trigger_when( black )
-    }
-    conds = ( brown ) || ( orange ) || ( black )
-    if( hasBrownPowerUp ) {
-        // Ideally we would check for browns state to be 0x00000008 but level 10 defaults browns state to 0x00000000 so we need to loosen the requirements
-        brownPowerUp = prev( BrownPoweredUpState() ) != 0x00000007 && BrownPoweredUpState() == 0x00000007
-        if( chapter != CHAPTER10 ) {
-            brownPowerUp = BrownState() == 0x00000008 && brownPowerUp
-        }
-        if( isChallenge ) {
-            brownPowerUp = trigger_when( brownPowerUp )
-        }
-        conds = conds || ( brownPowerUp )
-    }
-    if( hasOrangePowerUp ) {
-        orangeNewBrown = prev( BrownState() ) != 0x00000007 && BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
-        orangeNewOrange = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && prev( OrangePoweredUpState() ) != 0x00000007 && OrangePoweredUpState() == 0x00000007 && BlackState() == 0x00000007
-        orangeNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000008 && OrangePoweredUpState() == 0x00000007 && prev( BlackState() ) != 0x00000007 && BlackState() == 0x00000007
-        if( isChallenge ) {
-            orangeNewBrown = trigger_when( orangeNewBrown )
-            orangeNewOrange = trigger_when( orangeNewOrange )
-            orangeNewBlack = trigger_when( orangeNewBlack )
-        }
-        conds = conds || ( orangeNewBrown ) || ( orangeNewOrange ) || ( orangeNewBlack )
-    }
-    if( hasBlackPowerUp ) {
-        blackNewBrown = prev( BrownState() ) != 0x00000007  && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
-        blackNewOrange = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000007
-        // Odd case when Black is powered up and he is the final to enter the end tree: if the characters enter the end tree one at a time and black powered up is last, this should still work since the animation transitions through 0x06
-        // The problem happens when all three are stacked in front of the end tree and you quickly enter the end tree. The game will not transition black when hes powered up to 0x07.
-        // So we can only account for the animation when they are entering the end tree on this case
-
-        // Normal case: brown and orage securly in tree then you put black in. The game doesnt transition him to 0x07, so check his status changes to 0x06
-        blackNewBlack = BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && prev( BlackPoweredUpState() ) != 0x00000006 && BlackPoweredUpState() == 0x00000006
-
-        // Edge case 1: All enter close together in order Brown - Orange - Black. Brown successfully enters all the way, then detect when orange enters all the way as a completion
-        blackNewBlack1 = BrownState() == 0x00000007 && prev( OrangeState() ) != 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000006
-
-        // Edge case 2: All enter close together in order Orange - Brown - Black. Orange successfully enters all the way, then detect when brown enters all the way as a completion
-        blackNewBlack2 = prev( BrownState() ) != 0x00000007  && BrownState() == 0x00000007 && OrangeState() == 0x00000007 && BlackState() == 0x00000008 && BlackPoweredUpState() == 0x00000006
-        if( isChallenge ) {
-            blackNewBrown = trigger_when( blackNewBrown )
-            blackNewOrange = trigger_when( blackNewOrange )
-            blackNewBlack = trigger_when( blackNewBlack )
-            blackNewBlack1 = trigger_when( blackNewBlack1 )
-            blackNewBlack2 = trigger_when( blackNewBlack2 )
-        }
-        conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack ) || ( blackNewBlack1 ) || ( blackNewBlack2 )
-    }
-    return InGame() && Chapter() == chapter && conds
 }
 
 function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
@@ -970,30 +919,33 @@ for index in range( 1, length( chapterConfigs ) ) {
         leaderboardID = chapter["leaderboardID"]
     }
     if chapter["hasLeaderboard"] {
+        l = {
+            "id":              leaderboardID,
+            "title":           format("Speedrun Chapter {0}", index),
+            "description":     format("Finish chapter {0} as fast as possible", index),
+            "value":           CurrentChapterTimer() / 0x0a,
+            "format":          "MILLISECS",
+            "lower_is_better": true
+        }
+        if( chapter["isTimeTrial"] ) {
+            l["start"] = GameReset() && Chapter() == chapter["id"]
+            l["cancel"] = GameReset() && Chapter() != chapter["id"]
+            l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+        } else {
+            l["start"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+            l["cancel"] = always_false()
+            l["submit"] = always_true()
+        }
         leaderboard(
-            id = leaderboardID,
-            title = format("Speedrun Chapter {0}", index),
-            description = format("Finish chapter {0} as fast as possible", index),
-            start = (
-                Chapter() == chapter["id"] &&
-                GameReset()
-            ),
-            cancel = (
-                (
-                    prev( ChapterTimer() ) < 0xffffffff &&
-                    ChapterTimer() == 0xffffffff
-                ) || (
-                    prev( Chapter() ) == chapter["id"] &&
-                    Chapter() != chapter["id"]
-                ) || (
-                    prev( GamePointer() ) != 0x00000000 &&
-                    GamePointer() == 0x00000000
-                )
-            ),
-            submit = UpgradeChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] ),
-            value = ChapterTimer() / 0x0a,
-            format = "MILLISECS",
-            lower_is_better = true
+            id =              l["id"],
+            title =           l["title"],
+            description =     l["description"],
+            start =           l["start"],
+            cancel =          l["cancel"],
+            submit =          l["submit"],
+            value =           l["value"],
+            format =          l["format"],
+            lower_is_better = l["lower_is_better"]
         )
     }
 }

@@ -447,6 +447,27 @@ function UpgradeChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp
         }
         conds = conds || ( blackNewBrown ) || ( blackNewOrange ) || ( blackNewBlack ) || ( blackNewBlack1 ) || ( blackNewBlack2 )
     }
+    return InGame() && Chapter() == chapter && conds
+}
+
+function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+    brownDone = BrownState() == 0x00000007
+    orangeDone = OrangeState() == 0x00000007
+    if( hasOrangePowerUp ) {
+        orangeDone = orangeDone || OrangePoweredUpState() == 0x00000007
+    }
+    blackDone = BlackState() == 0x00000007
+    if( hasBlackPowerUp ) {
+        blackDone = blackDone || BlackPoweredUpState() == 0x00000007 || BlackPoweredUpState() == 0x00000006 // Special Case: Quickly entering end tree with black powered up only animates to 0x06
+    }
+    done = ( ( brownDone ) && ( orangeDone ) && ( blackDone ) )
+    if( hasBrownPowerUp ) {
+        done = done || BrownPoweredUpState() == 0x00000007
+    }
+    conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
+    if( isChallenge ) {
+        conds = trigger_when( conds )
+    }
     return conds
 }
 
@@ -564,34 +585,36 @@ achievement(
     description = "Complete chapter 1 in no more than 15 jumps",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER1 &&
-        UpgradeChapter( true, CHAPTER1, false, false, false )
+        once( Chapter() == CHAPTER1 ) &&
+        CompleteChapter( true, CHAPTER1, false, false, false )
     ) &&
     disable_when(
         tally(
             16,
             CharacterJumps( false, false, false )
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
 
 achievement(
     title = "Gotta Go Fast",
-    description = "Complete chapter 2 in under 11 seconds",
+    description = "Complete chapter 2 in under 12 seconds",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER2 &&
-        UpgradeChapter( true, CHAPTER2, false, false, false )
+        once( Chapter() == CHAPTER2 && ChapterTimer() > 0x00000000 ) &&
+        CompleteChapter( true, CHAPTER2, false, false, false )
     ) &&
     disable_when(
         Chapter() == CHAPTER2 &&
-        prev( ChapterTimer() ) < InSeconds( 11 ) &&
-        ChapterTimer() >= InSeconds( 11 ),
-        until = GameReset()
+        prev( ChapterTimer() ) < InSeconds( 12 ) &&
+        ChapterTimer() >= InSeconds( 12 )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -601,10 +624,9 @@ achievement(
     description = "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER3 &&
+        once( Chapter() == CHAPTER3 ) &&
         CollectHeartsUsingCharacter( 1, "brown", false, false, false ) &&
-        UpgradeChapter( true, CHAPTER3, false, false, false ) &&
+        CompleteChapter( true, CHAPTER3, false, false, false ) &&
         never( GameReset() )
     ),
     type = "missable"
@@ -615,37 +637,39 @@ achievement(
     description = "Collect 3 hearts in no more than 14 jumps then complete chapter 4",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER4 &&
-        HeartsCollected() >= 3 &&
-        UpgradeChapter( true, CHAPTER4, false, false, false )
+        once( Chapter() == CHAPTER4 ) &&
+        HeartsCollected() == 3 &&
+        CompleteChapter( true, CHAPTER4, false, false, false )
     ) &&
     disable_when(
         tally(
             15,
             CharacterJumps( false, false, false )
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
 
 achievement(
     title = "Gallup Jingle",
-    description = "Collect 3 hearts in no more than 3 double jumps then complete chapter 5",
+    description = "Collect 3 hearts in no more than 6 double jumps then complete chapter 5",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER5 &&
-        HeartsCollected() >= 3 &&
-        UpgradeChapter( true, CHAPTER5, true, false, false )
+        once( Chapter() == CHAPTER5 ) &&
+        HeartsCollected() == 3 &&
+        CompleteChapter( true, CHAPTER5, true, false, false )
     ) &&
     disable_when(
         tally(
-            4,
+            7,
             AntlerDoubleJumps()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -655,17 +679,18 @@ achievement(
     description = "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER6 &&
-        HeartsCollected() >= 2 &&
-        UpgradeChapter( true, CHAPTER6, false, true, false )
+        once( Chapter() == CHAPTER6 ) &&
+        HeartsCollected() == 2 &&
+        CompleteChapter( true, CHAPTER6, false, true, false )
     ) &&
     disable_when(
         tally(
             2,
             OrangeRotating()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -675,10 +700,9 @@ achievement(
     description = "With both orange and brown inside the end tree, use black to collect one heart then complete chapter 7",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER7 &&
+        once( Chapter() == CHAPTER7 ) &&
         CollectHeartsUsingCharacter( 1, "black", false, true, false ) &&
-        UpgradeChapter( true, CHAPTER7, false, true, false ) &&
+        CompleteChapter( true, CHAPTER7, false, true, false ) &&
         never( GameReset() )
     ),
     type = "missable"
@@ -689,18 +713,19 @@ achievement(
     description = "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER8 &&
+        once( Chapter() == CHAPTER8 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 4 &&
-        UpgradeChapter( true, CHAPTER8, false, true, false )
+        HeartsCollected() == 4 &&
+        CompleteChapter( true, CHAPTER8, false, true, false )
     ) &&
     disable_when(
         tally(
             2,
             OrangeRotating()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -710,17 +735,18 @@ achievement(
     description = "Collect 5 hearts in no more than 4 double jumps then complete chapter 9",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER9 &&
-        HeartsCollected() >= 5 &&
-        UpgradeChapter( true, CHAPTER9, true, false, false )
+        once( Chapter() == CHAPTER9 ) &&
+        HeartsCollected() == 5 &&
+        CompleteChapter( true, CHAPTER9, true, false, false )
     ) &&
     disable_when(
         tally(
             5,
             AntlerDoubleJumps()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -730,16 +756,17 @@ achievement(
     description = "Collect 7 hearts and complete chapter 10 in under 20 seconds",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER10 &&
-        HeartsCollected() >= 7 &&
-        UpgradeChapter( true, CHAPTER10, true, false, false )
+        once( Chapter() == CHAPTER10 ) &&
+        HeartsCollected() == 7 &&
+        CompleteChapter( true, CHAPTER10, true, false, false )
     ) &&
     disable_when(
         Chapter() == CHAPTER10 &&
         prev( ChapterTimer() ) < InSeconds( 20 ) &&
-        ChapterTimer() >= InSeconds( 20 ),
-        until = GameReset()
+        ChapterTimer() >= InSeconds( 20 )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -749,18 +776,19 @@ achievement(
     description = "Without dying collect 8 hearts in no more than 6 world rotation then complete chapter 11",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER11 &&
+        once( Chapter() == CHAPTER11 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 8 &&
-        UpgradeChapter( true, CHAPTER11, false, true, false )
+        HeartsCollected() == 8 &&
+        CompleteChapter( true, CHAPTER11, false, true, false )
     ) &&
     disable_when(
         tally(
             7,
             OrangeRotating()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -770,18 +798,19 @@ achievement(
     description = "Without dying collect 12 hearts in no more than 3 double jumps then complete chapter 12",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER12 &&
+        once( Chapter() == CHAPTER12 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 12 &&
-        UpgradeChapter( true, CHAPTER12, true, false, false )
+        HeartsCollected() == 12 &&
+        CompleteChapter( true, CHAPTER12, true, false, false )
     ) &&
     disable_when(
         tally(
             4,
             AntlerDoubleJumps()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -791,17 +820,18 @@ achievement(
     description = "Collect 2 hearts in no more than 3 world rotation then complete chapter 13",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER13 &&
-        HeartsCollected() >= 2 &&
-        UpgradeChapter( true, CHAPTER13, false, true, false )
+        once( Chapter() == CHAPTER13 ) &&
+        HeartsCollected() == 2 &&
+        CompleteChapter( true, CHAPTER13, false, true, false )
     ) &&
     disable_when(
         tally(
             4,
             OrangeRotating()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -811,11 +841,11 @@ achievement(
     description = "Without dying collect 53 hearts then complete chapter 14",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER14 &&
+        once( Chapter() == CHAPTER14 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 53 &&
-        UpgradeChapter( true, CHAPTER14, false, false, false )
+        HeartsCollected() == 53 &&
+        CompleteChapter( true, CHAPTER14, false, false, false ) &&
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -825,18 +855,19 @@ achievement(
     description = "Without dying collect 4 hearts in no more than 6 jumps then complete chapter 15",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER15 &&
+        once( Chapter() == CHAPTER15 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 4 &&
-        UpgradeChapter( true, CHAPTER15, false, false, true )
+        HeartsCollected() == 4 &&
+        CompleteChapter( true, CHAPTER15, false, false, true )
     ) &&
     disable_when(
         tally(
             7,
             CharacterJumps( false, false, true )
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -846,16 +877,17 @@ achievement(
     description = "Collect 3 hearts and complete chapter 16 in under 45 seconds",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER16 &&
-        HeartsCollected() >= 3 &&
-        UpgradeChapter( true, CHAPTER16, false, false, true )
+        once( Chapter() == CHAPTER16 ) &&
+        HeartsCollected() == 3 &&
+        CompleteChapter( true, CHAPTER16, false, false, true )
     ) &&
     disable_when(
         Chapter() == CHAPTER16 &&
         prev( ChapterTimer() ) < InSeconds( 45 ) &&
-        ChapterTimer() >= InSeconds( 45 ),
-        until = GameReset()
+        ChapterTimer() >= InSeconds( 45 )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -865,16 +897,17 @@ achievement(
     description = "Complete chapter 17 in no more than 7 jumps",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER17 &&
-        UpgradeChapter( true, CHAPTER17, true, false, false )
+        once( Chapter() == CHAPTER17 ) &&
+        CompleteChapter( true, CHAPTER17, true, false, false )
     ) &&
     disable_when(
         tally(
             8,
             CharacterJumps( true, false, false )
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -884,11 +917,11 @@ achievement(
     description = "Without dying collect 8 hearts then complete chapter 18",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER18 &&
+        once( Chapter() == CHAPTER18 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 8 &&
-        UpgradeChapter( true, CHAPTER18, false, false, false )
+        HeartsCollected() == 8 &&
+        CompleteChapter( true, CHAPTER18, false, false, false ) &&
+        never( GameReset() )
     ),
     type = "missable"
 )
@@ -898,11 +931,10 @@ achievement(
     description = "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER19 &&
+        once( Chapter() == CHAPTER19 ) &&
         DarkHeartsCollected() == 0 &&
         CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
-        UpgradeChapter( true, CHAPTER19, false, false, true ) &&
+        CompleteChapter( true, CHAPTER19, false, false, true ) &&
         never( GameReset() )
     ),
     type = "missable"
@@ -913,18 +945,19 @@ achievement(
     description = "Without dying, or double jumping as Antler Ancestor collect 4 hearts then complete chapter 20",
     points = 5,
     trigger = (
-        InGame() &&
-        Chapter() == CHAPTER20 &&
+        once( Chapter() == CHAPTER20 ) &&
         DarkHeartsCollected() == 0 &&
-        HeartsCollected() >= 4 &&
-        UpgradeChapter( true, CHAPTER20, true, false, false )
+        HeartsCollected() == 4 &&
+        CompleteChapter( true, CHAPTER20, true, false, false )
     ) &&
     disable_when(
         tally(
             1,
             AntlerDoubleJumps()
-        ),
-        until = GameReset()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
     ),
     type = "missable"
 )

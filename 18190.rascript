@@ -128,6 +128,8 @@ CHAPTER18 = 0x00000012
 CHAPTER19 = 0x00000001
 CHAPTER20 = 0x00000002
 CHAPTER21 = 0x00000014
+CHAPTER22 = 0x00000015
+CHAPTER23 = 0x0000001d
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -363,6 +365,17 @@ chapterConfigs = [
         "blackPowerUp":     true,
         "progressionGroup": 2,
         "isTimeTrial":      false,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER22,
+        "description":      "Labyrinth",
+        "hearts":           8,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "isTimeTrial":      true,
         "hasLeaderboard":   true
     }
 ]
@@ -916,6 +929,25 @@ achievement(
             3,
             OrangeRotating()
         )
+    ) && (
+        always_false() ||
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Steady Jumps",
+    description = "Complete chapter 22 in under 40 seconds",
+    points = 5,
+    trigger = (
+        once( Chapter() == CHAPTER22 ) &&
+        CompleteChapter( true, CHAPTER22, true, false, false )
+    ) &&
+    disable_when(
+        Chapter() == CHAPTER22 &&
+        prev( CurrentChapterTimer() ) < InSeconds( 40 ) &&
+        CurrentChapterTimer() >= InSeconds( 40 )
     ) && (
         always_false() ||
         never( GameReset() )

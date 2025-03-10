@@ -360,7 +360,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "blackPowerUp":     true,
         "progressionGroup": 2,
         "isTimeTrial":      false,
         "hasLeaderboard":   true
@@ -443,15 +443,6 @@ rich_presence_conditional_display(
 )
 
 rich_presence_display("In Menus")
-
-function Test( chapter ) {
-    return (
-        Chapter() == chapter &&
-        BrownState() == 0x00000007 &&
-        OrangeState() == 0x00000007 &&
-        prev( HeartsCollected() ) == HeartsCollected() - 1
-    )
-}
 
 function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     base = prev( HeartsCollected() ) == HeartsCollected() - 1
@@ -722,7 +713,7 @@ achievement(
 
 achievement(
     title = "Rock of Terror",
-    description = "Without dying collect 8 hearts in no more than 6 world rotation then complete chapter 11",
+    description = "Without dying collect 8 hearts in no more than 6 world rotations then complete chapter 11",
     points = 5,
     trigger = (
         once( Chapter() == CHAPTER11 ) &&
@@ -766,7 +757,7 @@ achievement(
 
 achievement(
     title = "Descent Into Bat Kings Cave",
-    description = "Collect 2 hearts in no more than 3 world rotation then complete chapter 13",
+    description = "Collect 2 hearts in no more than 3 world rotations then complete chapter 13",
     points = 5,
     trigger = (
         once( Chapter() == CHAPTER13 ) &&
@@ -903,6 +894,27 @@ achievement(
         tally(
             1,
             AntlerDoubleJumps()
+        )
+    ) && (
+        always_false() ||
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "Climb The Ladder",
+    description = "Without dying and in no more than 2 world rotations complete chapter 21",
+    points = 5,
+    trigger = (
+        once( Chapter() == CHAPTER21 ) &&
+        DarkHeartsCollected() == 0 &&
+        CompleteChapter( true, CHAPTER21, false, true, true )
+    ) &&
+    disable_when(
+        tally(
+            3,
+            OrangeRotating()
         )
     ) && (
         always_false() ||

@@ -130,6 +130,7 @@ CHAPTER20 = 0x00000002
 CHAPTER21 = 0x00000014
 CHAPTER22 = 0x00000015
 CHAPTER23 = 0x0000001d
+CHAPTER24 = 0x00000017
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -376,6 +377,28 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "isTimeTrial":      true,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER23,
+        "description":      "Rock Pool",
+        "hearts":           7,
+        "brownPowerUp":     false,
+        "orangePowerUp":    true,
+        "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "isTimeTrial":      true,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER24,
+        "description":      "Old Willow Tree",
+        "hearts":           5,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     }
 ]

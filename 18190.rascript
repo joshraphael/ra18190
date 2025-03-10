@@ -516,10 +516,10 @@ function GameReset() {
             (
                 prev( GamePointer() ) != GamePointer()
             ) || (
-                prev( ChapterTimer() ) > ChapterTimer()
+                prev( CurrentChapterTimer() ) > CurrentChapterTimer()
             ) || (
-                prev( ChapterTimer() ) == 0x00000000 &&
-                ChapterTimer() > 0x00000000
+                prev( CurrentChapterTimer() ) == 0x00000000 &&
+                CurrentChapterTimer() > 0x00000000
             )
         )
     ) 
@@ -554,13 +554,13 @@ achievement(
     description = "Complete chapter 2 in under 12 seconds",
     points = 5,
     trigger = (
-        once( Chapter() == CHAPTER2 && ChapterTimer() > 0x00000000 ) &&
+        once( Chapter() == CHAPTER2 && CurrentChapterTimer() > 0x00000000 ) &&
         CompleteChapter( true, CHAPTER2, false, false, false )
     ) &&
     disable_when(
         Chapter() == CHAPTER2 &&
-        prev( ChapterTimer() ) < InSeconds( 12 ) &&
-        ChapterTimer() >= InSeconds( 12 )
+        prev( CurrentChapterTimer() ) < InSeconds( 12 ) &&
+        CurrentChapterTimer() >= InSeconds( 12 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -711,8 +711,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER10 &&
-        prev( ChapterTimer() ) < InSeconds( 20 ) &&
-        ChapterTimer() >= InSeconds( 20 )
+        prev( CurrentChapterTimer() ) < InSeconds( 20 ) &&
+        CurrentChapterTimer() >= InSeconds( 20 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -832,8 +832,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER16 &&
-        prev( ChapterTimer() ) < InSeconds( 45 ) &&
-        ChapterTimer() >= InSeconds( 45 )
+        prev( CurrentChapterTimer() ) < InSeconds( 45 ) &&
+        CurrentChapterTimer() >= InSeconds( 45 )
     ) && (
         always_false() ||
         never( GameReset() )

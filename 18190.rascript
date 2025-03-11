@@ -999,6 +999,20 @@ achievement(
     type = "missable"
 )
 
+achievement(
+    title = "Trust Your Family",
+    description = "Without dying and with both brown and black inside the end tree, use orange to collect five hearts then complete chapter 24",
+    points = 5,
+    trigger = (
+        once( Chapter() == CHAPTER24 ) &&
+        DarkHeartsCollected() == 0 &&
+        CollectHeartsUsingCharacter( 5, "orange", true, false, false ) &&
+        CompleteChapter( true, CHAPTER24, true, false, false ) &&
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
 for index in range( 1, length( chapterConfigs ) ) {
     chapter = chapterConfigs[index - 1]
 

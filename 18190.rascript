@@ -387,7 +387,7 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      true,
+        "isTimeTrial":      false,
         "hasLeaderboard":   true
     },
     {
@@ -971,6 +971,27 @@ achievement(
         Chapter() == CHAPTER22 &&
         prev( CurrentChapterTimer() ) < InSeconds( 40 ) &&
         CurrentChapterTimer() >= InSeconds( 40 )
+    ) && (
+        always_false() ||
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "It Takes Two",
+    description = "Without dying and in no more than 6 world rotations complete chapter 23",
+    points = 5,
+    trigger = (
+        once( Chapter() == CHAPTER23 ) &&
+        DarkHeartsCollected() == 0 &&
+        CompleteChapter( true, CHAPTER23, false, true, true )
+    ) &&
+    disable_when(
+        tally(
+            7,
+            OrangeRotating()
+        )
     ) && (
         always_false() ||
         never( GameReset() )

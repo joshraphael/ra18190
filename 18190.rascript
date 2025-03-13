@@ -488,9 +488,28 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     return conditions
 }
 
+function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+    conditions = [
+        ( Chapter() == chapter && prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
+        ( Chapter() == chapter && prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
+        ( Chapter() == chapter && prev( BlackState() ) != 0x00000002 && BlackState() == 0x00000002 )
+    ]
+    if( hasBrownPowerUp ) {
+        array_push( conditions, ( Chapter() == chapter && prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
+    }
+    if( hasOrangePowerUp ) {
+        array_push( conditions, ( Chapter() == chapter && rev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
+    }
+    if( hasBlackPowerUp ) {
+        array_push( conditions, ( Chapter() == chapter && prev( BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
+    }
+    return conditions
+}
+
 // Detects if Antler Spirit is double jumping
-function AntlerDoubleJumps() {
+function AntlerDoubleJumps( chapter ) {
     return (
+        Chapter() == chapter &&
         BrownState() == 0x00000008 &&
         prev( BrownDoubleJump() ) == 0x00 &&
         BrownDoubleJump() == 0x01
@@ -534,8 +553,9 @@ function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerU
 }
 
 // Detects if orange is rotating the world in either direction
-function OrangeRotating() {
+function OrangeRotating( chapter ) {
     return (
+        Chapter() == chapter &&
         OrangeState() == 0x00000008 &&
         OrangePoweredUpState() != 0x00000008 &&
         (
@@ -726,7 +746,7 @@ achievement(
     disable_when(
         tally(
             7,
-            AntlerDoubleJumps()
+            AntlerDoubleJumps( CHAPTER5 )
         )
     ) && (
         always_false() ||
@@ -747,7 +767,7 @@ achievement(
     disable_when(
         tally(
             2,
-            OrangeRotating()
+            OrangeRotating( CHAPTER6 )
         )
     ) && (
         always_false() ||
@@ -782,7 +802,7 @@ achievement(
     disable_when(
         tally(
             2,
-            OrangeRotating()
+            OrangeRotating( CHAPTER8 )
         )
     ) && (
         always_false() ||
@@ -803,7 +823,7 @@ achievement(
     disable_when(
         tally(
             5,
-            AntlerDoubleJumps()
+            AntlerDoubleJumps( CHAPTER9 )
         )
     ) && (
         always_false() ||
@@ -845,7 +865,7 @@ achievement(
     disable_when(
         tally(
             7,
-            OrangeRotating()
+            OrangeRotating( CHAPTER11 )
         )
     ) && (
         always_false() ||
@@ -867,7 +887,7 @@ achievement(
     disable_when(
         tally(
             4,
-            AntlerDoubleJumps()
+            AntlerDoubleJumps( CHAPTER12 )
         )
     ) && (
         always_false() ||
@@ -888,7 +908,7 @@ achievement(
     disable_when(
         tally(
             4,
-            OrangeRotating()
+            OrangeRotating( CHAPTER13 )
         )
     ) && (
         always_false() ||
@@ -964,7 +984,7 @@ achievement(
     disable_when(
         tally(
             8,
-            CharacterJumps( true, false, false )
+            CharacterJumps1( CHAPTER17, true, false, false )
         )
     ) && (
         always_false() ||
@@ -1014,7 +1034,7 @@ achievement(
     disable_when(
         tally(
             1,
-            AntlerDoubleJumps()
+            AntlerDoubleJumps( CHAPTER20 )
         )
     ) && (
         always_false() ||
@@ -1035,7 +1055,7 @@ achievement(
     disable_when(
         tally(
             3,
-            OrangeRotating()
+            OrangeRotating( CHAPTER21 )
         )
     ) && (
         always_false() ||
@@ -1075,7 +1095,7 @@ achievement(
     disable_when(
         tally(
             7,
-            OrangeRotating()
+            OrangeRotating( CHAPTER23 )
         )
     ) && (
         always_false() ||
@@ -1109,13 +1129,13 @@ achievement(
     disable_when(
         tally(
             8,
-            AntlerDoubleJumps()
+            AntlerDoubleJumps( CHAPTER25 )
         )
     ) &&
     disable_when(
         tally(
             2,
-            OrangeRotating()
+            OrangeRotating( CHAPTER25 )
         )
     ) && (
         always_false() ||
@@ -1134,8 +1154,8 @@ for index in range( 1, length( chapterConfigs ) ) {
     if chapter["hasLeaderboard"] {
         l = {
             "id":              leaderboardID,
-            "title":           format("Speedrun Chapter {0}", index),
-            "description":     format("Finish chapter {0} as fast as possible", index),
+            "title":           format("Speedrun {0}", chapter["name"]),
+            "description":     format("Finish {0} as fast as possible", chapter["name"]),
             "value":           CurrentChapterTimer() / 0x0a,
             "format":          "MILLISECS",
             "lower_is_better": true

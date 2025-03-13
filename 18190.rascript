@@ -131,6 +131,10 @@ CHAPTER21 = 0x00000014
 CHAPTER22 = 0x00000015
 CHAPTER23 = 0x0000001d
 CHAPTER24 = 0x00000017
+CHAPTER25 = 0x00000018
+CHAPTER26 = 0x00000019
+CREDITS = 0x0000001a
+END = 0x00000063
 
 // Brown: We are a family of monsters.
 // Rainbow Spirit: I can reach the stars and find a way home.
@@ -139,6 +143,7 @@ CHAPTER24 = 0x00000017
 chapterConfigs = [
     {
         "id":               CHAPTER1,
+        "name":             "Chapter 1",
         "description":      "The Heart Tree",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -150,6 +155,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER2,
+        "name":             "Chapter 2",
         "description":      "We're on our Way",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -161,6 +167,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER3,
+        "name":             "Chapter 3",
         "description":      "Wilderness",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -172,6 +179,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER4,
+        "name":             "Chapter 4",
         "description":      "A Little Cave",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -183,6 +191,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER5,
+        "name":             "Chapter 5",
         "description":      "Antler Ancestor",
         "hearts":           3,
         "brownPowerUp":     true,
@@ -194,6 +203,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER6,
+        "name":             "Chapter 6",
         "description":      "Rainbow Spirit",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -205,6 +215,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER7,
+        "name":             "Chapter 7",
         "description":      "Wall in the Meadow",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -216,6 +227,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER8,
+        "name":             "Chapter 8",
         "description":      "Bridge",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -227,6 +239,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER9,
+        "name":             "Chapter 9",
         "description":      "Islands",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -238,6 +251,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER10,
+        "name":             "Chapter 10",
         "description":      "Serpentine",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -249,6 +263,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER11,
+        "name":             "Chapter 11",
         "description":      "Flying Rocks",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -260,6 +275,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER12,
+        "name":             "Chapter 12",
         "description":      "Little Fern Track",
         "hearts":           12,
         "brownPowerUp":     true,
@@ -271,6 +287,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER13,
+        "name":             "Chapter 13",
         "description":      "Sky and Cave",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -282,6 +299,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER14,
+        "name":             "Chapter 14",
         "description":      "Fall",
         "hearts":           53,
         "brownPowerUp":     false,
@@ -293,6 +311,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER15,
+        "name":             "Chapter 15",
         "description":      "Bat King",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -304,6 +323,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER16,
+        "name":             "Chapter 16",
         "description":      "Secret Passage",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -315,6 +335,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER17,
+        "name":             "Chapter 17",
         "description":      "Delicious Spores",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -326,6 +347,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER18,
+        "name":             "Chapter 18",
         "description":      "Beneath the Roots",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -337,6 +359,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER19,
+        "name":             "Chapter 19",
         "description":      "Gates Of Hades",
         "hearts":           5,
         "brownPowerUp":     false,
@@ -348,6 +371,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER20,
+        "name":             "Chapter 20",
         "description":      "Chasm",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -359,6 +383,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER21,
+        "name":             "Chapter 21",
         "description":      "Crystal Caves",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -370,6 +395,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER22,
+        "name":             "Chapter 22",
         "description":      "Labyrinth",
         "hearts":           8,
         "brownPowerUp":     true,
@@ -381,6 +407,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER23,
+        "name":             "Chapter 23",
         "description":      "Rock Pool",
         "hearts":           7,
         "brownPowerUp":     false,
@@ -392,8 +419,45 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER24,
+        "name":             "Chapter 24",
         "description":      "Old Willow Tree",
         "hearts":           5,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "isTimeTrial":      false,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER25,
+        "name":             "Chapter 25",
+        "description":      "Fortress",
+        "hearts":           7,
+        "brownPowerUp":     true,
+        "orangePowerUp":    true,
+        "blackPowerUp":     true,
+        "progressionGroup": 2,
+        "isTimeTrial":      false,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CHAPTER26,
+        "name":             "Chapter 26",
+        "description":      "Family Trees",
+        "hearts":           1,
+        "brownPowerUp":     true,
+        "orangePowerUp":    false,
+        "blackPowerUp":     false,
+        "progressionGroup": 2,
+        "isTimeTrial":      false,
+        "hasLeaderboard":   true
+    },
+    {
+        "id":               CREDITS,
+        "name":             "Credits",
+        "description":      "",
+        "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "blackPowerUp":     false,
@@ -403,6 +467,9 @@ chapterConfigs = [
     }
 ]
 
+// Detects if any character is jumping
+//
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
 function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     conditions = [
         ( prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
@@ -421,6 +488,7 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     return conditions
 }
 
+// Detects if Antler Spirit is double jumping
 function AntlerDoubleJumps() {
     return (
         BrownState() == 0x00000008 &&
@@ -429,12 +497,18 @@ function AntlerDoubleJumps() {
     )
 }
 
+// Detects if the player is in a chapter or not
 function InGame() {
     return (
         GamePointer() != 0x00000000
     )
 }
 
+// Detects completion of a chapter based on character power ups in the level
+//
+// `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
+//
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
 function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     brownDone = BrownState() == 0x00000007
     orangeDone = OrangeState() == 0x00000007
@@ -449,6 +523,9 @@ function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerU
     if( hasBrownPowerUp ) {
         done = done || BrownPoweredUpState() == 0x00000007
     }
+    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have black as a firefly
+        done = ( brownDone || BrownPoweredUpState() == 0x00000007 ) && ( blackDone )
+    }
     conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
     if( isChallenge ) {
         conds = trigger_when( conds )
@@ -456,6 +533,7 @@ function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerU
     return conds
 }
 
+// Detects if orange is rotating the world in either direction
 function OrangeRotating() {
     return (
         OrangeState() == 0x00000008 &&
@@ -480,6 +558,11 @@ rich_presence_conditional_display(
 
 rich_presence_display("In Menus")
 
+// Detects heart collection with specific character
+//
+// `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `black` otherwise it will jusut detect number of hearts collected by anyone.
+//
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
 function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     base = prev( HeartsCollected() ) == HeartsCollected() - 1
     if character == "brown" {
@@ -535,6 +618,7 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
     return repeated( hearts, base )
 }
 
+// Detects when the game is reset
 function GameReset() {
     return (
         HeartsCollected() == 0x00 &&
@@ -552,8 +636,9 @@ function GameReset() {
     ) 
 }
 
-function InSeconds( time ) {
-    return time * 1000
+// Converts seconds into milliseconds
+function InMilliseconds( seconds ) {
+    return seconds * 1000
 }
 
 achievement(
@@ -586,8 +671,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER2 &&
-        prev( CurrentChapterTimer() ) < InSeconds( 12 ) &&
-        CurrentChapterTimer() >= InSeconds( 12 )
+        prev( CurrentChapterTimer() ) < InMilliseconds( 12 ) &&
+        CurrentChapterTimer() >= InMilliseconds( 12 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -738,8 +823,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER10 &&
-        prev( CurrentChapterTimer() ) < InSeconds( 20 ) &&
-        CurrentChapterTimer() >= InSeconds( 20 )
+        prev( CurrentChapterTimer() ) < InMilliseconds( 20 ) &&
+        CurrentChapterTimer() >= InMilliseconds( 20 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -859,8 +944,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER16 &&
-        prev( CurrentChapterTimer() ) < InSeconds( 45 ) &&
-        CurrentChapterTimer() >= InSeconds( 45 )
+        prev( CurrentChapterTimer() ) < InMilliseconds( 45 ) &&
+        CurrentChapterTimer() >= InMilliseconds( 45 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -969,8 +1054,8 @@ achievement(
     ) &&
     disable_when(
         Chapter() == CHAPTER22 &&
-        prev( CurrentChapterTimer() ) < InSeconds( 40 ) &&
-        CurrentChapterTimer() >= InSeconds( 40 )
+        prev( CurrentChapterTimer() ) < InMilliseconds( 40 ) &&
+        CurrentChapterTimer() >= InMilliseconds( 40 )
     ) && (
         always_false() ||
         never( GameReset() )
@@ -1008,6 +1093,32 @@ achievement(
         DarkHeartsCollected() == 0 &&
         CollectHeartsUsingCharacter( 5, "orange", true, false, false ) &&
         CompleteChapter( true, CHAPTER24, true, false, false ) &&
+        never( GameReset() )
+    ),
+    type = "missable"
+)
+
+achievement(
+    title = "We're Coming, Mother!",
+    description = "Complete chapter 25 in no more than 7 double jumps and 1 world rotation",
+    points = 5,
+    trigger = (
+        once( Chapter() == CHAPTER25 ) &&
+        CompleteChapter( true, CHAPTER25, true, true, true )
+    ) &&
+    disable_when(
+        tally(
+            8,
+            AntlerDoubleJumps()
+        )
+    ) &&
+    disable_when(
+        tally(
+            2,
+            OrangeRotating()
+        )
+    ) && (
+        always_false() ||
         never( GameReset() )
     ),
     type = "missable"

@@ -107,42 +107,12 @@ function AnimationCounter() => dword( 0x009e7130 )
 function LeftBumperButton() => bit0( 0x00a43a41 )
 function RightBumperButton() => bit1( 0x00a43a41 )
 
-CHAPTER1  = 0x0000001b
-CHAPTER2  = 0x00000000
-CHAPTER3  = 0x00000003
-CHAPTER4  = 0x00000004
-CHAPTER5  = 0x00000005
-CHAPTER6  = 0x00000008
-CHAPTER7  = 0x0000000a
-CHAPTER8  = 0x00000016
-CHAPTER9  = 0x00000006
-CHAPTER10 = 0x00000013
-CHAPTER11 = 0x0000000b
-CHAPTER12 = 0x00000007
-CHAPTER13 = 0x0000000c
-CHAPTER14 = 0x0000000d
-CHAPTER15 = 0x0000000e
-CHAPTER16 = 0x0000000f
-CHAPTER17 = 0x00000010
-CHAPTER18 = 0x00000012
-CHAPTER19 = 0x00000001
-CHAPTER20 = 0x00000002
-CHAPTER21 = 0x00000014
-CHAPTER22 = 0x00000015
-CHAPTER23 = 0x0000001d
-CHAPTER24 = 0x00000017
 CHAPTER25 = 0x00000018
-CHAPTER26 = 0x00000019
-CREDITS = 0x0000001a
 END = 0x00000063
-
-// Brown: We are a family of monsters.
-// Rainbow Spirit: I can reach the stars and find a way home.
-// Antler Ancestor: Hop, hey and farewell!
 
 chapterConfigs = [
     {
-        "id":               CHAPTER1,
+        "id":               0x0000001b,
         "name":             "Chapter 1",
         "description":      "The Heart Tree",
         "hearts":           2,
@@ -157,7 +127,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER2,
+        "id":               0x00000000,
         "name":             "Chapter 2",
         "description":      "We're On Our Way",
         "hearts":           1,
@@ -172,7 +142,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER3,
+        "id":               0x00000003,
         "name":             "Chapter 3",
         "description":      "Wilderness",
         "hearts":           3,
@@ -190,7 +160,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER4,
+        "id":               0x00000004,
         "name":             "Chapter 4",
         "description":      "A Little Cave",
         "hearts":           3,
@@ -206,7 +176,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER5,
+        "id":               0x00000005,
         "name":             "Chapter 5",
         "description":      "Antler Ancestor",
         "hearts":           3,
@@ -222,7 +192,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER6,
+        "id":               0x00000008,
         "name":             "Chapter 6",
         "description":      "Rainbow Spirit",
         "hearts":           2,
@@ -238,7 +208,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER7,
+        "id":               0x0000000a,
         "name":             "Chapter 7",
         "description":      "Wall in the Meadow",
         "hearts":           1,
@@ -256,7 +226,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER8,
+        "id":               0x00000016,
         "name":             "Chapter 8",
         "description":      "Bridge",
         "hearts":           4,
@@ -273,7 +243,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER9,
+        "id":               0x00000006,
         "name":             "Chapter 9",
         "description":      "Islands",
         "hearts":           5,
@@ -289,7 +259,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER10,
+        "id":               0x00000013,
         "name":             "Chapter 10",
         "description":      "Serpentine",
         "hearts":           7,
@@ -305,7 +275,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER11,
+        "id":               0x0000000b,
         "name":             "Chapter 11",
         "description":      "Flying Rocks",
         "hearts":           8,
@@ -322,7 +292,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER12,
+        "id":               0x00000007,
         "name":             "Chapter 12",
         "description":      "Little Fern Track",
         "hearts":           12,
@@ -339,7 +309,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER13,
+        "id":               0x0000000c,
         "name":             "Chapter 13",
         "description":      "Sky and Cave",
         "hearts":           2,
@@ -355,7 +325,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER14,
+        "id":               0x0000000d,
         "name":             "Chapter 14",
         "description":      "Fall",
         "hearts":           53,
@@ -371,7 +341,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER15,
+        "id":               0x0000000e,
         "name":             "Chapter 15",
         "description":      "Bat King",
         "hearts":           4,
@@ -388,7 +358,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER16,
+        "id":               0x0000000f,
         "name":             "Chapter 16",
         "description":      "Secret Passage",
         "hearts":           3,
@@ -404,7 +374,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER17,
+        "id":               0x00000010,
         "name":             "Chapter 17",
         "description":      "Delicious Spores",
         "hearts":           4,
@@ -419,7 +389,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER18,
+        "id":               0x00000012,
         "name":             "Chapter 18",
         "description":      "Beneath the Roots",
         "hearts":           8,
@@ -435,7 +405,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER19,
+        "id":               0x00000001,
         "name":             "Chapter 19",
         "description":      "Gates Of Hades",
         "hearts":           5,
@@ -454,7 +424,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER20,
+        "id":               0x00000002,
         "name":             "Chapter 20",
         "description":      "Chasm",
         "hearts":           4,
@@ -471,7 +441,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER21,
+        "id":               0x00000014,
         "name":             "Chapter 21",
         "description":      "Crystal Caves",
         "hearts":           4,
@@ -487,7 +457,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER22,
+        "id":               0x00000015,
         "name":             "Chapter 22",
         "description":      "Labyrinth",
         "hearts":           8,
@@ -502,7 +472,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER23,
+        "id":               0x0000001d,
         "name":             "Chapter 23",
         "description":      "Rock Pool",
         "hearts":           7,
@@ -518,7 +488,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER24,
+        "id":               0x00000017,
         "name":             "Chapter 24",
         "description":      "Old Willow Tree",
         "hearts":           5,
@@ -553,7 +523,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CHAPTER26,
+        "id":               0x00000019,
         "name":             "Chapter 26",
         "description":      "Family Trees",
         "hearts":           1,
@@ -566,7 +536,7 @@ chapterConfigs = [
         "type":             "progression"
     },
     {
-        "id":               CREDITS,
+        "id":               0x0000001a,
         "name":             "Credits",
         "description":      "Here Is My Heart!",
         "hearts":           7,
@@ -679,18 +649,6 @@ function OrangeRotating( chapter ) {
     )
 }
 
-rich_presence_conditional_display(
-    InGame(),
-    "Hearts: {0}/{1}, Dark Hearts: {2}, Character: {3} TOTAL COLLECTED: {4}",
-    rich_presence_value( "valueFormat", CurrentChapterScore(), "VALUE" ),
-    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
-    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" ),
-    rich_presence_value( "valueFormat", Character(), "VALUE" ),
-    rich_presence_value( "valueFormat", HeartsCollected(), "VALUE" )
-)
-
-rich_presence_display("In Menus")
-
 // Detects heart collection with specific character
 //
 // `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `black` otherwise it will jusut detect number of hearts collected by anyone.
@@ -776,8 +734,12 @@ function InMilliseconds( seconds ) {
 
 achievements = []
 leaderboards = []
+totalHearts = 0
 for index in range( 1, length( chapterConfigs ) ) {
     chapter = chapterConfigs[index - 1]
+    if( index != 1 ) { // Count total stars available minus chapter 1 (tutorial)
+        totalHearts = totalHearts + chapter["hearts"] // Only 171 hearts https://gamefaqs.gamespot.com/boards/649587-where-is-my-heart/64934662
+    }
     trigger = (
         once( Chapter() == chapter["id"] ) &&
         CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
@@ -880,6 +842,20 @@ for index in range( 1, length( chapterConfigs ) ) {
         array_push( leaderboards, l )
     }
 }
+
+rich_presence_conditional_display(
+    InGame(),
+    "Hearts: {0}/{1}, Dark Hearts: {2}, Character: {3} TOTAL COLLECTED: {4} TOTAL HEARTS: {5}",
+    rich_presence_value( "valueFormat", CurrentChapterScore(), "VALUE" ),
+    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
+    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" ),
+    rich_presence_value( "valueFormat", Character(), "VALUE" ),
+    rich_presence_value( "valueFormat", HeartsCollected(), "VALUE" ),
+    rich_presence_value( "valueFormat", totalHearts, "VALUE" )
+)
+
+rich_presence_display("In Menus")
+
 
 for index in range( 0, length( achievements ) - 1 ) {
     a = achievements[index]

@@ -150,20 +150,26 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Totem Spirit",
+        "challengeDesc":    "Complete chapter 1 in no more than 15 jumps",
+        "limitJumps":       15,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER2,
         "name":             "Chapter 2",
-        "description":      "We're on our Way",
+        "description":      "We're On Our Way",
         "hearts":           1,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
-        "isTimeTrial":      true,
-        "hasLeaderboard":   true
+        "timeTrialSeconds": 15,
+        "hasLeaderboard":   true,
+        "challengeName":    "Gotta Go Fast",
+        "challengeDesc":    "Complete chapter 2 in under 15 seconds",
+        "type":             "progression"
     },
     {
         "id":               CHAPTER3,
@@ -174,8 +180,14 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 1,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Mind The Gap",
+        "challengeDesc":    "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
+        "characterCollect": {
+            "character": "brown",
+            "hearts":    1
+        },
+        "type":             "progression"
     },
     {
         "id":               CHAPTER4,
@@ -186,8 +198,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Rock Tunnel",
+        "challengeDesc":    "Collect 3 hearts in no more than 14 jumps then complete chapter 4",
+        "heartsCollected":  true,
+        "limitJumps":       14,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER5,
@@ -198,8 +214,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Gallup Jingle",
+        "challengeDesc":    "Collect 3 hearts in no more than 6 double jumps then complete chapter 5",
+        "heartsCollected":  true,
+        "limitDoubleJumps": 6,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER6,
@@ -210,8 +230,12 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "A Slight Breeze",
+        "challengeDesc":    "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
+        "heartsCollected":  true,
+        "worldRotations":   1,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER7,
@@ -222,8 +246,14 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Great Wall",
+        "challengeDesc":    "With both orange and brown inside the end tree, use black to collect one heart then complete chapter 7",
+        "characterCollect": {
+            "character": "black",
+            "hearts":    1
+        },
+        "type":             "progression"
     },
     {
         "id":               CHAPTER8,
@@ -234,8 +264,13 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Rainbow Bridge",
+        "challengeDesc":    "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "worldRotations":   1,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER9,
@@ -246,8 +281,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Island Hopping",
+        "challengeDesc":    "Collect 5 hearts in no more than 4 double jumps then complete chapter 9",
+        "heartsCollected":  true,
+        "limitDoubleJumps": 4,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER10,
@@ -258,8 +297,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      true,
-        "hasLeaderboard":   true
+        "timeTrialSeconds": 20,
+        "hasLeaderboard":   true,
+        "challengeName":    "Zig Zag",
+        "challengeDesc":    "Collect 7 hearts and complete chapter 10 in under 20 seconds",
+        "heartsCollected":  true,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER11,
@@ -270,8 +313,13 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Rock of Terror",
+        "challengeDesc":    "Without dying collect 8 hearts in no more than 6 world rotations then complete chapter 11",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "worldRotations":   6,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER12,
@@ -282,8 +330,13 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Glowing Fern",
+        "challengeDesc":    "Without dying collect 12 hearts in no more than 3 double jumps then complete chapter 12",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "limitDoubleJumps": 3,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER13,
@@ -294,8 +347,12 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Descent Into Bat Kings Cave",
+        "challengeDesc":    "Collect 2 hearts in no more than 3 world rotations then complete chapter 13",
+        "heartsCollected":  true,
+        "worldRotations":   3,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER14,
@@ -306,8 +363,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Falling In Love",
+        "challengeDesc":    "Without dying collect 53 hearts then complete chapter 14",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER15,
@@ -318,8 +379,13 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Beady Eyed",
+        "challengeDesc":    "Without dying collect 4 hearts in no more than 6 jumps then complete chapter 15",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "limitJumps":       6,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER16,
@@ -330,8 +396,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      true,
-        "hasLeaderboard":   true
+        "timeTrialSeconds": 45,
+        "hasLeaderboard":   true,
+        "challengeName":    "I Sense A Connection",
+        "challengeDesc":    "Collect 3 hearts and complete chapter 16 in under 45 seconds",
+        "heartsCollected":  true,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER17,
@@ -342,8 +412,11 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Strange Pollen",
+        "challengeDesc":    "Complete chapter 17 in no more than 7 jumps",
+        "limitJumps":       7,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER18,
@@ -354,8 +427,12 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Individual Tasks",
+        "challengeDesc":    "Without dying collect 8 hearts then complete chapter 18",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER19,
@@ -366,8 +443,15 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "The Pit",
+        "challengeDesc":    "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
+        "deathless":        true,
+        "characterCollect": {
+            "character": "black",
+            "hearts":    5
+        },
+        "type":             "progression"
     },
     {
         "id":               CHAPTER20,
@@ -378,8 +462,13 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Take Aim",
+        "challengeDesc":    "Without dying, or double jumping as Antler Ancestor collect 4 hearts then complete chapter 20",
+        "deathless":        true,
+        "heartsCollected":  true,
+        "limitDoubleJumps": 0,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER21,
@@ -390,8 +479,12 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Climb The Ladder",
+        "challengeDesc":    "Without dying and in no more than 2 world rotations complete chapter 21",
+        "deathless":        true,
+        "worldRotations":   2,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER22,
@@ -402,8 +495,11 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      true,
-        "hasLeaderboard":   true
+        "timeTrialSeconds": 40,
+        "hasLeaderboard":   true,
+        "challengeName":    "Steady Jumps",
+        "challengeDesc":    "Complete chapter 22 in under 40 seconds",
+        "type":             "progression"
     },
     {
         "id":               CHAPTER23,
@@ -414,8 +510,12 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "It Takes Two",
+        "challengeDesc":    "Without dying and in no more than 6 world rotations complete chapter 23",
+        "deathless":        true,
+        "worldRotations":   6,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER24,
@@ -426,8 +526,15 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "Trust Your Family",
+        "challengeDesc":    "Without dying and with both brown and black inside the end tree, use orange to collect five hearts then complete chapter 24",
+        "deathless":        true,
+        "characterCollect": {
+            "character": "orange",
+            "hearts":    5
+        },
+        "type":             "progression"
     },
     {
         "id":               CHAPTER25,
@@ -438,8 +545,12 @@ chapterConfigs = [
         "orangePowerUp":    true,
         "blackPowerUp":     true,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "We're Coming, Mother!",
+        "challengeDesc":    "Complete chapter 25 in no more than 7 double jumps and 1 world rotation",
+        "limitDoubleJumps": 7,
+        "worldRotations":   1,
+        "type":             "progression"
     },
     {
         "id":               CHAPTER26,
@@ -450,20 +561,22 @@ chapterConfigs = [
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "",
+        "type":             "progression"
     },
     {
         "id":               CREDITS,
         "name":             "Credits",
-        "description":      "",
+        "description":      "Here Is My Heart!",
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "blackPowerUp":     false,
         "progressionGroup": 2,
-        "isTimeTrial":      false,
-        "hasLeaderboard":   true
+        "hasLeaderboard":   true,
+        "challengeName":    "",
+        "type":             "win_condition"
     }
 ]
 
@@ -661,497 +774,92 @@ function InMilliseconds( seconds ) {
     return seconds * 1000
 }
 
-achievement(
-    title = "Totem Spirit",
-    description = "Complete chapter 1 in no more than 15 jumps",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER1 ) &&
-        CompleteChapter( true, CHAPTER1, false, false, false )
-    ) &&
-    disable_when(
-        tally(
-            16,
-            CharacterJumps( false, false, false )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Gotta Go Fast",
-    description = "Complete chapter 2 in under 12 seconds",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER2 && CurrentChapterTimer() > 0x00000000 ) &&
-        CompleteChapter( true, CHAPTER2, false, false, false )
-    ) &&
-    disable_when(
-        Chapter() == CHAPTER2 &&
-        prev( CurrentChapterTimer() ) < InMilliseconds( 12 ) &&
-        CurrentChapterTimer() >= InMilliseconds( 12 )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Mind The Gap",
-    description = "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER3 ) &&
-        CollectHeartsUsingCharacter( 1, "brown", false, false, false ) &&
-        CompleteChapter( true, CHAPTER3, false, false, false ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Rock Tunnel",
-    description = "Collect 3 hearts in no more than 14 jumps then complete chapter 4",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER4 ) &&
-        HeartsCollected() == 3 &&
-        CompleteChapter( true, CHAPTER4, false, false, false )
-    ) &&
-    disable_when(
-        tally(
-            15,
-            CharacterJumps( false, false, false )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Gallup Jingle",
-    description = "Collect 3 hearts in no more than 6 double jumps then complete chapter 5",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER5 ) &&
-        HeartsCollected() == 3 &&
-        CompleteChapter( true, CHAPTER5, true, false, false )
-    ) &&
-    disable_when(
-        tally(
-            7,
-            AntlerDoubleJumps( CHAPTER5 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "A Slight Breeze",
-    description = "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER6 ) &&
-        HeartsCollected() == 2 &&
-        CompleteChapter( true, CHAPTER6, false, true, false )
-    ) &&
-    disable_when(
-        tally(
-            2,
-            OrangeRotating( CHAPTER6 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Great Wall",
-    description = "With both orange and brown inside the end tree, use black to collect one heart then complete chapter 7",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER7 ) &&
-        CollectHeartsUsingCharacter( 1, "black", false, true, false ) &&
-        CompleteChapter( true, CHAPTER7, false, true, false ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Rainbow Bridge",
-    description = "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER8 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 4 &&
-        CompleteChapter( true, CHAPTER8, false, true, false )
-    ) &&
-    disable_when(
-        tally(
-            2,
-            OrangeRotating( CHAPTER8 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Island Hopping",
-    description = "Collect 5 hearts in no more than 4 double jumps then complete chapter 9",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER9 ) &&
-        HeartsCollected() == 5 &&
-        CompleteChapter( true, CHAPTER9, true, false, false )
-    ) &&
-    disable_when(
-        tally(
-            5,
-            AntlerDoubleJumps( CHAPTER9 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Zig Zag",
-    description = "Collect 7 hearts and complete chapter 10 in under 20 seconds",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER10 ) &&
-        HeartsCollected() == 7 &&
-        CompleteChapter( true, CHAPTER10, true, false, false )
-    ) &&
-    disable_when(
-        Chapter() == CHAPTER10 &&
-        prev( CurrentChapterTimer() ) < InMilliseconds( 20 ) &&
-        CurrentChapterTimer() >= InMilliseconds( 20 )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Rock of Terror",
-    description = "Without dying collect 8 hearts in no more than 6 world rotations then complete chapter 11",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER11 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 8 &&
-        CompleteChapter( true, CHAPTER11, false, true, false )
-    ) &&
-    disable_when(
-        tally(
-            7,
-            OrangeRotating( CHAPTER11 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Glowing Fern",
-    description = "Without dying collect 12 hearts in no more than 3 double jumps then complete chapter 12",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER12 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 12 &&
-        CompleteChapter( true, CHAPTER12, true, false, false )
-    ) &&
-    disable_when(
-        tally(
-            4,
-            AntlerDoubleJumps( CHAPTER12 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Descent Into Bat Kings Cave",
-    description = "Collect 2 hearts in no more than 3 world rotations then complete chapter 13",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER13 ) &&
-        HeartsCollected() == 2 &&
-        CompleteChapter( true, CHAPTER13, false, true, false )
-    ) &&
-    disable_when(
-        tally(
-            4,
-            OrangeRotating( CHAPTER13 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Falling In Love",
-    description = "Without dying collect 53 hearts then complete chapter 14",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER14 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 53 &&
-        CompleteChapter( true, CHAPTER14, false, false, false ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Beady Eyed",
-    description = "Without dying collect 4 hearts in no more than 6 jumps then complete chapter 15",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER15 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 4 &&
-        CompleteChapter( true, CHAPTER15, false, false, true )
-    ) &&
-    disable_when(
-        tally(
-            7,
-            CharacterJumps( false, false, true )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Secret Passage",
-    description = "Collect 3 hearts and complete chapter 16 in under 45 seconds",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER16 ) &&
-        HeartsCollected() == 3 &&
-        CompleteChapter( true, CHAPTER16, false, false, true )
-    ) &&
-    disable_when(
-        Chapter() == CHAPTER16 &&
-        prev( CurrentChapterTimer() ) < InMilliseconds( 45 ) &&
-        CurrentChapterTimer() >= InMilliseconds( 45 )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Strange Pollen",
-    description = "Complete chapter 17 in no more than 7 jumps",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER17 ) &&
-        CompleteChapter( true, CHAPTER17, true, false, false )
-    ) &&
-    disable_when(
-        tally(
-            8,
-            CharacterJumps1( CHAPTER17, true, false, false )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Individual Tasks",
-    description = "Without dying collect 8 hearts then complete chapter 18",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER18 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 8 &&
-        CompleteChapter( true, CHAPTER18, false, false, false ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "The Pit",
-    description = "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER19 ) &&
-        DarkHeartsCollected() == 0 &&
-        CollectHeartsUsingCharacter( 5, "black", false, false, true ) &&
-        CompleteChapter( true, CHAPTER19, false, false, true ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Take Aim",
-    description = "Without dying, or double jumping as Antler Ancestor collect 4 hearts then complete chapter 20",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER20 ) &&
-        DarkHeartsCollected() == 0 &&
-        HeartsCollected() == 4 &&
-        CompleteChapter( true, CHAPTER20, true, false, false )
-    ) &&
-    disable_when(
-        tally(
-            1,
-            AntlerDoubleJumps( CHAPTER20 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Climb The Ladder",
-    description = "Without dying and in no more than 2 world rotations complete chapter 21",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER21 ) &&
-        DarkHeartsCollected() == 0 &&
-        CompleteChapter( true, CHAPTER21, false, true, true )
-    ) &&
-    disable_when(
-        tally(
-            3,
-            OrangeRotating( CHAPTER21 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Steady Jumps",
-    description = "Complete chapter 22 in under 40 seconds",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER22 ) &&
-        CompleteChapter( true, CHAPTER22, true, false, false )
-    ) &&
-    disable_when(
-        Chapter() == CHAPTER22 &&
-        prev( CurrentChapterTimer() ) < InMilliseconds( 40 ) &&
-        CurrentChapterTimer() >= InMilliseconds( 40 )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "It Takes Two",
-    description = "Without dying and in no more than 6 world rotations complete chapter 23",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER23 ) &&
-        DarkHeartsCollected() == 0 &&
-        CompleteChapter( true, CHAPTER23, false, true, true )
-    ) &&
-    disable_when(
-        tally(
-            7,
-            OrangeRotating( CHAPTER23 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "Trust Your Family",
-    description = "Without dying and with both brown and black inside the end tree, use orange to collect five hearts then complete chapter 24",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER24 ) &&
-        DarkHeartsCollected() == 0 &&
-        CollectHeartsUsingCharacter( 5, "orange", true, false, false ) &&
-        CompleteChapter( true, CHAPTER24, true, false, false ) &&
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
-achievement(
-    title = "We're Coming, Mother!",
-    description = "Complete chapter 25 in no more than 7 double jumps and 1 world rotation",
-    points = 5,
-    trigger = (
-        once( Chapter() == CHAPTER25 ) &&
-        CompleteChapter( true, CHAPTER25, true, true, true )
-    ) &&
-    disable_when(
-        tally(
-            8,
-            AntlerDoubleJumps( CHAPTER25 )
-        )
-    ) &&
-    disable_when(
-        tally(
-            2,
-            OrangeRotating( CHAPTER25 )
-        )
-    ) && (
-        always_false() ||
-        never( GameReset() )
-    ),
-    type = "missable"
-)
-
+achievements = []
+leaderboards = []
 for index in range( 1, length( chapterConfigs ) ) {
     chapter = chapterConfigs[index - 1]
-
-    leaderboardID = index
-    if dictionary_contains_key( chapter, "leaderboardID" ) {
-        leaderboardID = chapter["leaderboardID"]
+    trigger = (
+        once( Chapter() == chapter["id"] ) &&
+        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+    )
+    progression = {
+        "title": chapter["description"],
+        "description": format("Complete {0}", chapter["name"]),
+        "points": 5,
+        "trigger": trigger && (
+            always_false() ||
+            never( GameReset() )
+        ),
+        "type": chapter["type"]
     }
-    if chapter["hasLeaderboard"] {
+    array_push( achievements, progression )
+
+    if( chapter["challengeName"] != "" ) {
+        challengeTrigger = once( Chapter() == chapter["id"] )
+        if( dictionary_contains_key( chapter, "deathless" ) ) {
+            challengeTrigger = challengeTrigger && DarkHeartsCollected() == 0
+        }
+        if( dictionary_contains_key( chapter, "characterCollect" ) ) {
+            collectionDetails = chapter["characterCollect"]
+            challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+        }
+        if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
+            challengeTrigger = challengeTrigger && HeartsCollected() == chapter["hearts"]
+        }
+        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+        if( dictionary_contains_key( chapter, "limitJumps" ) ) {
+            challengeTrigger = challengeTrigger &&
+            disable_when(
+                tally(
+                    chapter["limitJumps"] + 1,
+                    CharacterJumps( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+                )
+            ) 
+        }
+        if( dictionary_contains_key( chapter, "limitDoubleJumps" ) ) {
+            challengeTrigger = challengeTrigger &&
+            disable_when(
+                tally(
+                    chapter["limitDoubleJumps"] + 1,
+                    AntlerDoubleJumps( chapter["id"] )
+                )
+            )
+        }
+        if( dictionary_contains_key( chapter, "worldRotations" ) ) {
+            challengeTrigger = challengeTrigger &&
+            disable_when(
+                tally(
+                    chapter["worldRotations"] + 1,
+                    OrangeRotating( chapter["id"] )
+                )
+            )
+        }
+        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
+            challengeTrigger = challengeTrigger &&
+            disable_when(
+                Chapter() == chapter["id"] &&
+                prev( CurrentChapterTimer() ) < InMilliseconds( chapter["timeTrialSeconds"] ) &&
+                CurrentChapterTimer() >= InMilliseconds( chapter["timeTrialSeconds"] )
+            )
+        }
+        challenge = {
+            "title": chapter["challengeName"],
+            "description": chapter["challengeDesc"],
+            "points": 5,
+            "trigger":  challengeTrigger && (
+                always_false() ||
+                never( GameReset() )
+            ),
+            "type": "missable"
+        }
+        array_push( achievements, challenge )
+    }
+
+    if( chapter["hasLeaderboard"] ) {
+        leaderboardID = index
+        if dictionary_contains_key( chapter, "leaderboardID" ) {
+            leaderboardID = chapter["leaderboardID"]
+        }
         l = {
             "id":              leaderboardID,
             "title":           format("Speedrun {0}", chapter["name"]),
@@ -1160,7 +868,7 @@ for index in range( 1, length( chapterConfigs ) ) {
             "format":          "MILLISECS",
             "lower_is_better": true
         }
-        if( chapter["isTimeTrial"] ) {
+        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
             l["start"] = GameReset() && Chapter() == chapter["id"]
             l["cancel"] = GameReset() && Chapter() != chapter["id"]
             l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
@@ -1169,16 +877,32 @@ for index in range( 1, length( chapterConfigs ) ) {
             l["cancel"] = always_false()
             l["submit"] = always_true()
         }
-        leaderboard(
-            id =              l["id"],
-            title =           l["title"],
-            description =     l["description"],
-            start =           l["start"],
-            cancel =          l["cancel"],
-            submit =          l["submit"],
-            value =           l["value"],
-            format =          l["format"],
-            lower_is_better = l["lower_is_better"]
-        )
+        array_push( leaderboards, l )
     }
+}
+
+for index in range( 0, length( achievements ) - 1 ) {
+    a = achievements[index]
+    achievement(
+        title       = a["title"],
+        description = a["description"],
+        points      = a["points"],
+        trigger     = a["trigger"],
+        type        = a["type"]
+)
+}
+
+for index in range( 0, length( leaderboards ) - 1 ) {
+    l = leaderboards[index]
+    leaderboard(
+        id =              l["id"],
+        title =           l["title"],
+        description =     l["description"],
+        start =           l["start"],
+        cancel =          l["cancel"],
+        submit =          l["submit"],
+        value =           l["value"],
+        format =          l["format"],
+        lower_is_better = l["lower_is_better"]
+    )
 }

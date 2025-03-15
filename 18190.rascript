@@ -235,7 +235,7 @@ chapterConfigs = [
         "blackPowerUp":     false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
-        "challengeName":    "Rainbow Bridge",
+        "challengeName":    "Water Under The Bridge",
         "challengeDesc":    "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
         "deathless":        true,
         "heartsCollected":  true,

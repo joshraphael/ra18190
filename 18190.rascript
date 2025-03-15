@@ -414,7 +414,7 @@ chapterConfigs = [
         "blackPowerUp":     true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
-        "challengeName":    "The Pit",
+        "challengeName":    "Cerberus",
         "challengeDesc":    "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
         "deathless":        true,
         "characterCollect": {

@@ -91,7 +91,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: joshraphael/autocr-cli
-          ref: v1.2.0
+          ref: v1.2.2
 
       - name: Download Code Notes
         uses: actions/download-artifact@v4

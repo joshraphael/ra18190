@@ -635,6 +635,37 @@ function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerU
     return conds
 }
 
+// TEST FUNC
+//
+// Detects completion of a chapter based on character power ups in the level
+//
+// `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
+//
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CompleteChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+    brownDone = prev( BrownState() ) == 0x00000007
+    orangeDone = prev( OrangeState() ) == 0x00000007
+    if( hasOrangePowerUp ) {
+        orangeDone = orangeDone || prev( OrangePoweredUpState() ) == 0x00000007
+    }
+    greyDone = prev( GreyState() ) == 0x00000007
+    if( hasGreyPowerUp ) {
+        greyDone = greyDone || prev( GreyPoweredUpState() ) == 0x00000007 || prev( GreyPoweredUpState() ) == 0x00000006 // Special Case: Quickly entering end tree with grey powered up only animates to 0x06
+    }
+    done = ( ( brownDone ) && ( orangeDone ) && ( greyDone ) )
+    if( hasBrownPowerUp ) {
+        done = done || prev( BrownPoweredUpState() ) == 0x00000007
+    }
+    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
+        done = ( brownDone || prev( BrownPoweredUpState() ) == 0x00000007 ) && ( greyDone )
+    }
+    conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
+    if( isChallenge ) {
+        conds = trigger_when( conds )
+    }
+    return conds
+}
+
 // Detects if orange is rotating the world in either direction
 function OrangeRotating( chapter ) {
     return (
@@ -742,7 +773,7 @@ for index in range( 1, length( chapterConfigs ) ) {
     }
     trigger = (
         once( Chapter() == chapter["id"] ) &&
-        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+        CompleteChapter1( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
     )
     progression = {
         "title": chapter["description"],

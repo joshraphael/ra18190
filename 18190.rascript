@@ -23,14 +23,14 @@ function KeyPressed() => dword( 0x00a43a40 )
 // ...+0x0c = Hearts Collected
 // ...+0x10 = Dark Hearts Collected
 // ...+0x14 = Hearts Available
-// +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Black
+// +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Grey
 // +0x284 = Current Chapter Timer
 // ```
 function GamePointer() => dword( 0x00b16038 )
 
 function GamePointer2() => dword( ( GamePointer() & 0x01ffffff ) + 0x88 )
 
-// The character currently being used in game 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Black
+// The character currently being used in game 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Grey
 function Character() => dword( ( GamePointer() & 0x01ffffff ) + 0x244 )
 
 // The Current Chapter Timer
@@ -85,7 +85,7 @@ function OrangeState() => dword( 0x00e67ec8 )
 
 function OrangePoweredUpState() => dword( 0x00e7b9c8 )
 
-// $B1F0F8 - [32-bit] Black State
+// $B1F0F8 - [32-bit] Grey State
 // 0x00000000 = Idle
 // 0x00000001 = Left or Right
 // 0x00000002 = Jumping
@@ -94,9 +94,9 @@ function OrangePoweredUpState() => dword( 0x00e7b9c8 )
 // 0x00000006 = Entering End Chapter Tree
 // 0x00000007 = Inside End Chapter Tree
 // 0x00000008 = Powered Up (if entering End Tree powered up it stays this value)
-function BlackState() => dword( 0x00b1f0f8 )
+function GreyState() => dword( 0x00b1f0f8 )
 
-function BlackPoweredUpState() => dword( 0x00b23d78 )
+function GreyPoweredUpState() => dword( 0x00b23d78 )
 
 // 0x00 = not double Jumping
 // 0x01 = double jumping
@@ -118,7 +118,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 1,
         "hasLeaderboard":   true,
         "challengeName":    "Totem Spirit",
@@ -133,7 +133,7 @@ chapterConfigs = [
         "hearts":           1,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 1,
         "timeTrialSeconds": 15,
         "hasLeaderboard":   true,
@@ -148,11 +148,11 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 1,
         "hasLeaderboard":   true,
         "challengeName":    "Mind The Gap",
-        "challengeDesc":    "With both orange and black inside the end tree, use brown to collect one heart then complete chapter 3",
+        "challengeDesc":    "With both orange and grey inside the end tree, use brown to collect one heart then complete chapter 3",
         "characterCollect": {
             "character": "brown",
             "hearts":    1
@@ -166,7 +166,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Rock Tunnel",
@@ -182,7 +182,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Gallup Jingle",
@@ -198,7 +198,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "A Slight Breeze",
@@ -214,13 +214,13 @@ chapterConfigs = [
         "hearts":           1,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Great Wall",
-        "challengeDesc":    "With both orange and brown inside the end tree, use black to collect one heart then complete chapter 7",
+        "challengeDesc":    "With both orange and brown inside the end tree, use grey to collect one heart then complete chapter 7",
         "characterCollect": {
-            "character": "black",
+            "character": "grey",
             "hearts":    1
         },
         "type":             "progression"
@@ -232,7 +232,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Water Under The Bridge",
@@ -249,7 +249,7 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Island Hopping",
@@ -265,7 +265,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "timeTrialSeconds": 20,
         "hasLeaderboard":   true,
@@ -281,7 +281,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Rock of Terror",
@@ -298,7 +298,7 @@ chapterConfigs = [
         "hearts":           12,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Glowing Fern",
@@ -315,7 +315,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Descent Into Bat Kings Cave",
@@ -331,7 +331,7 @@ chapterConfigs = [
         "hearts":           53,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Falling In Love",
@@ -347,7 +347,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Beady Eyed",
@@ -364,7 +364,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "timeTrialSeconds": 45,
         "hasLeaderboard":   true,
@@ -380,7 +380,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Strange Pollen",
@@ -395,7 +395,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Individual Tasks",
@@ -411,14 +411,14 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Cerberus",
-        "challengeDesc":    "Without dying and both brown and orange inside the end tree, use black to collect five hearts then complete chapter 19",
+        "challengeDesc":    "Without dying and both brown and orange inside the end tree, use grey to collect five hearts then complete chapter 19",
         "deathless":        true,
         "characterCollect": {
-            "character": "black",
+            "character": "grey",
             "hearts":    5
         },
         "type":             "progression"
@@ -430,7 +430,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Take Aim",
@@ -447,7 +447,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Climb The Ladder",
@@ -463,7 +463,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "timeTrialSeconds": 40,
         "hasLeaderboard":   true,
@@ -478,7 +478,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "It Takes Two",
@@ -494,11 +494,11 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "Trust Your Family",
-        "challengeDesc":    "Without dying and with both brown and black inside the end tree, use orange to collect five hearts then complete chapter 24",
+        "challengeDesc":    "Without dying and with both brown and grey inside the end tree, use orange to collect five hearts then complete chapter 24",
         "deathless":        true,
         "characterCollect": {
             "character": "orange",
@@ -513,7 +513,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    true,
-        "blackPowerUp":     true,
+        "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "We're Coming, Mother!",
@@ -529,7 +529,7 @@ chapterConfigs = [
         "hearts":           1,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "",
@@ -542,7 +542,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "blackPowerUp":     false,
+        "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
         "challengeName":    "",
@@ -552,12 +552,12 @@ chapterConfigs = [
 
 // Detects if any character is jumping
 //
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     conditions = [
         ( prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
         ( prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( prev( BlackState() ) != 0x00000002 && BlackState() == 0x00000002 )
+        ( prev( GreyState() ) != 0x00000002 && GreyState() == 0x00000002 )
     ]
     if( hasBrownPowerUp ) {
         array_push( conditions, ( prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
@@ -565,17 +565,17 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
     if( hasOrangePowerUp ) {
         array_push( conditions, ( prev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
     }
-    if( hasBlackPowerUp ) {
-        array_push( conditions, ( prev( BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
+    if( hasGreyPowerUp ) {
+        array_push( conditions, ( prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
 
-function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     conditions = [
         ( Chapter() == chapter && prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
         ( Chapter() == chapter && prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( Chapter() == chapter && prev( BlackState() ) != 0x00000002 && BlackState() == 0x00000002 )
+        ( Chapter() == chapter && prev( GreyState() ) != 0x00000002 && GreyState() == 0x00000002 )
     ]
     if( hasBrownPowerUp ) {
         array_push( conditions, ( Chapter() == chapter && prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
@@ -583,8 +583,8 @@ function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPo
     if( hasOrangePowerUp ) {
         array_push( conditions, ( Chapter() == chapter && rev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
     }
-    if( hasBlackPowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && prev( BlackPoweredUpState() ) != 0x00000002 && BlackPoweredUpState() == 0x00000002 ) )
+    if( hasGreyPowerUp ) {
+        array_push( conditions, ( Chapter() == chapter && prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
@@ -610,23 +610,23 @@ function InGame() {
 //
 // `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
 //
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     brownDone = BrownState() == 0x00000007
     orangeDone = OrangeState() == 0x00000007
     if( hasOrangePowerUp ) {
         orangeDone = orangeDone || OrangePoweredUpState() == 0x00000007
     }
-    blackDone = BlackState() == 0x00000007
-    if( hasBlackPowerUp ) {
-        blackDone = blackDone || BlackPoweredUpState() == 0x00000007 || BlackPoweredUpState() == 0x00000006 // Special Case: Quickly entering end tree with black powered up only animates to 0x06
+    greyDone = GreyState() == 0x00000007
+    if( hasGreyPowerUp ) {
+        greyDone = greyDone || GreyPoweredUpState() == 0x00000007 || GreyPoweredUpState() == 0x00000006 // Special Case: Quickly entering end tree with grey powered up only animates to 0x06
     }
-    done = ( ( brownDone ) && ( orangeDone ) && ( blackDone ) )
+    done = ( ( brownDone ) && ( orangeDone ) && ( greyDone ) )
     if( hasBrownPowerUp ) {
         done = done || BrownPoweredUpState() == 0x00000007
     }
-    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have black as a firefly
-        done = ( brownDone || BrownPoweredUpState() == 0x00000007 ) && ( blackDone )
+    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
+        done = ( brownDone || BrownPoweredUpState() == 0x00000007 ) && ( greyDone )
     }
     conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
     if( isChallenge ) {
@@ -651,10 +651,10 @@ function OrangeRotating( chapter ) {
 
 // Detects heart collection with specific character
 //
-// `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `black` otherwise it will jusut detect number of hearts collected by anyone.
+// `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `grey` otherwise it will jusut detect number of hearts collected by anyone.
 //
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasBlackPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasBlackPowerUp ) {
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     base = prev( HeartsCollected() ) == HeartsCollected() - 1
     if character == "brown" {
         base = base && BrownState() != 0x00000007
@@ -666,10 +666,10 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         } else {
             base = base && OrangeState() == 0x00000007
         }
-        if hasBlackPowerUp {
-            base = base && BlackState() >= 0x00000007 && BlackState() <= 0x00000008 && BlackPoweredUpState() >= 0x00000007 && BlackPoweredUpState() <= 0x00000008
+        if hasGreyPowerUp {
+            base = base && GreyState() >= 0x00000007 && GreyState() <= 0x00000008 && GreyPoweredUpState() >= 0x00000007 && GreyPoweredUpState() <= 0x00000008
         } else {
-            base = base && BlackState() == 0x00000007
+            base = base && GreyState() == 0x00000007
         }
     }
 
@@ -683,15 +683,15 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         if hasOrangePowerUp {
             base = base && OrangePoweredUpState() != 0x00000007
         }
-        if hasBlackPowerUp {
-            base = base && BlackState() >= 0x00000007 && BlackState() <= 0x00000008 && BlackPoweredUpState() >= 0x00000007 && BlackPoweredUpState() <= 0x00000008
+        if hasGreyPowerUp {
+            base = base && GreyState() >= 0x00000007 && GreyState() <= 0x00000008 && GreyPoweredUpState() >= 0x00000007 && GreyPoweredUpState() <= 0x00000008
         } else {
-            base = base && BlackState() == 0x00000007
+            base = base && GreyState() == 0x00000007
         }
     }
 
-    if character == "black" {
-        base = base && BlackState() != 0x00000007
+    if character == "grey" {
+        base = base && GreyState() != 0x00000007
         if hasBrownPowerUp {
             base = base && BrownState() >= 0x00000007 && BrownState() <= 0x00000008 && BrownPoweredUpState() >= 0x00000007 && BrownPoweredUpState() <= 0x00000008
         } else {
@@ -702,8 +702,8 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         } else {
             base = base && OrangeState() == 0x00000007
         }
-        if hasBlackPowerUp {
-            base = base && BlackPoweredUpState() != 0x00000007
+        if hasGreyPowerUp {
+            base = base && GreyPoweredUpState() != 0x00000007
         }
     }
     return repeated( hearts, base )
@@ -742,7 +742,7 @@ for index in range( 1, length( chapterConfigs ) ) {
     }
     trigger = (
         once( Chapter() == chapter["id"] ) &&
-        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
     )
     progression = {
         "title": chapter["description"],
@@ -763,18 +763,18 @@ for index in range( 1, length( chapterConfigs ) ) {
         }
         if( dictionary_contains_key( chapter, "characterCollect" ) ) {
             collectionDetails = chapter["characterCollect"]
-            challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+            challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
         }
         if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
             challengeTrigger = challengeTrigger && HeartsCollected() == chapter["hearts"]
         }
-        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
         if( dictionary_contains_key( chapter, "limitJumps" ) ) {
             challengeTrigger = challengeTrigger &&
             disable_when(
                 tally(
                     chapter["limitJumps"] + 1,
-                    CharacterJumps( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+                    CharacterJumps( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
                 )
             ) 
         }
@@ -807,7 +807,7 @@ for index in range( 1, length( chapterConfigs ) ) {
         challenge = {
             "title": chapter["challengeName"],
             "description": chapter["challengeDesc"],
-            "points": 5,
+            "points": 10,
             "trigger":  challengeTrigger && (
                 always_false() ||
                 never( GameReset() )
@@ -833,9 +833,9 @@ for index in range( 1, length( chapterConfigs ) ) {
         if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
             l["start"] = GameReset() && Chapter() == chapter["id"]
             l["cancel"] = GameReset() && Chapter() != chapter["id"]
-            l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+            l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
         } else {
-            l["start"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["blackPowerUp"] )
+            l["start"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
             l["cancel"] = always_false()
             l["submit"] = always_true()
         }

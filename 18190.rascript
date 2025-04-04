@@ -685,12 +685,14 @@ function InGame() {
     )
 }
 
+// OLD FUNC (keeping for reference while the set soaks in unofficial)
+//
 // Detects completion of a chapter based on character power ups in the level
 //
 // `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
 //
 // `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+function CompleteChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     brownDone = BrownState() == 0x00000007
     orangeDone = OrangeState() == 0x00000007
     if( hasOrangePowerUp ) {
@@ -714,14 +716,12 @@ function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerU
     return conds
 }
 
-// TEST FUNC
-//
 // Detects completion of a chapter based on character power ups in the level
 //
 // `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
 //
 // `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     brownDone = prev( BrownState() ) == 0x00000007
     orangeDone = prev( OrangeState() ) == 0x00000007
     if( hasOrangePowerUp ) {
@@ -852,7 +852,7 @@ for index in range( 1, length( chapterConfigs ) ) {
     }
     trigger = (
         once( Chapter() == chapter["id"] ) &&
-        CompleteChapter1( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
     )
     progression = {
         "id":    chapter["raID"],

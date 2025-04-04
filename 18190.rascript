@@ -114,6 +114,7 @@ chapterConfigs = [
     {
         "id":               0x0000001b,
         "name":             "Chapter 1",
+        "raID":             509517,
         "description":      "The Heart Tree",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -121,7 +122,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 1,
         "hasLeaderboard":   true,
+        "leaderboardID":    127770,
         "challengeName":    "Totem Spirit",
+        "raChallengeID":    509518,
         "challengeDesc":    "Complete chapter 1 in no more than 15 jumps",
         "limitJumps":       15,
         "type":             "progression"
@@ -129,6 +132,7 @@ chapterConfigs = [
     {
         "id":               0x00000000,
         "name":             "Chapter 2",
+        "raID":             509519,
         "description":      "We're On Our Way",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -137,13 +141,16 @@ chapterConfigs = [
         "progressionGroup": 1,
         "timeTrialSeconds": 15,
         "hasLeaderboard":   true,
+        "leaderboardID":    127771,
         "challengeName":    "Gotta Go Fast",
+        "raChallengeID":    509520,
         "challengeDesc":    "Complete chapter 2 in under 15 seconds",
         "type":             "progression"
     },
     {
         "id":               0x00000003,
         "name":             "Chapter 3",
+        "raID":             509521,
         "description":      "Wilderness",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -151,7 +158,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 1,
         "hasLeaderboard":   true,
+        "leaderboardID":    127772,
         "challengeName":    "Mind The Gap",
+        "raChallengeID":    509522,
         "challengeDesc":    "With both orange and grey inside the end tree, use brown to collect one heart then complete chapter 3",
         "characterCollect": {
             "character": "brown",
@@ -162,6 +171,7 @@ chapterConfigs = [
     {
         "id":               0x00000004,
         "name":             "Chapter 4",
+        "raID":             509523,
         "description":      "A Little Cave",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -169,7 +179,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127773,
         "challengeName":    "Rock Tunnel",
+        "raChallengeID":    509524,
         "challengeDesc":    "Collect 3 hearts in no more than 14 jumps then complete chapter 4",
         "heartsCollected":  true,
         "limitJumps":       14,
@@ -178,6 +190,7 @@ chapterConfigs = [
     {
         "id":               0x00000005,
         "name":             "Chapter 5",
+        "raID":             509525,
         "description":      "Antler Ancestor",
         "hearts":           3,
         "brownPowerUp":     true,
@@ -185,7 +198,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127774,
         "challengeName":    "Gallup Jingle",
+        "raChallengeID":    509526,
         "challengeDesc":    "Collect 3 hearts in no more than 6 double jumps then complete chapter 5",
         "heartsCollected":  true,
         "limitDoubleJumps": 6,
@@ -194,6 +209,7 @@ chapterConfigs = [
     {
         "id":               0x00000008,
         "name":             "Chapter 6",
+        "raID":             509513,
         "description":      "Rainbow Spirit",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -201,7 +217,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127775,
         "challengeName":    "A Slight Breeze",
+        "raChallengeID":    509514,
         "challengeDesc":    "Collect 2 hearts in no more than 1 world rotation then complete chapter 6",
         "heartsCollected":  true,
         "worldRotations":   1,
@@ -210,6 +228,7 @@ chapterConfigs = [
     {
         "id":               0x0000000a,
         "name":             "Chapter 7",
+        "raID":             509527,
         "description":      "Wall in the Meadow",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -217,7 +236,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127776,
         "challengeName":    "Great Wall",
+        "raChallengeID":    509528,
         "challengeDesc":    "With both orange and brown inside the end tree, use grey to collect one heart then complete chapter 7",
         "characterCollect": {
             "character": "grey",
@@ -228,6 +249,7 @@ chapterConfigs = [
     {
         "id":               0x00000016,
         "name":             "Chapter 8",
+        "raID":             509515,
         "description":      "Bridge",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -235,7 +257,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127777,
         "challengeName":    "Water Under The Bridge",
+        "raChallengeID":    509516,
         "challengeDesc":    "Without dying collect 4 hearts in no more than 1 world rotation then complete chapter 8",
         "deathless":        true,
         "heartsCollected":  true,
@@ -245,6 +269,7 @@ chapterConfigs = [
     {
         "id":               0x00000006,
         "name":             "Chapter 9",
+        "raID":             509529,
         "description":      "Islands",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -252,7 +277,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127778,
         "challengeName":    "Island Hopping",
+        "raChallengeID":    509530,
         "challengeDesc":    "Collect 5 hearts in no more than 4 double jumps then complete chapter 9",
         "heartsCollected":  true,
         "limitDoubleJumps": 4,
@@ -261,6 +288,7 @@ chapterConfigs = [
     {
         "id":               0x00000013,
         "name":             "Chapter 10",
+        "raID":             509531,
         "description":      "Serpentine",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -269,7 +297,9 @@ chapterConfigs = [
         "progressionGroup": 2,
         "timeTrialSeconds": 20,
         "hasLeaderboard":   true,
+        "leaderboardID":    127779,
         "challengeName":    "Zig Zag",
+        "raChallengeID":    509532,
         "challengeDesc":    "Collect 7 hearts and complete chapter 10 in under 20 seconds",
         "heartsCollected":  true,
         "type":             "progression"
@@ -277,6 +307,7 @@ chapterConfigs = [
     {
         "id":               0x0000000b,
         "name":             "Chapter 11",
+        "raID":             509533,
         "description":      "Flying Rocks",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -284,7 +315,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127780,
         "challengeName":    "Rock of Terror",
+        "raChallengeID":    509534,
         "challengeDesc":    "Without dying collect 8 hearts in no more than 6 world rotations then complete chapter 11",
         "deathless":        true,
         "heartsCollected":  true,
@@ -294,6 +327,7 @@ chapterConfigs = [
     {
         "id":               0x00000007,
         "name":             "Chapter 12",
+        "raID":             509535,
         "description":      "Little Fern Track",
         "hearts":           12,
         "brownPowerUp":     true,
@@ -301,7 +335,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127781,
         "challengeName":    "Glowing Fern",
+        "raChallengeID":    509536,
         "challengeDesc":    "Without dying collect 12 hearts in no more than 3 double jumps then complete chapter 12",
         "deathless":        true,
         "heartsCollected":  true,
@@ -311,6 +347,7 @@ chapterConfigs = [
     {
         "id":               0x0000000c,
         "name":             "Chapter 13",
+        "raID":             509537,
         "description":      "Sky and Cave",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -318,7 +355,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127782,
         "challengeName":    "Descent Into Bat Kings Cave",
+        "raChallengeID":    509538,
         "challengeDesc":    "Collect 2 hearts in no more than 3 world rotations then complete chapter 13",
         "heartsCollected":  true,
         "worldRotations":   3,
@@ -327,6 +366,7 @@ chapterConfigs = [
     {
         "id":               0x0000000d,
         "name":             "Chapter 14",
+        "raID":             509539,
         "description":      "Fall",
         "hearts":           53,
         "brownPowerUp":     false,
@@ -334,7 +374,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127783,
         "challengeName":    "Falling In Love",
+        "raChallengeID":    509540,
         "challengeDesc":    "Without dying collect 53 hearts then complete chapter 14",
         "deathless":        true,
         "heartsCollected":  true,
@@ -343,6 +385,7 @@ chapterConfigs = [
     {
         "id":               0x0000000e,
         "name":             "Chapter 15",
+        "raID":             509541,
         "description":      "Bat King",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -350,7 +393,9 @@ chapterConfigs = [
         "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127784,
         "challengeName":    "Beady Eyed",
+        "raChallengeID":    509542,
         "challengeDesc":    "Without dying collect 4 hearts in no more than 6 jumps then complete chapter 15",
         "deathless":        true,
         "heartsCollected":  true,
@@ -360,6 +405,7 @@ chapterConfigs = [
     {
         "id":               0x0000000f,
         "name":             "Chapter 16",
+        "raID":             509543,
         "description":      "Secret Passage",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -368,7 +414,9 @@ chapterConfigs = [
         "progressionGroup": 2,
         "timeTrialSeconds": 45,
         "hasLeaderboard":   true,
+        "leaderboardID":    127785,
         "challengeName":    "I Sense A Connection",
+        "raChallengeID":    509544,
         "challengeDesc":    "Collect 3 hearts and complete chapter 16 in under 45 seconds",
         "heartsCollected":  true,
         "type":             "progression"
@@ -376,6 +424,7 @@ chapterConfigs = [
     {
         "id":               0x00000010,
         "name":             "Chapter 17",
+        "raID":             509545,
         "description":      "Delicious Spores",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -383,7 +432,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127786,
         "challengeName":    "Strange Pollen",
+        "raChallengeID":    509546,
         "challengeDesc":    "Complete chapter 17 in no more than 7 jumps",
         "limitJumps":       7,
         "type":             "progression"
@@ -391,6 +442,7 @@ chapterConfigs = [
     {
         "id":               0x00000012,
         "name":             "Chapter 18",
+        "raID":             509547,
         "description":      "Beneath the Roots",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -398,7 +450,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127787,
         "challengeName":    "Individual Tasks",
+        "raChallengeID":    509548,
         "challengeDesc":    "Without dying collect 8 hearts then complete chapter 18",
         "deathless":        true,
         "heartsCollected":  true,
@@ -407,6 +461,7 @@ chapterConfigs = [
     {
         "id":               0x00000001,
         "name":             "Chapter 19",
+        "raID":             509549,
         "description":      "Gates Of Hades",
         "hearts":           5,
         "brownPowerUp":     false,
@@ -414,7 +469,9 @@ chapterConfigs = [
         "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127788,
         "challengeName":    "Cerberus",
+        "raChallengeID":    509550,
         "challengeDesc":    "Without dying and both brown and orange inside the end tree, use grey to collect five hearts then complete chapter 19",
         "deathless":        true,
         "characterCollect": {
@@ -426,6 +483,7 @@ chapterConfigs = [
     {
         "id":               0x00000002,
         "name":             "Chapter 20",
+        "raID":             509551,
         "description":      "Chasm",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -433,7 +491,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127789,
         "challengeName":    "Take Aim",
+        "raChallengeID":    509552,
         "challengeDesc":    "Without dying, or double jumping as Antler Ancestor collect 4 hearts then complete chapter 20",
         "deathless":        true,
         "heartsCollected":  true,
@@ -443,6 +503,7 @@ chapterConfigs = [
     {
         "id":               0x00000014,
         "name":             "Chapter 21",
+        "raID":             509553,
         "description":      "Crystal Caves",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -450,7 +511,9 @@ chapterConfigs = [
         "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127790,
         "challengeName":    "Climb The Ladder",
+        "raChallengeID":    509554,
         "challengeDesc":    "Without dying and in no more than 2 world rotations complete chapter 21",
         "deathless":        true,
         "worldRotations":   2,
@@ -459,6 +522,7 @@ chapterConfigs = [
     {
         "id":               0x00000015,
         "name":             "Chapter 22",
+        "raID":             509555,
         "description":      "Labyrinth",
         "hearts":           8,
         "brownPowerUp":     true,
@@ -467,13 +531,16 @@ chapterConfigs = [
         "progressionGroup": 2,
         "timeTrialSeconds": 40,
         "hasLeaderboard":   true,
+        "leaderboardID":    127791,
         "challengeName":    "Steady Jumps",
+        "raChallengeID":    509556,
         "challengeDesc":    "Complete chapter 22 in under 40 seconds",
         "type":             "progression"
     },
     {
         "id":               0x0000001d,
         "name":             "Chapter 23",
+        "raID":             509557,
         "description":      "Rock Pool",
         "hearts":           7,
         "brownPowerUp":     false,
@@ -481,7 +548,9 @@ chapterConfigs = [
         "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127792,
         "challengeName":    "It Takes Two",
+        "raChallengeID":    509558,
         "challengeDesc":    "Without dying and in no more than 6 world rotations complete chapter 23",
         "deathless":        true,
         "worldRotations":   6,
@@ -490,6 +559,7 @@ chapterConfigs = [
     {
         "id":               0x00000017,
         "name":             "Chapter 24",
+        "raID":             509559,
         "description":      "Old Willow Tree",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -497,7 +567,9 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127793,
         "challengeName":    "Trust Your Family",
+        "raChallengeID":    509560,
         "challengeDesc":    "Without dying and with both brown and grey inside the end tree, use orange to collect five hearts then complete chapter 24",
         "deathless":        true,
         "characterCollect": {
@@ -509,6 +581,7 @@ chapterConfigs = [
     {
         "id":               CHAPTER25,
         "name":             "Chapter 25",
+        "raID":             509561,
         "description":      "Fortress",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -516,7 +589,9 @@ chapterConfigs = [
         "greyPowerUp":      true,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127794,
         "challengeName":    "We're Coming, Mother!",
+        "raChallengeID":    509562,
         "challengeDesc":    "Complete chapter 25 in no more than 7 double jumps and 1 world rotation",
         "limitDoubleJumps": 7,
         "worldRotations":   1,
@@ -525,6 +600,7 @@ chapterConfigs = [
     {
         "id":               0x00000019,
         "name":             "Chapter 26",
+        "raID":             509563,
         "description":      "Family Trees",
         "hearts":           1,
         "brownPowerUp":     true,
@@ -532,12 +608,14 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127795,
         "challengeName":    "",
         "type":             "progression"
     },
     {
         "id":               0x0000001a,
         "name":             "Credits",
+        "raID":             509564,
         "description":      "Here Is My Heart!",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -545,6 +623,7 @@ chapterConfigs = [
         "greyPowerUp":      false,
         "progressionGroup": 2,
         "hasLeaderboard":   true,
+        "leaderboardID":    127796,
         "challengeName":    "",
         "type":             "win_condition"
     }
@@ -776,6 +855,7 @@ for index in range( 1, length( chapterConfigs ) ) {
         CompleteChapter1( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
     )
     progression = {
+        "id":    chapter["raID"],
         "title": chapter["description"],
         "description": format("Complete {0}", chapter["name"]),
         "points": 5,
@@ -836,6 +916,7 @@ for index in range( 1, length( chapterConfigs ) ) {
             )
         }
         challenge = {
+            "id":    chapter["raChallengeID"],
             "title": chapter["challengeName"],
             "description": chapter["challengeDesc"],
             "points": 10,
@@ -887,10 +968,41 @@ rich_presence_conditional_display(
 
 rich_presence_display("In Menus")
 
+// Bad achievements
+for i in range( 0, 51 ) {
+    id = 510046 + i
+    a = {
+        "id":          id,
+        "title":       format("[VOID] Achievement {0}", id),
+        "description": format("Erronious Achievement ID: {0}", id),
+        "points":      0,
+        "trigger":     always_false(),
+        "type":        ""
+    }
+    array_push( achievements, a )
+}
+
+// Bad Leaderboards
+for i in range( 0, 26 ) {
+    id = 127798 + i
+    l = {
+        "id":              id,
+        "title":           format("[VOID] Leaderboard {0}", id),
+        "description":     format("Erronious Leaderboard ID: {0}", id),
+        "value":           0,
+        "format":          "VALUE",
+        "lower_is_better": false,
+        "start":           always_false(),
+        "cancel":          always_false(),
+        "submit":          always_false(),
+    }
+    array_push( leaderboards, l )
+}
 
 for index in range( 0, length( achievements ) - 1 ) {
     a = achievements[index]
     achievement(
+        id          = a["id"],
         title       = a["title"],
         description = a["description"],
         points      = a["points"],

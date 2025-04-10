@@ -56,6 +56,8 @@ function GameState() => dword( 0x00b16044 )
 
 function Chapter() => dword( 0x00b160d4 )
 
+function Score() => dword( 0x00b16048 )
+
 // I think its 60 frames * 10 for miliseconds
 function ChapterTimer() => dword( 0x00b160e4 )
 
@@ -896,12 +898,14 @@ function InMilliseconds( seconds ) {
 
 achievements = []
 leaderboards = []
+chapters = {}
 totalHearts = 0
 for index in range( 1, length( chapterConfigs ) ) {
     chapter = chapterConfigs[index - 1]
     if( index != 1 ) { // Count total stars available minus chapter 1 (tutorial)
         totalHearts = totalHearts + chapter["hearts"] // Only 171 hearts https://gamefaqs.gamespot.com/boards/649587-where-is-my-heart/64934662
     }
+    chapters[chapter["id"]] = chapter["name"]
     trigger = (
         once( Chapter() == chapter["id"] ) &&
         CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
@@ -1011,16 +1015,16 @@ for index in range( 1, length( chapterConfigs ) ) {
 
 rich_presence_conditional_display(
     InGame(),
-    "Hearts: {0}/{1}, Dark Hearts: {2}, Character: {3} TOTAL COLLECTED: {4} TOTAL HEARTS: {5}",
-    rich_presence_value( "valueFormat", CurrentChapterScore(), "VALUE" ),
-    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
-    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" ),
-    rich_presence_value( "valueFormat", Character(), "VALUE" ),
+    "Score: {0}/{1} • Playing {2} • Hearts Collected: {3}/{4} • Deaths: {5}",
+    rich_presence_value( "valueFormat", Score(), "VALUE" ),
+    rich_presence_value( "valueFormat", totalHearts, "VALUE" ),
+    rich_presence_lookup("Chapter", Chapter(), chapters),
     rich_presence_value( "valueFormat", HeartsCollected(), "VALUE" ),
-    rich_presence_value( "valueFormat", totalHearts, "VALUE" )
+    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
+    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" )
 )
 
-rich_presence_display("In Menus")
+rich_presence_display("In Menu")
 
 // Bad achievements
 for i in range( 0, 51 ) {

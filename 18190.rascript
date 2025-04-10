@@ -115,6 +115,8 @@ chapterConfigs = [
         "id":               0x0000001b,
         "name":             "Chapter 1",
         "raID":             509517,
+        "raIcon":           "579155",
+        "raChallengeIcon":  "579156",
         "description":      "The Heart Tree",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -133,6 +135,8 @@ chapterConfigs = [
         "id":               0x00000000,
         "name":             "Chapter 2",
         "raID":             509519,
+        "raIcon":           "579157",
+        "raChallengeIcon":  "579158",
         "description":      "We're On Our Way",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -151,6 +155,8 @@ chapterConfigs = [
         "id":               0x00000003,
         "name":             "Chapter 3",
         "raID":             509521,
+        "raIcon":           "579159",
+        "raChallengeIcon":  "579160",
         "description":      "Wilderness",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -172,6 +178,8 @@ chapterConfigs = [
         "id":               0x00000004,
         "name":             "Chapter 4",
         "raID":             509523,
+        "raIcon":           "579161",
+        "raChallengeIcon":  "579162",
         "description":      "A Little Cave",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -191,6 +199,8 @@ chapterConfigs = [
         "id":               0x00000005,
         "name":             "Chapter 5",
         "raID":             509525,
+        "raIcon":           "579163",
+        "raChallengeIcon":  "579164",
         "description":      "Antler Ancestor",
         "hearts":           3,
         "brownPowerUp":     true,
@@ -210,6 +220,8 @@ chapterConfigs = [
         "id":               0x00000008,
         "name":             "Chapter 6",
         "raID":             509513,
+        "raIcon":           "579165",
+        "raChallengeIcon":  "579166",
         "description":      "Rainbow Spirit",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -229,6 +241,8 @@ chapterConfigs = [
         "id":               0x0000000a,
         "name":             "Chapter 7",
         "raID":             509527,
+        "raIcon":           "579167",
+        "raChallengeIcon":  "579168",
         "description":      "Wall in the Meadow",
         "hearts":           1,
         "brownPowerUp":     false,
@@ -250,6 +264,8 @@ chapterConfigs = [
         "id":               0x00000016,
         "name":             "Chapter 8",
         "raID":             509515,
+        "raIcon":           "579169",
+        "raChallengeIcon":  "579170",
         "description":      "Bridge",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -270,6 +286,8 @@ chapterConfigs = [
         "id":               0x00000006,
         "name":             "Chapter 9",
         "raID":             509529,
+        "raIcon":           "579171",
+        "raChallengeIcon":  "579172",
         "description":      "Islands",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -289,6 +307,8 @@ chapterConfigs = [
         "id":               0x00000013,
         "name":             "Chapter 10",
         "raID":             509531,
+        "raIcon":           "579173",
+        "raChallengeIcon":  "579174",
         "description":      "Serpentine",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -308,6 +328,8 @@ chapterConfigs = [
         "id":               0x0000000b,
         "name":             "Chapter 11",
         "raID":             509533,
+        "raIcon":           "579175",
+        "raChallengeIcon":  "579176",
         "description":      "Flying Rocks",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -328,6 +350,8 @@ chapterConfigs = [
         "id":               0x00000007,
         "name":             "Chapter 12",
         "raID":             509535,
+        "raIcon":           "579177",
+        "raChallengeIcon":  "579178",
         "description":      "Little Fern Track",
         "hearts":           12,
         "brownPowerUp":     true,
@@ -348,6 +372,8 @@ chapterConfigs = [
         "id":               0x0000000c,
         "name":             "Chapter 13",
         "raID":             509537,
+        "raIcon":           "579179",
+        "raChallengeIcon":  "579180",
         "description":      "Sky and Cave",
         "hearts":           2,
         "brownPowerUp":     false,
@@ -367,6 +393,8 @@ chapterConfigs = [
         "id":               0x0000000d,
         "name":             "Chapter 14",
         "raID":             509539,
+        "raIcon":           "579181",
+        "raChallengeIcon":  "579182",
         "description":      "Fall",
         "hearts":           53,
         "brownPowerUp":     false,
@@ -386,6 +414,8 @@ chapterConfigs = [
         "id":               0x0000000e,
         "name":             "Chapter 15",
         "raID":             509541,
+        "raIcon":           "579183",
+        "raChallengeIcon":  "579184",
         "description":      "Bat King",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -406,6 +436,8 @@ chapterConfigs = [
         "id":               0x0000000f,
         "name":             "Chapter 16",
         "raID":             509543,
+        "raIcon":           "579185",
+        "raChallengeIcon":  "579186",
         "description":      "Secret Passage",
         "hearts":           3,
         "brownPowerUp":     false,
@@ -425,6 +457,8 @@ chapterConfigs = [
         "id":               0x00000010,
         "name":             "Chapter 17",
         "raID":             509545,
+        "raIcon":           "579187",
+        "raChallengeIcon":  "579188",
         "description":      "Delicious Spores",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -443,6 +477,8 @@ chapterConfigs = [
         "id":               0x00000012,
         "name":             "Chapter 18",
         "raID":             509547,
+        "raIcon":           "579189",
+        "raChallengeIcon":  "579190",
         "description":      "Beneath the Roots",
         "hearts":           8,
         "brownPowerUp":     false,
@@ -462,6 +498,8 @@ chapterConfigs = [
         "id":               0x00000001,
         "name":             "Chapter 19",
         "raID":             509549,
+        "raIcon":           "579191",
+        "raChallengeIcon":  "579192",
         "description":      "Gates Of Hades",
         "hearts":           5,
         "brownPowerUp":     false,
@@ -484,6 +522,8 @@ chapterConfigs = [
         "id":               0x00000002,
         "name":             "Chapter 20",
         "raID":             509551,
+        "raIcon":           "579193",
+        "raChallengeIcon":  "579194",
         "description":      "Chasm",
         "hearts":           4,
         "brownPowerUp":     true,
@@ -504,6 +544,8 @@ chapterConfigs = [
         "id":               0x00000014,
         "name":             "Chapter 21",
         "raID":             509553,
+        "raIcon":           "579195",
+        "raChallengeIcon":  "579196",
         "description":      "Crystal Caves",
         "hearts":           4,
         "brownPowerUp":     false,
@@ -523,6 +565,8 @@ chapterConfigs = [
         "id":               0x00000015,
         "name":             "Chapter 22",
         "raID":             509555,
+        "raIcon":           "579197",
+        "raChallengeIcon":  "579198",
         "description":      "Labyrinth",
         "hearts":           8,
         "brownPowerUp":     true,
@@ -541,6 +585,8 @@ chapterConfigs = [
         "id":               0x0000001d,
         "name":             "Chapter 23",
         "raID":             509557,
+        "raIcon":           "579199",
+        "raChallengeIcon":  "579200",
         "description":      "Rock Pool",
         "hearts":           7,
         "brownPowerUp":     false,
@@ -560,6 +606,8 @@ chapterConfigs = [
         "id":               0x00000017,
         "name":             "Chapter 24",
         "raID":             509559,
+        "raIcon":           "579201",
+        "raChallengeIcon":  "579202",
         "description":      "Old Willow Tree",
         "hearts":           5,
         "brownPowerUp":     true,
@@ -582,6 +630,8 @@ chapterConfigs = [
         "id":               CHAPTER25,
         "name":             "Chapter 25",
         "raID":             509561,
+        "raIcon":           "579203",
+        "raChallengeIcon":  "579204",
         "description":      "Fortress",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -601,6 +651,7 @@ chapterConfigs = [
         "id":               0x00000019,
         "name":             "Chapter 26",
         "raID":             509563,
+        "raIcon":           "579205",
         "description":      "Family Trees",
         "hearts":           1,
         "brownPowerUp":     true,
@@ -616,6 +667,7 @@ chapterConfigs = [
         "id":               0x0000001a,
         "name":             "Credits",
         "raID":             509564,
+        "raIcon":           "579206",
         "description":      "Here Is My Heart!",
         "hearts":           7,
         "brownPowerUp":     true,
@@ -863,7 +915,8 @@ for index in range( 1, length( chapterConfigs ) ) {
             always_false() ||
             never( GameReset() )
         ),
-        "type": chapter["type"]
+        "type": chapter["type"],
+        "badge": chapter["raIcon"]
     }
     array_push( achievements, progression )
 
@@ -924,7 +977,8 @@ for index in range( 1, length( chapterConfigs ) ) {
                 always_false() ||
                 never( GameReset() )
             ),
-            "type": "missable"
+            "type": "missable",
+            "badge": chapter["raChallengeIcon"]
         }
         array_push( achievements, challenge )
     }
@@ -977,7 +1031,8 @@ for i in range( 0, 51 ) {
         "description": format("Erronious Achievement ID: {0}", id),
         "points":      0,
         "trigger":     always_false(),
-        "type":        ""
+        "type":        "",
+        "badge":       "0"
     }
     array_push( achievements, a )
 }
@@ -1007,8 +1062,9 @@ for index in range( 0, length( achievements ) - 1 ) {
         description = a["description"],
         points      = a["points"],
         trigger     = a["trigger"],
-        type        = a["type"]
-)
+        type        = a["type"],
+        badge       = a["badge"]
+    )
 }
 
 for index in range( 0, length( leaderboards ) - 1 ) {

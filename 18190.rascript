@@ -918,14 +918,12 @@ for index in range( 1, length( chapterConfigs ) ) {
     array_push( achievements, progression )
 
     if( chapter["challengeName"] != "" ) {
-        hasConditions = false
-        challengeTrigger = always_true()
+        challengeTrigger = once( Chapter() == chapter["id"] && InGame() )
         if( dictionary_contains_key( chapter, "deathless" ) ) {
             challengeTrigger = challengeTrigger && DarkHeartsCollected() == 0
         }
         if( dictionary_contains_key( chapter, "characterCollect" ) ) {
             collectionDetails = chapter["characterCollect"]
-            hasConditions = true
             challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
         }
         if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
@@ -966,9 +964,6 @@ for index in range( 1, length( chapterConfigs ) ) {
                 prev( CurrentChapterTimer() ) < InMilliseconds( chapter["timeTrialSeconds"] ) &&
                 CurrentChapterTimer() >= InMilliseconds( chapter["timeTrialSeconds"] )
             )
-        }
-        if( !hasConditions ) {
-            challengeTrigger = once( Chapter() == chapter["id"] && InGame() ) && challengeTrigger
         }
         challenge = {
             "id":    chapter["raChallengeID"],

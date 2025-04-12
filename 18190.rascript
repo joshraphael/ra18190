@@ -906,31 +906,26 @@ for index in range( 1, length( chapterConfigs ) ) {
         totalHearts = totalHearts + chapter["hearts"] // Only 171 hearts https://gamefaqs.gamespot.com/boards/649587-where-is-my-heart/64934662
     }
     chapters[chapter["id"]] = chapter["name"]
-    trigger = (
-        once( Chapter() == chapter["id"] ) &&
-        CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
-    )
     progression = {
         "id":    chapter["raID"],
         "title": chapter["description"],
         "description": format("Complete {0}", chapter["name"]),
         "points": 5,
-        "trigger": trigger && (
-            always_false() ||
-            never( GameReset() )
-        ),
+        "trigger": CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] ),
         "type": chapter["type"],
         "badge": chapter["raIcon"]
     }
     array_push( achievements, progression )
 
     if( chapter["challengeName"] != "" ) {
-        challengeTrigger = once( Chapter() == chapter["id"] )
+        hasConditions = false
+        challengeTrigger = always_true()
         if( dictionary_contains_key( chapter, "deathless" ) ) {
             challengeTrigger = challengeTrigger && DarkHeartsCollected() == 0
         }
         if( dictionary_contains_key( chapter, "characterCollect" ) ) {
             collectionDetails = chapter["characterCollect"]
+            hasConditions = true
             challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
         }
         if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
@@ -971,6 +966,9 @@ for index in range( 1, length( chapterConfigs ) ) {
                 prev( CurrentChapterTimer() ) < InMilliseconds( chapter["timeTrialSeconds"] ) &&
                 CurrentChapterTimer() >= InMilliseconds( chapter["timeTrialSeconds"] )
             )
+        }
+        if( !hasConditions ) {
+            challengeTrigger = once( Chapter() == chapter["id"] && InGame() ) && challengeTrigger
         }
         challenge = {
             "id":    chapter["raChallengeID"],

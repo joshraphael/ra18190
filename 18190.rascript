@@ -124,7 +124,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 1,
         "hasLeaderboard":   true,
         "leaderboardID":    127770,
         "challengeName":    "Totem Spirit",
@@ -144,7 +143,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 1,
         "timeTrialSeconds": 15,
         "hasLeaderboard":   true,
         "leaderboardID":    127771,
@@ -164,7 +162,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 1,
         "hasLeaderboard":   true,
         "leaderboardID":    127772,
         "challengeName":    "Mind the Gap",
@@ -187,7 +184,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127773,
         "challengeName":    "Rock Tunnel",
@@ -208,7 +204,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127774,
         "challengeName":    "Gallup Jingle",
@@ -229,7 +224,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127775,
         "challengeName":    "A Slight Breeze",
@@ -250,7 +244,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127776,
         "challengeName":    "Great Wall",
@@ -273,7 +266,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127777,
         "challengeName":    "Water Under the Bridge",
@@ -295,7 +287,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127778,
         "challengeName":    "Island Hopping",
@@ -316,7 +307,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "timeTrialSeconds": 20,
         "hasLeaderboard":   true,
         "leaderboardID":    127779,
@@ -337,7 +327,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127780,
         "challengeName":    "Rock of Terror",
@@ -359,7 +348,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127781,
         "challengeName":    "Glowing Fern",
@@ -381,7 +369,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127782,
         "challengeName":    "Descent Into Bat Kings Cave",
@@ -402,7 +389,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127783,
         "challengeName":    "Falling in Love",
@@ -423,7 +409,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127784,
         "challengeName":    "Beady Eyed",
@@ -445,7 +430,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "timeTrialSeconds": 45,
         "hasLeaderboard":   true,
         "leaderboardID":    127785,
@@ -466,7 +450,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127786,
         "challengeName":    "Strange Pollen",
@@ -486,7 +469,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127787,
         "challengeName":    "Individual Tasks",
@@ -507,7 +489,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    false,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127788,
         "challengeName":    "Cerberus",
@@ -531,7 +512,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127789,
         "challengeName":    "Take Aim",
@@ -553,7 +533,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127790,
         "challengeName":    "Climb the Ladder",
@@ -574,7 +553,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "timeTrialSeconds": 40,
         "hasLeaderboard":   true,
         "leaderboardID":    127791,
@@ -594,7 +572,6 @@ chapterConfigs = [
         "brownPowerUp":     false,
         "orangePowerUp":    true,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127792,
         "challengeName":    "It Takes Two",
@@ -615,7 +592,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127793,
         "challengeName":    "Trust Your Family",
@@ -639,7 +615,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    true,
         "greyPowerUp":      true,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127794,
         "challengeName":    "We Are Coming, Mother!",
@@ -659,7 +634,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127795,
         "challengeName":    "",
@@ -675,7 +649,6 @@ chapterConfigs = [
         "brownPowerUp":     true,
         "orangePowerUp":    false,
         "greyPowerUp":      false,
-        "progressionGroup": 2,
         "hasLeaderboard":   true,
         "leaderboardID":    127796,
         "challengeName":    "",
@@ -737,37 +710,6 @@ function InGame() {
     return (
         GamePointer() != 0x00000000
     )
-}
-
-// OLD FUNC (keeping for reference while the set soaks in unofficial)
-//
-// Detects completion of a chapter based on character power ups in the level
-//
-// `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
-//
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter1( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
-    brownDone = BrownState() == 0x00000007
-    orangeDone = OrangeState() == 0x00000007
-    if( hasOrangePowerUp ) {
-        orangeDone = orangeDone || OrangePoweredUpState() == 0x00000007
-    }
-    greyDone = GreyState() == 0x00000007
-    if( hasGreyPowerUp ) {
-        greyDone = greyDone || GreyPoweredUpState() == 0x00000007 || GreyPoweredUpState() == 0x00000006 // Special Case: Quickly entering end tree with grey powered up only animates to 0x06
-    }
-    done = ( ( brownDone ) && ( orangeDone ) && ( greyDone ) )
-    if( hasBrownPowerUp ) {
-        done = done || BrownPoweredUpState() == 0x00000007
-    }
-    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
-        done = ( brownDone || BrownPoweredUpState() == 0x00000007 ) && ( greyDone )
-    }
-    conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
-    if( isChallenge ) {
-        conds = trigger_when( conds )
-    }
-    return conds
 }
 
 // Detects completion of a chapter based on character power ups in the level

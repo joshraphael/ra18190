@@ -29,6 +29,3 @@ load:
 	cp saves/chapter${chapter}/PARAM.SFO ${RALIBRETRO_DIR}/Saves/PSP/SAVEDATA/${USA}
 	cp saves/chapter${chapter}/SAVE.S ${RALIBRETRO_DIR}/Saves/PSP/SAVEDATA/${EUROPE}
 	cp saves/chapter${chapter}/SAVE.S ${RALIBRETRO_DIR}/Saves/PSP/SAVEDATA/${USA}
-
-notes:
-	cd .github/ && go get -t ./... && go run main.go > ${RALIBRETRO_DIR}/RACache/Data/${GAME_ID}-Notes.json

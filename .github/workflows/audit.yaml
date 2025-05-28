@@ -1,4 +1,4 @@
-name: Test
+name: Audit
 
 on:
   push:
@@ -13,7 +13,6 @@ permissions:
 jobs:
   autocr:
     name: AutoCR
-    needs: compile
     runs-on: ubuntu-latest
     steps:
       - name: Audit Where is my Heart? RAScript

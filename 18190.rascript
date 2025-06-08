@@ -13,18 +13,22 @@ function KeyPressed() => dword( 0x00a43a40 )
 //
 // Notes: Anything other than 0x00000000 is an address to the currently playing chapters data
 //
+// (use & value 0x01ffffff)
+//
 // ```text
 // 0x00000000 = In Main Menu
-// (use & value 0x01ffffff)
-// +0x88
-// .+0x0
-// ..+0x14
-// ...+0x08 = Current Chapter Score
-// ...+0x0c = Hearts Collected
-// ...+0x10 = Dark Hearts Collected
-// ...+0x14 = Hearts Available
-// +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Grey
-// +0x284 = Current Chapter Timer
+// +0x088 = Pointer [32-bit]
+// .+0x000 = Pointer [32-bit]
+// ..+0x014 = Pointer [32-bit]
+// ...+0x008 = Current Chapter Score [32-bit]
+// ...+0x00c = Hearts Collected [32-bit]
+// ...+0x010 = Dark Hearts Collected [32-bit]
+// ...+0x014 = Hearts Available [32-bit]
+// +0x244 = Current Character [32-bit]
+// 0x00000000 = Brown
+// 0x00000001 = Orange
+// 0x00000002 = Grey
+// +0x284 = Current Chapter Timer [32-bit]
 // ```
 function GamePointer() => dword( 0x00b16038 )
 
@@ -667,7 +671,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000001a,
-        "nextID":           0x00000063,
+        "nextID":           END,
         "name":             "Credits",
         "raID":             509564,
         "raIcon":           "579206",
@@ -724,26 +728,24 @@ function InGame() {
 // Detects completion of a chapter based on character power ups in the level
 //
 // `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
-//
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+function CompleteChapter( isChallenge, chapter ) {
     brownDone = prev( BrownState() ) == 0x00000007
     orangeDone = prev( OrangeState() ) == 0x00000007
-    if( hasOrangePowerUp ) {
+    if( chapter["orangePowerUp"] ) {
         orangeDone = orangeDone || prev( OrangePoweredUpState() ) == 0x00000007
     }
     greyDone = prev( GreyState() ) == 0x00000007
-    if( hasGreyPowerUp ) {
+    if( chapter["greyPowerUp"] ) {
         greyDone = greyDone || prev( GreyPoweredUpState() ) == 0x00000007 || prev( GreyPoweredUpState() ) == 0x00000006 // Special Case: Quickly entering end tree with grey powered up only animates to 0x06
     }
     done = ( ( brownDone ) && ( orangeDone ) && ( greyDone ) )
-    if( hasBrownPowerUp ) {
+    if( chapter["brownPowerUp"] ) {
         done = done || prev( BrownPoweredUpState() ) == 0x00000007
     }
-    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
+    if( chapter["id"] == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
         done = ( brownDone || prev( BrownPoweredUpState() ) == 0x00000007 ) && ( greyDone )
     }
-    conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
+    conds = ( done ) && ( prev( Chapter() ) == chapter["id"] && Chapter() == chapter["nextID"] )
     if( isChallenge ) {
         conds = trigger_when( conds )
     }
@@ -862,7 +864,7 @@ for index in range( 1, length( chapterConfigs ) ) {
         "title": chapter["description"],
         "description": format("Complete {0}", chapter["name"]),
         "points": 5,
-        "trigger": CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] ),
+        "trigger": CompleteChapter( false, chapter ),
         "type": chapter["type"],
         "badge": chapter["raIcon"]
     }
@@ -883,7 +885,7 @@ for index in range( 1, length( chapterConfigs ) ) {
         if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
             challengeTrigger = challengeTrigger && HeartsCollected() == chapter["hearts"]
         }
-        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter )
         if( dictionary_contains_key( chapter, "limitJumps" ) ) {
             challengeTrigger = challengeTrigger &&
             disable_when(
@@ -945,9 +947,9 @@ for index in range( 1, length( chapterConfigs ) ) {
         if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
             l["start"] = GameReset() && Chapter() == chapter["id"]
             l["cancel"] = GameReset() && Chapter() != chapter["id"]
-            l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+            l["submit"] = CompleteChapter( false, chapter )
         } else {
-            l["start"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+            l["start"] = CompleteChapter( false, chapter )
             l["cancel"] = always_false()
             l["submit"] = always_true()
         }

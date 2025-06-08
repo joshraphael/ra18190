@@ -990,12 +990,13 @@ singular_lookup = {
 
 rich_presence_conditional_display(
     InGame(),
-    "Score {0}/{1} • Playing {2} • {3}/{4} hearts collected • {5} death{6}",
+    "Score {0}/{1} • Playing {2} • {3}/{4} heart{5} collected • {6} death{7}",
     rich_presence_value( "Number", Score(), "VALUE" ),
     rich_presence_value( "Number", totalHearts, "VALUE" ),
     rich_presence_lookup( "Chapter", Chapter(), chapters ),
     rich_presence_value( "Number", HeartsCollected(), "VALUE" ),
     rich_presence_value( "Number", AvailableHearts(), "VALUE" ),
+    rich_presence_lookup( "Case", AvailableHearts(), singular_lookup, "s" ),
     rich_presence_value( "Number", DarkHeartsCollected(), "VALUE" ),
     rich_presence_lookup( "Case", DarkHeartsCollected(), singular_lookup, "s" )
 )

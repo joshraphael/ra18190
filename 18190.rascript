@@ -13,24 +13,28 @@ function KeyPressed() => dword( 0x00a43a40 )
 //
 // Notes: Anything other than 0x00000000 is an address to the currently playing chapters data
 //
+// (use & value 0x01ffffff)
+//
 // ```text
 // 0x00000000 = In Main Menu
-// (use & value 0x01ffffff)
-// +0x88
-// .+0x0
-// ..+0x14
-// ...+0x08 = Current Chapter Score
-// ...+0x0c = Hearts Collected
-// ...+0x10 = Dark Hearts Collected
-// ...+0x14 = Hearts Available
-// +0x244 = Current Character 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Grey
-// +0x284 = Current Chapter Timer
+// +0x088 = Pointer [32-bit]
+// .+0x000 = Pointer [32-bit]
+// ..+0x014 = Pointer [32-bit]
+// ...+0x008 = Current Chapter Score [32-bit]
+// ...+0x00c = Hearts Collected [32-bit]
+// ...+0x010 = Dark Hearts Collected [32-bit]
+// ...+0x014 = Hearts Available [32-bit]
+// +0x244 = Current Character [32-bit]
+// 0x00000000 = Brown
+// 0x00000001 = Orange
+// 0x00000002 = Gray
+// +0x284 = Current Chapter Timer [32-bit]
 // ```
 function GamePointer() => dword( 0x00b16038 )
 
 function GamePointer2() => dword( ( GamePointer() & 0x01ffffff ) + 0x88 )
 
-// The character currently being used in game 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Grey
+// The character currently being used in game 0x00000000 = Brown, 0x00000001 = Orange, 0x00000002 = Gray
 function Character() => dword( ( GamePointer() & 0x01ffffff ) + 0x244 )
 
 // The Current Chapter Timer
@@ -87,7 +91,7 @@ function OrangeState() => dword( 0x00e67ec8 )
 
 function OrangePoweredUpState() => dword( 0x00e7b9c8 )
 
-// $B1F0F8 - [32-bit] Grey State
+// $B1F0F8 - [32-bit] Gray State
 // 0x00000000 = Idle
 // 0x00000001 = Left or Right
 // 0x00000002 = Jumping
@@ -96,9 +100,9 @@ function OrangePoweredUpState() => dword( 0x00e7b9c8 )
 // 0x00000006 = Entering End Chapter Tree
 // 0x00000007 = Inside End Chapter Tree
 // 0x00000008 = Powered Up (if entering End Tree powered up it stays this value)
-function GreyState() => dword( 0x00b1f0f8 )
+function GrayState() => dword( 0x00b1f0f8 )
 
-function GreyPoweredUpState() => dword( 0x00b23d78 )
+function GrayPoweredUpState() => dword( 0x00b23d78 )
 
 // 0x00 = not double Jumping
 // 0x01 = double jumping
@@ -115,7 +119,9 @@ END = 0x00000063
 chapterConfigs = [
     {
         "id":               0x0000001b,
-        "name":             "Chapter 1",
+        "nextID":           0x00000000,
+        "name":             "chapter 1",
+        "nameTitle":        "Chapter 1",
         "raID":             509517,
         "raIcon":           "579155",
         "raChallengeIcon":  "579156",
@@ -123,7 +129,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127770,
         "challengeName":    "Totem Spirit",
@@ -134,7 +140,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000000,
-        "name":             "Chapter 2",
+        "nextID":           0x00000003,
+        "name":             "chapter 2",
+        "nameTitle":        "Chapter 2",
         "raID":             509519,
         "raIcon":           "579157",
         "raChallengeIcon":  "579158",
@@ -142,7 +150,7 @@ chapterConfigs = [
         "hearts":           1,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "timeTrialSeconds": 15,
         "hasLeaderboard":   true,
         "leaderboardID":    127771,
@@ -153,7 +161,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000003,
-        "name":             "Chapter 3",
+        "nextID":           0x00000004,
+        "name":             "chapter 3",
+        "nameTitle":        "Chapter 3",
         "raID":             509521,
         "raIcon":           "579159",
         "raChallengeIcon":  "579160",
@@ -161,12 +171,12 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127772,
         "challengeName":    "Mind the Gap",
         "raChallengeID":    509522,
-        "challengeDesc":    "With both orange and grey inside the end tree, use brown to collect one heart, then complete chapter 3.",
+        "challengeDesc":    "With both Orange and Gray inside the end tree, use Brown to collect one heart, then complete chapter 3.",
         "characterCollect": {
             "character": "brown",
             "hearts":    1
@@ -175,7 +185,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000004,
-        "name":             "Chapter 4",
+        "nextID":           0x00000005,
+        "name":             "chapter 4",
+        "nameTitle":        "Chapter 4",
         "raID":             509523,
         "raIcon":           "579161",
         "raChallengeIcon":  "579162",
@@ -183,7 +195,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127773,
         "challengeName":    "Rock Tunnel",
@@ -195,7 +207,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000005,
-        "name":             "Chapter 5",
+        "nextID":           0x00000008,
+        "name":             "chapter 5",
+        "nameTitle":        "Chapter 5",
         "raID":             509525,
         "raIcon":           "579163",
         "raChallengeIcon":  "579164",
@@ -203,7 +217,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127774,
         "challengeName":    "Gallup Jingle",
@@ -215,7 +229,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000008,
-        "name":             "Chapter 6",
+        "nextID":           0x0000000a,
+        "name":             "chapter 6",
+        "nameTitle":        "Chapter 6",
         "raID":             509513,
         "raIcon":           "579165",
         "raChallengeIcon":  "579166",
@@ -223,7 +239,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127775,
         "challengeName":    "A Slight Breeze",
@@ -235,7 +251,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000a,
-        "name":             "Chapter 7",
+        "nextID":           0x00000016,
+        "name":             "chapter 7",
+        "nameTitle":        "Chapter 7",
         "raID":             509527,
         "raIcon":           "579167",
         "raChallengeIcon":  "579168",
@@ -243,21 +261,23 @@ chapterConfigs = [
         "hearts":           1,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127776,
         "challengeName":    "Great Wall",
         "raChallengeID":    509528,
-        "challengeDesc":    "With both orange and brown inside the end tree, use grey to collect one heart, then complete chapter 7.",
+        "challengeDesc":    "With both Orange and Brown inside the end tree, use Gray to collect one heart, then complete chapter 7.",
         "characterCollect": {
-            "character": "grey",
+            "character": "gray",
             "hearts":    1
         },
         "type":             "progression"
     },
     {
         "id":               0x00000016,
-        "name":             "Chapter 8",
+        "nextID":           0x00000006,
+        "name":             "chapter 8",
+        "nameTitle":        "Chapter 8",
         "raID":             509515,
         "raIcon":           "579169",
         "raChallengeIcon":  "579170",
@@ -265,7 +285,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127777,
         "challengeName":    "Water Under the Bridge",
@@ -278,7 +298,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000006,
-        "name":             "Chapter 9",
+        "nextID":           0x00000013,
+        "name":             "chapter 9",
+        "nameTitle":        "Chapter 9",
         "raID":             509529,
         "raIcon":           "579171",
         "raChallengeIcon":  "579172",
@@ -286,7 +308,7 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127778,
         "challengeName":    "Island Hopping",
@@ -298,7 +320,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000013,
-        "name":             "Chapter 10",
+        "nextID":           0x0000000b,
+        "name":             "chapter 10",
+        "nameTitle":        "Chapter 10",
         "raID":             509531,
         "raIcon":           "579173",
         "raChallengeIcon":  "579174",
@@ -306,7 +330,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "timeTrialSeconds": 20,
         "hasLeaderboard":   true,
         "leaderboardID":    127779,
@@ -318,7 +342,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000b,
-        "name":             "Chapter 11",
+        "nextID":           0x00000007,
+        "name":             "chapter 11",
+        "nameTitle":        "Chapter 11",
         "raID":             509533,
         "raIcon":           "579175",
         "raChallengeIcon":  "579176",
@@ -326,7 +352,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127780,
         "challengeName":    "Rock of Terror",
@@ -339,7 +365,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000007,
-        "name":             "Chapter 12",
+        "nextID":           0x0000000c,
+        "name":             "chapter 12",
+        "nameTitle":        "Chapter 12",
         "raID":             509535,
         "raIcon":           "579177",
         "raChallengeIcon":  "579178",
@@ -347,7 +375,7 @@ chapterConfigs = [
         "hearts":           12,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127781,
         "challengeName":    "Glowing Fern",
@@ -360,7 +388,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000c,
-        "name":             "Chapter 13",
+        "nextID":           0x0000000d,
+        "name":             "chapter 13",
+        "nameTitle":        "Chapter 13",
         "raID":             509537,
         "raIcon":           "579179",
         "raChallengeIcon":  "579180",
@@ -368,7 +398,7 @@ chapterConfigs = [
         "hearts":           2,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127782,
         "challengeName":    "Descent Into Bat Kings Cave",
@@ -380,7 +410,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000d,
-        "name":             "Chapter 14",
+        "nextID":           0x0000000e,
+        "name":             "chapter 14",
+        "nameTitle":        "Chapter 14",
         "raID":             509539,
         "raIcon":           "579181",
         "raChallengeIcon":  "579182",
@@ -388,7 +420,7 @@ chapterConfigs = [
         "hearts":           53,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127783,
         "challengeName":    "Falling in Love",
@@ -400,7 +432,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000e,
-        "name":             "Chapter 15",
+        "nextID":           0x0000000f,
+        "name":             "chapter 15",
+        "nameTitle":        "Chapter 15",
         "raID":             509541,
         "raIcon":           "579183",
         "raChallengeIcon":  "579184",
@@ -408,7 +442,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "hasLeaderboard":   true,
         "leaderboardID":    127784,
         "challengeName":    "Beady Eyed",
@@ -421,7 +455,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000f,
-        "name":             "Chapter 16",
+        "nextID":           0x00000010,
+        "name":             "chapter 16",
+        "nameTitle":        "Chapter 16",
         "raID":             509543,
         "raIcon":           "579185",
         "raChallengeIcon":  "579186",
@@ -429,7 +465,7 @@ chapterConfigs = [
         "hearts":           3,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "timeTrialSeconds": 45,
         "hasLeaderboard":   true,
         "leaderboardID":    127785,
@@ -441,7 +477,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000010,
-        "name":             "Chapter 17",
+        "nextID":           0x00000012,
+        "name":             "chapter 17",
+        "nameTitle":        "Chapter 17",
         "raID":             509545,
         "raIcon":           "579187",
         "raChallengeIcon":  "579188",
@@ -449,7 +487,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127786,
         "challengeName":    "Strange Pollen",
@@ -460,7 +498,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000012,
-        "name":             "Chapter 18",
+        "nextID":           0x00000001,
+        "name":             "chapter 18",
+        "nameTitle":        "Chapter 18",
         "raID":             509547,
         "raIcon":           "579189",
         "raChallengeIcon":  "579190",
@@ -468,7 +508,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127787,
         "challengeName":    "Individual Tasks",
@@ -480,7 +520,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000001,
-        "name":             "Chapter 19",
+        "nextID":           0x00000002,
+        "name":             "chapter 19",
+        "nameTitle":        "Chapter 19",
         "raID":             509549,
         "raIcon":           "579191",
         "raChallengeIcon":  "579192",
@@ -488,22 +530,24 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     false,
         "orangePowerUp":    false,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "hasLeaderboard":   true,
         "leaderboardID":    127788,
         "challengeName":    "Cerberus",
         "raChallengeID":    509550,
-        "challengeDesc":    "Without dying and both brown and orange inside the end tree, use grey to collect 5 hearts, then complete chapter 19.",
+        "challengeDesc":    "Without dying and both Brown and Orange inside the end tree, use Gray to collect 5 hearts, then complete chapter 19.",
         "deathless":        true,
         "characterCollect": {
-            "character": "grey",
+            "character": "gray",
             "hearts":    5
         },
         "type":             "progression"
     },
     {
         "id":               0x00000002,
-        "name":             "Chapter 20",
+        "nextID":           0x00000014,
+        "name":             "chapter 20",
+        "nameTitle":        "Chapter 20",
         "raID":             509551,
         "raIcon":           "579193",
         "raChallengeIcon":  "579194",
@@ -511,7 +555,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127789,
         "challengeName":    "Take Aim",
@@ -524,7 +568,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000014,
-        "name":             "Chapter 21",
+        "nextID":           0x00000015,
+        "name":             "chapter 21",
+        "nameTitle":        "Chapter 21",
         "raID":             509553,
         "raIcon":           "579195",
         "raChallengeIcon":  "579196",
@@ -532,7 +578,7 @@ chapterConfigs = [
         "hearts":           4,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "hasLeaderboard":   true,
         "leaderboardID":    127790,
         "challengeName":    "Climb the Ladder",
@@ -544,7 +590,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000015,
-        "name":             "Chapter 22",
+        "nextID":           0x0000001d,
+        "name":             "chapter 22",
+        "nameTitle":        "Chapter 22",
         "raID":             509555,
         "raIcon":           "579197",
         "raChallengeIcon":  "579198",
@@ -552,7 +600,7 @@ chapterConfigs = [
         "hearts":           8,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "timeTrialSeconds": 40,
         "hasLeaderboard":   true,
         "leaderboardID":    127791,
@@ -563,7 +611,9 @@ chapterConfigs = [
     },
     {
         "id":               0x0000001d,
-        "name":             "Chapter 23",
+        "nextID":           0x00000017,
+        "name":             "chapter 23",
+        "nameTitle":        "Chapter 23",
         "raID":             509557,
         "raIcon":           "579199",
         "raChallengeIcon":  "579200",
@@ -571,7 +621,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     false,
         "orangePowerUp":    true,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "hasLeaderboard":   true,
         "leaderboardID":    127792,
         "challengeName":    "It Takes Two",
@@ -583,7 +633,9 @@ chapterConfigs = [
     },
     {
         "id":               0x00000017,
-        "name":             "Chapter 24",
+        "nextID":           CHAPTER25,
+        "name":             "chapter 24",
+        "nameTitle":        "Chapter 24",
         "raID":             509559,
         "raIcon":           "579201",
         "raChallengeIcon":  "579202",
@@ -591,12 +643,12 @@ chapterConfigs = [
         "hearts":           5,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127793,
         "challengeName":    "Trust Your Family",
         "raChallengeID":    509560,
-        "challengeDesc":    "Without dying and with both brown and grey inside the end tree, use orange to collect five hearts, then complete chapter 24.",
+        "challengeDesc":    "Without dying and with both Brown and Gray inside the end tree, use Orange to collect five hearts, then complete chapter 24.",
         "deathless":        true,
         "characterCollect": {
             "character": "orange",
@@ -606,7 +658,9 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER25,
-        "name":             "Chapter 25",
+        "nextID":           0x00000019,
+        "name":             "chapter 25",
+        "nameTitle":        "Chapter 25",
         "raID":             509561,
         "raIcon":           "579203",
         "raChallengeIcon":  "579204",
@@ -614,7 +668,7 @@ chapterConfigs = [
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    true,
-        "greyPowerUp":      true,
+        "grayPowerUp":      true,
         "hasLeaderboard":   true,
         "leaderboardID":    127794,
         "challengeName":    "We Are Coming, Mother!",
@@ -626,14 +680,16 @@ chapterConfigs = [
     },
     {
         "id":               0x00000019,
-        "name":             "Chapter 26",
+        "nextID":           0x0000001a,
+        "name":             "chapter 26",
+        "nameTitle":        "Chapter 26",
         "raID":             509563,
         "raIcon":           "579205",
         "description":      "Family Trees",
         "hearts":           1,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127795,
         "challengeName":    "",
@@ -641,14 +697,16 @@ chapterConfigs = [
     },
     {
         "id":               0x0000001a,
-        "name":             "Credits",
+        "nextID":           END,
+        "name":             "the end credits",
+        "nameTitle":        "The End Credits",
         "raID":             509564,
         "raIcon":           "579206",
         "description":      "Here Is My Heart!",
         "hearts":           7,
         "brownPowerUp":     true,
         "orangePowerUp":    false,
-        "greyPowerUp":      false,
+        "grayPowerUp":      false,
         "hasLeaderboard":   true,
         "leaderboardID":    127796,
         "challengeName":    "",
@@ -658,12 +716,12 @@ chapterConfigs = [
 
 // Detects if any character is jumping
 //
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGrayPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasGrayPowerUp ) {
     conditions = [
         ( prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
         ( prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( prev( GreyState() ) != 0x00000002 && GreyState() == 0x00000002 )
+        ( prev( GrayState() ) != 0x00000002 && GrayState() == 0x00000002 )
     ]
     if( hasBrownPowerUp ) {
         array_push( conditions, ( prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
@@ -671,26 +729,8 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     if( hasOrangePowerUp ) {
         array_push( conditions, ( prev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
     }
-    if( hasGreyPowerUp ) {
-        array_push( conditions, ( prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
-    }
-    return conditions
-}
-
-function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
-    conditions = [
-        ( Chapter() == chapter && prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
-        ( Chapter() == chapter && prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( Chapter() == chapter && prev( GreyState() ) != 0x00000002 && GreyState() == 0x00000002 )
-    ]
-    if( hasBrownPowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
-    }
-    if( hasOrangePowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && rev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
-    }
-    if( hasGreyPowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
+    if( hasGrayPowerUp ) {
+        array_push( conditions, ( prev( GrayPoweredUpState() ) != 0x00000002 && GrayPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
@@ -715,26 +755,24 @@ function InGame() {
 // Detects completion of a chapter based on character power ups in the level
 //
 // `isChallenge` is a boolean that will show a trigger icon in the corner of the screen for that `chapter` achievement. Using false for leaderboards to prevent the popup
-//
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CompleteChapter( isChallenge, chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+function CompleteChapter( isChallenge, chapter ) {
     brownDone = prev( BrownState() ) == 0x00000007
     orangeDone = prev( OrangeState() ) == 0x00000007
-    if( hasOrangePowerUp ) {
+    if( chapter["orangePowerUp"] ) {
         orangeDone = orangeDone || prev( OrangePoweredUpState() ) == 0x00000007
     }
-    greyDone = prev( GreyState() ) == 0x00000007
-    if( hasGreyPowerUp ) {
-        greyDone = greyDone || prev( GreyPoweredUpState() ) == 0x00000007 || prev( GreyPoweredUpState() ) == 0x00000006 // Special Case: Quickly entering end tree with grey powered up only animates to 0x06
+    grayDone = prev( GrayState() ) == 0x00000007
+    if( chapter["grayPowerUp"] ) {
+        grayDone = grayDone || prev( GrayPoweredUpState() ) == 0x00000007 || prev( GrayPoweredUpState() ) == 0x00000006 // Special Case: Quickly entering end tree with gray powered up only animates to 0x06
     }
-    done = ( ( brownDone ) && ( orangeDone ) && ( greyDone ) )
-    if( hasBrownPowerUp ) {
+    done = ( ( brownDone ) && ( orangeDone ) && ( grayDone ) )
+    if( chapter["brownPowerUp"] ) {
         done = done || prev( BrownPoweredUpState() ) == 0x00000007
     }
-    if( chapter == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have grey as a firefly
-        done = ( brownDone || prev( BrownPoweredUpState() ) == 0x00000007 ) && ( greyDone )
+    if( chapter["id"] == CHAPTER25 ) { // Special case: we dont care about orange on chapter 25 because it can finish in any state and brown powered up will never have gray as a firefly
+        done = ( brownDone || prev( BrownPoweredUpState() ) == 0x00000007 ) && ( grayDone )
     }
-    conds = ( done ) && ( prev( Chapter() ) == chapter && Chapter() != chapter )
+    conds = ( done ) && ( prev( Chapter() ) == chapter["id"] && Chapter() == chapter["nextID"] )
     if( isChallenge ) {
         conds = trigger_when( conds )
     }
@@ -757,10 +795,10 @@ function OrangeRotating( chapter ) {
 
 // Detects heart collection with specific character
 //
-// `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `grey` otherwise it will jusut detect number of hearts collected by anyone.
+// `hearts` is the number of hearts to collect using `character`. `character` can only be `brown`, `orange`, or `gray` otherwise it will jusut detect number of hearts collected by anyone.
 //
-// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGreyPowerUp` are booleans to signal if each of the characters have a powerup in that level.
-function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
+// `hasBrownPowerUp`, `hasOrangePowerUp` and `hasGrayPowerUp` are booleans to signal if each of the characters have a powerup in that level.
+function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOrangePowerUp, hasGrayPowerUp ) {
     base = prev( HeartsCollected() ) == HeartsCollected() - 1
     if character == "brown" {
         base = base && BrownState() != 0x00000007
@@ -772,10 +810,10 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         } else {
             base = base && OrangeState() == 0x00000007
         }
-        if hasGreyPowerUp {
-            base = base && GreyState() >= 0x00000007 && GreyState() <= 0x00000008 && GreyPoweredUpState() >= 0x00000007 && GreyPoweredUpState() <= 0x00000008
+        if hasGrayPowerUp {
+            base = base && GrayState() >= 0x00000007 && GrayState() <= 0x00000008 && GrayPoweredUpState() >= 0x00000007 && GrayPoweredUpState() <= 0x00000008
         } else {
-            base = base && GreyState() == 0x00000007
+            base = base && GrayState() == 0x00000007
         }
     }
 
@@ -789,15 +827,15 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         if hasOrangePowerUp {
             base = base && OrangePoweredUpState() != 0x00000007
         }
-        if hasGreyPowerUp {
-            base = base && GreyState() >= 0x00000007 && GreyState() <= 0x00000008 && GreyPoweredUpState() >= 0x00000007 && GreyPoweredUpState() <= 0x00000008
+        if hasGrayPowerUp {
+            base = base && GrayState() >= 0x00000007 && GrayState() <= 0x00000008 && GrayPoweredUpState() >= 0x00000007 && GrayPoweredUpState() <= 0x00000008
         } else {
-            base = base && GreyState() == 0x00000007
+            base = base && GrayState() == 0x00000007
         }
     }
 
-    if character == "grey" {
-        base = base && GreyState() != 0x00000007
+    if character == "gray" {
+        base = base && GrayState() != 0x00000007
         if hasBrownPowerUp {
             base = base && BrownState() >= 0x00000007 && BrownState() <= 0x00000008 && BrownPoweredUpState() >= 0x00000007 && BrownPoweredUpState() <= 0x00000008
         } else {
@@ -808,8 +846,8 @@ function CollectHeartsUsingCharacter( hearts, character, hasBrownPowerUp, hasOra
         } else {
             base = base && OrangeState() == 0x00000007
         }
-        if hasGreyPowerUp {
-            base = base && GreyPoweredUpState() != 0x00000007
+        if hasGrayPowerUp {
+            base = base && GrayPoweredUpState() != 0x00000007
         }
     }
     return repeated( hearts, base )
@@ -851,9 +889,9 @@ for index in range( 1, length( chapterConfigs ) ) {
     progression = {
         "id":    chapter["raID"],
         "title": chapter["description"],
-        "description": format("Complete {0}", chapter["name"]),
+        "description": format("Complete {0}.", chapter["name"]),
         "points": 5,
-        "trigger": CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] ),
+        "trigger": CompleteChapter( false, chapter ),
         "type": chapter["type"],
         "badge": chapter["raIcon"]
     }
@@ -861,23 +899,26 @@ for index in range( 1, length( chapterConfigs ) ) {
 
     if( chapter["challengeName"] != "" ) {
         challengeTrigger = once( Chapter() == chapter["id"] && InGame() )
+        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
+            challengeTrigger = prev( Chapter() ) == chapter["id"] && InGame() && CurrentChapterTimer() < InMilliseconds( chapter["timeTrialSeconds"] )
+        }
         if( dictionary_contains_key( chapter, "deathless" ) ) {
             challengeTrigger = challengeTrigger && DarkHeartsCollected() == 0
         }
         if( dictionary_contains_key( chapter, "characterCollect" ) ) {
             collectionDetails = chapter["characterCollect"]
-            challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+            challengeTrigger = challengeTrigger && CollectHeartsUsingCharacter( collectionDetails["hearts"], collectionDetails["character"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["grayPowerUp"] )
         }
         if( dictionary_contains_key( chapter, "heartsCollected" ) ) {
             challengeTrigger = challengeTrigger && HeartsCollected() == chapter["hearts"]
         }
-        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+        challengeTrigger = challengeTrigger && CompleteChapter( true, chapter )
         if( dictionary_contains_key( chapter, "limitJumps" ) ) {
             challengeTrigger = challengeTrigger &&
             disable_when(
                 tally(
                     chapter["limitJumps"] + 1,
-                    CharacterJumps( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+                    CharacterJumps( chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["grayPowerUp"] )
                 )
             ) 
         }
@@ -899,12 +940,10 @@ for index in range( 1, length( chapterConfigs ) ) {
                 )
             )
         }
-        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
-            challengeTrigger = challengeTrigger &&
-            disable_when(
-                Chapter() == chapter["id"] &&
-                prev( CurrentChapterTimer() ) < InMilliseconds( chapter["timeTrialSeconds"] ) &&
-                CurrentChapterTimer() >= InMilliseconds( chapter["timeTrialSeconds"] )
+        if( !dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
+            challengeTrigger = challengeTrigger && ( // add global hit resets for all challenges except time trials
+                always_false() ||
+                never( GameReset() )
             )
         }
         challenge = {
@@ -912,10 +951,7 @@ for index in range( 1, length( chapterConfigs ) ) {
             "title": chapter["challengeName"],
             "description": chapter["challengeDesc"],
             "points": 10,
-            "trigger":  challengeTrigger && (
-                always_false() ||
-                never( GameReset() )
-            ),
+            "trigger":  challengeTrigger,
             "type": "missable",
             "badge": chapter["raChallengeIcon"]
         }
@@ -929,8 +965,8 @@ for index in range( 1, length( chapterConfigs ) ) {
         }
         l = {
             "id":              leaderboardID,
-            "title":           format("Speedrun {0}", chapter["name"]),
-            "description":     format("Finish {0} as fast as possible", chapter["name"]),
+            "title":           format("Speedrun {0}", chapter["nameTitle"]),
+            "description":     format("Finish {0} as fast as possible.", chapter["name"]),
             "value":           CurrentChapterTimer() / 0x0a,
             "format":          "MILLISECS",
             "lower_is_better": true
@@ -938,9 +974,9 @@ for index in range( 1, length( chapterConfigs ) ) {
         if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
             l["start"] = GameReset() && Chapter() == chapter["id"]
             l["cancel"] = GameReset() && Chapter() != chapter["id"]
-            l["submit"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+            l["submit"] = CompleteChapter( false, chapter )
         } else {
-            l["start"] = CompleteChapter( false, chapter["id"], chapter["brownPowerUp"], chapter["orangePowerUp"], chapter["greyPowerUp"] )
+            l["start"] = CompleteChapter( false, chapter )
             l["cancel"] = always_false()
             l["submit"] = always_true()
         }
@@ -948,50 +984,24 @@ for index in range( 1, length( chapterConfigs ) ) {
     }
 }
 
+singular_lookup = {
+    1: ""
+}
+
 rich_presence_conditional_display(
     InGame(),
-    "Score: {0}/{1} • Playing {2} • Hearts Collected: {3}/{4} • Deaths: {5}",
-    rich_presence_value( "valueFormat", Score(), "VALUE" ),
-    rich_presence_value( "valueFormat", totalHearts, "VALUE" ),
-    rich_presence_lookup("Chapter", Chapter(), chapters),
-    rich_presence_value( "valueFormat", HeartsCollected(), "VALUE" ),
-    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
-    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" )
+    "Score {0}/{1} • Playing {2} • {3}/{4} heart{5} collected • {6} death{7}",
+    rich_presence_value( "Number", Score(), "VALUE" ),
+    rich_presence_value( "Number", totalHearts, "VALUE" ),
+    rich_presence_lookup( "Chapter", Chapter(), chapters ),
+    rich_presence_value( "Number", HeartsCollected(), "VALUE" ),
+    rich_presence_value( "Number", AvailableHearts(), "VALUE" ),
+    rich_presence_lookup( "Case", AvailableHearts(), singular_lookup, "s" ),
+    rich_presence_value( "Number", DarkHeartsCollected(), "VALUE" ),
+    rich_presence_lookup( "Case", DarkHeartsCollected(), singular_lookup, "s" )
 )
 
-rich_presence_display("In Menu")
-
-// Bad achievements
-for i in range( 0, 51 ) {
-    id = 510046 + i
-    a = {
-        "id":          id,
-        "title":       format("[VOID] Achievement {0}", id),
-        "description": format("Erronious Achievement ID: {0}", id),
-        "points":      0,
-        "trigger":     always_false(),
-        "type":        "",
-        "badge":       "0"
-    }
-    array_push( achievements, a )
-}
-
-// Bad Leaderboards
-for i in range( 0, 26 ) {
-    id = 127798 + i
-    l = {
-        "id":              id,
-        "title":           format("[VOID] Leaderboard {0}", id),
-        "description":     format("Erronious Leaderboard ID: {0}", id),
-        "value":           0,
-        "format":          "VALUE",
-        "lower_is_better": false,
-        "start":           always_false(),
-        "cancel":          always_false(),
-        "submit":          always_false(),
-    }
-    array_push( leaderboards, l )
-}
+rich_presence_display( "Main menu" )
 
 for index in range( 0, length( achievements ) - 1 ) {
     a = achievements[index]

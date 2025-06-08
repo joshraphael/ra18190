@@ -120,7 +120,8 @@ chapterConfigs = [
     {
         "id":               0x0000001b,
         "nextID":           0x00000000,
-        "name":             "Chapter 1",
+        "name":             "chapter 1",
+        "nameTitle":        "Chapter 1",
         "raID":             509517,
         "raIcon":           "579155",
         "raChallengeIcon":  "579156",
@@ -140,7 +141,8 @@ chapterConfigs = [
     {
         "id":               0x00000000,
         "nextID":           0x00000003,
-        "name":             "Chapter 2",
+        "name":             "chapter 2",
+        "nameTitle":        "Chapter 2",
         "raID":             509519,
         "raIcon":           "579157",
         "raChallengeIcon":  "579158",
@@ -160,7 +162,8 @@ chapterConfigs = [
     {
         "id":               0x00000003,
         "nextID":           0x00000004,
-        "name":             "Chapter 3",
+        "name":             "chapter 3",
+        "nameTitle":        "Chapter 3",
         "raID":             509521,
         "raIcon":           "579159",
         "raChallengeIcon":  "579160",
@@ -183,7 +186,8 @@ chapterConfigs = [
     {
         "id":               0x00000004,
         "nextID":           0x00000005,
-        "name":             "Chapter 4",
+        "name":             "chapter 4",
+        "nameTitle":        "Chapter 4",
         "raID":             509523,
         "raIcon":           "579161",
         "raChallengeIcon":  "579162",
@@ -204,7 +208,8 @@ chapterConfigs = [
     {
         "id":               0x00000005,
         "nextID":           0x00000008,
-        "name":             "Chapter 5",
+        "name":             "chapter 5",
+        "nameTitle":        "Chapter 5",
         "raID":             509525,
         "raIcon":           "579163",
         "raChallengeIcon":  "579164",
@@ -225,7 +230,8 @@ chapterConfigs = [
     {
         "id":               0x00000008,
         "nextID":           0x0000000a,
-        "name":             "Chapter 6",
+        "name":             "chapter 6",
+        "nameTitle":        "Chapter 6",
         "raID":             509513,
         "raIcon":           "579165",
         "raChallengeIcon":  "579166",
@@ -246,7 +252,8 @@ chapterConfigs = [
     {
         "id":               0x0000000a,
         "nextID":           0x00000016,
-        "name":             "Chapter 7",
+        "name":             "chapter 7",
+        "nameTitle":        "Chapter 7",
         "raID":             509527,
         "raIcon":           "579167",
         "raChallengeIcon":  "579168",
@@ -269,7 +276,8 @@ chapterConfigs = [
     {
         "id":               0x00000016,
         "nextID":           0x00000006,
-        "name":             "Chapter 8",
+        "name":             "chapter 8",
+        "nameTitle":        "Chapter 8",
         "raID":             509515,
         "raIcon":           "579169",
         "raChallengeIcon":  "579170",
@@ -291,7 +299,8 @@ chapterConfigs = [
     {
         "id":               0x00000006,
         "nextID":           0x00000013,
-        "name":             "Chapter 9",
+        "name":             "chapter 9",
+        "nameTitle":        "Chapter 9",
         "raID":             509529,
         "raIcon":           "579171",
         "raChallengeIcon":  "579172",
@@ -312,7 +321,8 @@ chapterConfigs = [
     {
         "id":               0x00000013,
         "nextID":           0x0000000b,
-        "name":             "Chapter 10",
+        "name":             "chapter 10",
+        "nameTitle":        "Chapter 10",
         "raID":             509531,
         "raIcon":           "579173",
         "raChallengeIcon":  "579174",
@@ -333,7 +343,8 @@ chapterConfigs = [
     {
         "id":               0x0000000b,
         "nextID":           0x00000007,
-        "name":             "Chapter 11",
+        "name":             "chapter 11",
+        "nameTitle":        "Chapter 11",
         "raID":             509533,
         "raIcon":           "579175",
         "raChallengeIcon":  "579176",
@@ -355,7 +366,8 @@ chapterConfigs = [
     {
         "id":               0x00000007,
         "nextID":           0x0000000c,
-        "name":             "Chapter 12",
+        "name":             "chapter 12",
+        "nameTitle":        "Chapter 12",
         "raID":             509535,
         "raIcon":           "579177",
         "raChallengeIcon":  "579178",
@@ -377,7 +389,8 @@ chapterConfigs = [
     {
         "id":               0x0000000c,
         "nextID":           0x0000000d,
-        "name":             "Chapter 13",
+        "name":             "chapter 13",
+        "nameTitle":        "Chapter 13",
         "raID":             509537,
         "raIcon":           "579179",
         "raChallengeIcon":  "579180",
@@ -398,7 +411,8 @@ chapterConfigs = [
     {
         "id":               0x0000000d,
         "nextID":           0x0000000e,
-        "name":             "Chapter 14",
+        "name":             "chapter 14",
+        "nameTitle":        "Chapter 14",
         "raID":             509539,
         "raIcon":           "579181",
         "raChallengeIcon":  "579182",
@@ -419,7 +433,8 @@ chapterConfigs = [
     {
         "id":               0x0000000e,
         "nextID":           0x0000000f,
-        "name":             "Chapter 15",
+        "name":             "chapter 15",
+        "nameTitle":        "Chapter 15",
         "raID":             509541,
         "raIcon":           "579183",
         "raChallengeIcon":  "579184",
@@ -441,7 +456,8 @@ chapterConfigs = [
     {
         "id":               0x0000000f,
         "nextID":           0x00000010,
-        "name":             "Chapter 16",
+        "name":             "chapter 16",
+        "nameTitle":        "Chapter 16",
         "raID":             509543,
         "raIcon":           "579185",
         "raChallengeIcon":  "579186",
@@ -462,7 +478,8 @@ chapterConfigs = [
     {
         "id":               0x00000010,
         "nextID":           0x00000012,
-        "name":             "Chapter 17",
+        "name":             "chapter 17",
+        "nameTitle":        "Chapter 17",
         "raID":             509545,
         "raIcon":           "579187",
         "raChallengeIcon":  "579188",
@@ -482,7 +499,8 @@ chapterConfigs = [
     {
         "id":               0x00000012,
         "nextID":           0x00000001,
-        "name":             "Chapter 18",
+        "name":             "chapter 18",
+        "nameTitle":        "Chapter 18",
         "raID":             509547,
         "raIcon":           "579189",
         "raChallengeIcon":  "579190",
@@ -503,7 +521,8 @@ chapterConfigs = [
     {
         "id":               0x00000001,
         "nextID":           0x00000002,
-        "name":             "Chapter 19",
+        "name":             "chapter 19",
+        "nameTitle":        "Chapter 19",
         "raID":             509549,
         "raIcon":           "579191",
         "raChallengeIcon":  "579192",
@@ -527,7 +546,8 @@ chapterConfigs = [
     {
         "id":               0x00000002,
         "nextID":           0x00000014,
-        "name":             "Chapter 20",
+        "name":             "chapter 20",
+        "nameTitle":        "Chapter 20",
         "raID":             509551,
         "raIcon":           "579193",
         "raChallengeIcon":  "579194",
@@ -549,7 +569,8 @@ chapterConfigs = [
     {
         "id":               0x00000014,
         "nextID":           0x00000015,
-        "name":             "Chapter 21",
+        "name":             "chapter 21",
+        "nameTitle":        "Chapter 21",
         "raID":             509553,
         "raIcon":           "579195",
         "raChallengeIcon":  "579196",
@@ -570,7 +591,8 @@ chapterConfigs = [
     {
         "id":               0x00000015,
         "nextID":           0x0000001d,
-        "name":             "Chapter 22",
+        "name":             "chapter 22",
+        "nameTitle":        "Chapter 22",
         "raID":             509555,
         "raIcon":           "579197",
         "raChallengeIcon":  "579198",
@@ -590,7 +612,8 @@ chapterConfigs = [
     {
         "id":               0x0000001d,
         "nextID":           0x00000017,
-        "name":             "Chapter 23",
+        "name":             "chapter 23",
+        "nameTitle":        "Chapter 23",
         "raID":             509557,
         "raIcon":           "579199",
         "raChallengeIcon":  "579200",
@@ -611,7 +634,8 @@ chapterConfigs = [
     {
         "id":               0x00000017,
         "nextID":           CHAPTER25,
-        "name":             "Chapter 24",
+        "name":             "chapter 24",
+        "nameTitle":        "Chapter 24",
         "raID":             509559,
         "raIcon":           "579201",
         "raChallengeIcon":  "579202",
@@ -635,7 +659,8 @@ chapterConfigs = [
     {
         "id":               CHAPTER25,
         "nextID":           0x00000019,
-        "name":             "Chapter 25",
+        "name":             "chapter 25",
+        "nameTitle":        "Chapter 25",
         "raID":             509561,
         "raIcon":           "579203",
         "raChallengeIcon":  "579204",
@@ -656,7 +681,8 @@ chapterConfigs = [
     {
         "id":               0x00000019,
         "nextID":           0x0000001a,
-        "name":             "Chapter 26",
+        "name":             "chapter 26",
+        "nameTitle":        "Chapter 26",
         "raID":             509563,
         "raIcon":           "579205",
         "description":      "Family Trees",
@@ -672,7 +698,8 @@ chapterConfigs = [
     {
         "id":               0x0000001a,
         "nextID":           END,
-        "name":             "Credits",
+        "name":             "the end credits",
+        "nameTitle":        "The End Credits",
         "raID":             509564,
         "raIcon":           "579206",
         "description":      "Here Is My Heart!",
@@ -862,7 +889,7 @@ for index in range( 1, length( chapterConfigs ) ) {
     progression = {
         "id":    chapter["raID"],
         "title": chapter["description"],
-        "description": format("Complete {0}", chapter["name"]),
+        "description": format("Complete {0}.", chapter["name"]),
         "points": 5,
         "trigger": CompleteChapter( false, chapter ),
         "type": chapter["type"],
@@ -938,8 +965,8 @@ for index in range( 1, length( chapterConfigs ) ) {
         }
         l = {
             "id":              leaderboardID,
-            "title":           format("Speedrun {0}", chapter["name"]),
-            "description":     format("Finish {0} as fast as possible", chapter["name"]),
+            "title":           format("Speedrun {0}", chapter["nameTitle"]),
+            "description":     format("Finish {0} as fast as possible.", chapter["name"]),
             "value":           CurrentChapterTimer() / 0x0a,
             "format":          "MILLISECS",
             "lower_is_better": true
@@ -957,18 +984,23 @@ for index in range( 1, length( chapterConfigs ) ) {
     }
 }
 
+singular_lookup = {
+    1: ""
+}
+
 rich_presence_conditional_display(
     InGame(),
-    "Score: {0}/{1} • Playing {2} • Hearts Collected: {3}/{4} • Deaths: {5}",
-    rich_presence_value( "valueFormat", Score(), "VALUE" ),
-    rich_presence_value( "valueFormat", totalHearts, "VALUE" ),
-    rich_presence_lookup("Chapter", Chapter(), chapters),
-    rich_presence_value( "valueFormat", HeartsCollected(), "VALUE" ),
-    rich_presence_value( "valueFormat", AvailableHearts(), "VALUE" ),
-    rich_presence_value( "valueFormat", DarkHeartsCollected(), "VALUE" )
+    "Score {0}/{1} • Playing {2} • {3}/{4} hearts collected • {5} death{6}",
+    rich_presence_value( "Number", Score(), "VALUE" ),
+    rich_presence_value( "Number", totalHearts, "VALUE" ),
+    rich_presence_lookup( "Chapter", Chapter(), chapters ),
+    rich_presence_value( "Number", HeartsCollected(), "VALUE" ),
+    rich_presence_value( "Number", AvailableHearts(), "VALUE" ),
+    rich_presence_value( "Number", DarkHeartsCollected(), "VALUE" ),
+    rich_presence_lookup( "Case", DarkHeartsCollected(), singular_lookup, "s" )
 )
 
-rich_presence_display("In Menu")
+rich_presence_display( "Main menu" )
 
 for index in range( 0, length( achievements ) - 1 ) {
     a = achievements[index]

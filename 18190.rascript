@@ -115,6 +115,7 @@ END = 0x00000063
 chapterConfigs = [
     {
         "id":               0x0000001b,
+        "nextID":           0x00000000,
         "name":             "Chapter 1",
         "raID":             509517,
         "raIcon":           "579155",
@@ -134,6 +135,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000000,
+        "nextID":           0x00000003,
         "name":             "Chapter 2",
         "raID":             509519,
         "raIcon":           "579157",
@@ -153,6 +155,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000003,
+        "nextID":           0x00000004,
         "name":             "Chapter 3",
         "raID":             509521,
         "raIcon":           "579159",
@@ -175,6 +178,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000004,
+        "nextID":           0x00000005,
         "name":             "Chapter 4",
         "raID":             509523,
         "raIcon":           "579161",
@@ -195,6 +199,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000005,
+        "nextID":           0x00000008,
         "name":             "Chapter 5",
         "raID":             509525,
         "raIcon":           "579163",
@@ -215,6 +220,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000008,
+        "nextID":           0x0000000a,
         "name":             "Chapter 6",
         "raID":             509513,
         "raIcon":           "579165",
@@ -235,6 +241,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000a,
+        "nextID":           0x00000016,
         "name":             "Chapter 7",
         "raID":             509527,
         "raIcon":           "579167",
@@ -257,6 +264,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000016,
+        "nextID":           0x00000006,
         "name":             "Chapter 8",
         "raID":             509515,
         "raIcon":           "579169",
@@ -278,6 +286,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000006,
+        "nextID":           0x00000013,
         "name":             "Chapter 9",
         "raID":             509529,
         "raIcon":           "579171",
@@ -298,6 +307,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000013,
+        "nextID":           0x0000000b,
         "name":             "Chapter 10",
         "raID":             509531,
         "raIcon":           "579173",
@@ -318,6 +328,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000b,
+        "nextID":           0x00000007,
         "name":             "Chapter 11",
         "raID":             509533,
         "raIcon":           "579175",
@@ -339,6 +350,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000007,
+        "nextID":           0x0000000c,
         "name":             "Chapter 12",
         "raID":             509535,
         "raIcon":           "579177",
@@ -360,6 +372,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000c,
+        "nextID":           0x0000000d,
         "name":             "Chapter 13",
         "raID":             509537,
         "raIcon":           "579179",
@@ -380,6 +393,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000d,
+        "nextID":           0x0000000e,
         "name":             "Chapter 14",
         "raID":             509539,
         "raIcon":           "579181",
@@ -400,6 +414,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000e,
+        "nextID":           0x0000000f,
         "name":             "Chapter 15",
         "raID":             509541,
         "raIcon":           "579183",
@@ -421,6 +436,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000000f,
+        "nextID":           0x00000010,
         "name":             "Chapter 16",
         "raID":             509543,
         "raIcon":           "579185",
@@ -441,6 +457,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000010,
+        "nextID":           0x00000012,
         "name":             "Chapter 17",
         "raID":             509545,
         "raIcon":           "579187",
@@ -460,6 +477,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000012,
+        "nextID":           0x00000001,
         "name":             "Chapter 18",
         "raID":             509547,
         "raIcon":           "579189",
@@ -480,6 +498,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000001,
+        "nextID":           0x00000002,
         "name":             "Chapter 19",
         "raID":             509549,
         "raIcon":           "579191",
@@ -503,6 +522,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000002,
+        "nextID":           0x00000014,
         "name":             "Chapter 20",
         "raID":             509551,
         "raIcon":           "579193",
@@ -524,6 +544,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000014,
+        "nextID":           0x00000015,
         "name":             "Chapter 21",
         "raID":             509553,
         "raIcon":           "579195",
@@ -544,6 +565,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000015,
+        "nextID":           0x0000001d,
         "name":             "Chapter 22",
         "raID":             509555,
         "raIcon":           "579197",
@@ -563,6 +585,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000001d,
+        "nextID":           0x00000017,
         "name":             "Chapter 23",
         "raID":             509557,
         "raIcon":           "579199",
@@ -583,6 +606,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000017,
+        "nextID":           CHAPTER25,
         "name":             "Chapter 24",
         "raID":             509559,
         "raIcon":           "579201",
@@ -606,6 +630,7 @@ chapterConfigs = [
     },
     {
         "id":               CHAPTER25,
+        "nextID":           0x00000019,
         "name":             "Chapter 25",
         "raID":             509561,
         "raIcon":           "579203",
@@ -626,6 +651,7 @@ chapterConfigs = [
     },
     {
         "id":               0x00000019,
+        "nextID":           0x0000001a,
         "name":             "Chapter 26",
         "raID":             509563,
         "raIcon":           "579205",
@@ -641,6 +667,7 @@ chapterConfigs = [
     },
     {
         "id":               0x0000001a,
+        "nextID":           0x00000063,
         "name":             "Credits",
         "raID":             509564,
         "raIcon":           "579206",
@@ -673,24 +700,6 @@ function CharacterJumps( hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
     }
     if( hasGreyPowerUp ) {
         array_push( conditions, ( prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
-    }
-    return conditions
-}
-
-function CharacterJumps1( chapter, hasBrownPowerUp, hasOrangePowerUp, hasGreyPowerUp ) {
-    conditions = [
-        ( Chapter() == chapter && prev( BrownState() ) != 0x00000002 && BrownState() == 0x00000002 ),
-        ( Chapter() == chapter && prev( OrangeState() ) != 0x00000002 && OrangeState() == 0x00000002 ),
-        ( Chapter() == chapter && prev( GreyState() ) != 0x00000002 && GreyState() == 0x00000002 )
-    ]
-    if( hasBrownPowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && prev( BrownPoweredUpState() ) != 0x00000002 && BrownPoweredUpState() == 0x00000002 ) )
-    }
-    if( hasOrangePowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && rev( OrangePoweredUpState() ) != 0x00000002 && OrangePoweredUpState() == 0x00000002 ) )
-    }
-    if( hasGreyPowerUp ) {
-        array_push( conditions, ( Chapter() == chapter && prev( GreyPoweredUpState() ) != 0x00000002 && GreyPoweredUpState() == 0x00000002 ) )
     }
     return conditions
 }
@@ -861,6 +870,9 @@ for index in range( 1, length( chapterConfigs ) ) {
 
     if( chapter["challengeName"] != "" ) {
         challengeTrigger = once( Chapter() == chapter["id"] && InGame() )
+        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
+            challengeTrigger = prev( Chapter() ) == chapter["id"] && InGame() && CurrentChapterTimer() < InMilliseconds( chapter["timeTrialSeconds"] )
+        }
         if( dictionary_contains_key( chapter, "deathless" ) ) {
             challengeTrigger = challengeTrigger && DarkHeartsCollected() == 0
         }
@@ -899,12 +911,10 @@ for index in range( 1, length( chapterConfigs ) ) {
                 )
             )
         }
-        if( dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
-            challengeTrigger = challengeTrigger &&
-            disable_when(
-                Chapter() == chapter["id"] &&
-                prev( CurrentChapterTimer() ) < InMilliseconds( chapter["timeTrialSeconds"] ) &&
-                CurrentChapterTimer() >= InMilliseconds( chapter["timeTrialSeconds"] )
+        if( !dictionary_contains_key( chapter, "timeTrialSeconds" ) ) {
+            challengeTrigger = challengeTrigger && ( // add global hit resets for all challenges except time trials
+                always_false() ||
+                never( GameReset() )
             )
         }
         challenge = {
@@ -912,10 +922,7 @@ for index in range( 1, length( chapterConfigs ) ) {
             "title": chapter["challengeName"],
             "description": chapter["challengeDesc"],
             "points": 10,
-            "trigger":  challengeTrigger && (
-                always_false() ||
-                never( GameReset() )
-            ),
+            "trigger":  challengeTrigger,
             "type": "missable",
             "badge": chapter["raChallengeIcon"]
         }
@@ -960,38 +967,6 @@ rich_presence_conditional_display(
 )
 
 rich_presence_display("In Menu")
-
-// Bad achievements
-for i in range( 0, 51 ) {
-    id = 510046 + i
-    a = {
-        "id":          id,
-        "title":       format("[VOID] Achievement {0}", id),
-        "description": format("Erronious Achievement ID: {0}", id),
-        "points":      0,
-        "trigger":     always_false(),
-        "type":        "",
-        "badge":       "0"
-    }
-    array_push( achievements, a )
-}
-
-// Bad Leaderboards
-for i in range( 0, 26 ) {
-    id = 127798 + i
-    l = {
-        "id":              id,
-        "title":           format("[VOID] Leaderboard {0}", id),
-        "description":     format("Erronious Leaderboard ID: {0}", id),
-        "value":           0,
-        "format":          "VALUE",
-        "lower_is_better": false,
-        "start":           always_false(),
-        "cancel":          always_false(),
-        "submit":          always_false(),
-    }
-    array_push( leaderboards, l )
-}
 
 for index in range( 0, length( achievements ) - 1 ) {
     a = achievements[index]

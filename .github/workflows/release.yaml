@@ -1,0 +1,45 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  autocr:
+    name: AutoCR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Audit Where is my Heart? RAScript
+        uses: joshraphael/rascript-audit@1dd2bd25f657aee4eb2cf18db15b27cbd0a270c9
+        with:
+          id: wimh
+          game-id: 18190
+          rascript: 18190.rascript
+          report: true
+          severity: error
+  publish:
+    name: Publish
+    needs: autocr
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download Audit
+        uses: actions/download-artifact@v4
+      - name: Fix Files
+        run: |
+          mv wimh-18190-audit/18190-Notes.json .
+          mv wimh-18190-audit/18190-Rich.txt .
+          mv wimh-18190-audit/18190-User.txt .
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          body: Release tag ${{ github.ref_name }}
+          files: |
+            18190-Notes.json
+            18190-Rich.txt
+            18190-User.txt
